@@ -1,6 +1,6 @@
-Musings.js
-==========
+X.js
+======
 
-just few ECMAScript musings of my own
+
 
 
