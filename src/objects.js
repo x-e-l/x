@@ -17,7 +17,7 @@ const X$props = (
 );
 
 const X$metas = (
-    ($) => $[_metas_] || []
+    ($) => $[_metas_] || {}
 );
 
 const X$callf = (

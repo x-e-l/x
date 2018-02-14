@@ -37,7 +37,7 @@ const X$mget = (
 
 const X$mown = (
     ($) => X$map(
-        X$metas($),
+        Object.keys(X$metas($)),
         k => X$ntry(k, X$mget($, k))
     )
 );
