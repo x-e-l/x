@@ -6,7 +6,7 @@ module.exports = ([
 
     //
     '_protos_',
-    '_call_',
+    '_callf_',
     '_2str_',
 
     '_length_',

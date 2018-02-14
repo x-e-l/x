@@ -1,4 +1,4 @@
-const {_props_, _protos_, _metas_, _call_} = require('./symbols');
+const {_props_, _protos_, _metas_, _callf_, _key_, _val_} = require('./symbols');
 const {X$nil} = require('./predicates');
 const {X$len} = require('./arrays');
 const {X$itr2set} = require('./transformers');
@@ -21,7 +21,7 @@ const X$metas = (
 );
 
 const X$callf = (
-    ($) => $[_call_] || (a => a)
+    ($) => $[_callf_] || (() => $)
 );
 
 
@@ -41,6 +41,13 @@ const X$has = (
     ).has(k)
 );
 
+const X$ntry = (
+    (k, v) => ({
+        [_key_]: k,
+        [_val_]: v,
+    })
+);
+
 
 module.exports = ({
     X$O,
@@ -54,4 +61,5 @@ module.exports = ({
 
     X$df,
     X$has,
+    X$ntry,
 });
