@@ -1,4 +1,4 @@
-const {_props_, _protos_, _metas_} = require('./symbols');
+const {_props_, _protos_, _metas_, _call_} = require('./symbols');
 const {X$nil} = require('./predicates');
 const {X$len} = require('./arrays');
 const {X$itr2set} = require('./transformers');
@@ -9,15 +9,19 @@ const X$O = (
 
 
 const X$toses = (
-    ($) => $[_protos_]
+    ($) => $[_protos_] || []
 );
 
 const X$props = (
-    ($) => $[_props_]
+    ($) => $[_props_] || []
 );
 
 const X$metas = (
-    ($) => $[_metas_]
+    ($) => $[_metas_] || []
+);
+
+const X$callf = (
+    ($) => $[_call_] || (a => a)
 );
 
 
@@ -44,6 +48,7 @@ module.exports = ({
     X$toses,
     X$props,
     X$metas,
+    X$callf,
 
     X$length,
 
