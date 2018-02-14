@@ -21,6 +21,9 @@ module.exports = ([
 
     // end
 ].reduce(
-    ($, k) => ($[k] = Symbol(k)),
+    ($, k) => {
+        $[k] = Symbol(k);
+        return $;
+    },
     {}
 ));
