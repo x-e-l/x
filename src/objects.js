@@ -8,20 +8,21 @@ const X$O = (
 );
 
 
-const X$toses = (
-    ($) => $[_protos_] || []
-);
-
-const X$props = (
-    ($) => $[_props_] || []
-);
-
 const X$metas = (
     ($) => $[_metas_] || {}
 );
 
+const X$toses = (
+    ($) => X$metas($)[_protos_] || []
+);
+
+const X$props = (
+    ($) => X$metas($)[_props_] || []
+);
+
+
 const X$callf = (
-    ($) => $[_callf_] || (() => $)
+    ($) => X$metas($)[_callf_] || (() => $)
 );
 
 
