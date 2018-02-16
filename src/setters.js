@@ -1,4 +1,5 @@
 const {_props_, _toses_, _metas_, _key_, _val_} = require('./symbols');
+const {X$nil} = require('./predicates');
 const {X$metas, X$toses, X$props} = require('./getters');
 
 const push$ = (
@@ -29,7 +30,7 @@ const X$mset = (
 );
 
 const X$nset = (
-    ($, ntry) => X$pset($, ntry[_key_], ntry[_val_]) // mutates values
+    ($, ntry) => X$nil(ntry) ? $ : X$pset($, ntry[_key_], ntry[_val_]) // mutates values
 );
 
 

@@ -85,8 +85,10 @@ const X$Arr = Cst(Arr);
 const X$Fun = Cst(Fun);
 const X$Cst = Cst(Cst);
 
+const X$O = (...$$) => X$Obj(null, ...$$);
 
 module.exports = ({
+    X$O,
     X$Obj,
     X$Nil,
     X$Arr,
