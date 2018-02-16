@@ -1,9 +1,7 @@
-const {_protos_, _props_, _atype_, _obj_, _2str_, _callf_, _length_} = require('./symbols');
+const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('./symbols');
 
-const {X$df, X$obj2frz, X$str2err} = require('./transformers');
-const {X$push, X$length, X$map} = require('./arrays');
-const {X$props, X$metas, X$toses, X$ntry} = require('./objects');
-const {X$obj2str} = require('./stringers');
+const {X$str2err, X$kv2ntry} = require('./transformers');
+const {X$push, X$len, X$map} = require('./arrays');
 
 
 const X$pcat = (
@@ -11,36 +9,68 @@ const X$pcat = (
 );
 
 const X$pget = (
-    ($, k) => $[k] || X$str2err('X$pget: missing prop: ' + k)
+    ($, k) => $[k] || X$str2err('X$pget: missing prop: ' + X$2str(k))
 );
 
 const X$pown = (
     ($) => X$map(
         X$props($),
-        k => X$ntry(k, X$pget($, k))
+        k => X$kv2ntry(k, X$pget($, k))
     )
 );
 
+
+const X$metas = (
+    ($) => $[_metas_] || {}
+);
+
+
 const X$mget = (
-    (
-        (ms) => (
-            ($, k) => X$df(ms[k], X$metas($)[k]) || X$str2err('X$mget: missing meta: ' + k)
-        )
-    )({
-        [_protos_]: [],
-        [_props_]:  [],
-        [_atype_]:  _obj_,
-        [_2str_]:   X$obj2str,
-        [_callf_]:  X$obj2frz,
-        [_length_]: X$length,
-    })
+    ($, k) => X$metas($)[k]
 );
 
 const X$mown = (
     ($) => X$map(
         Object.keys(X$metas($)),
-        k => X$ntry(k, X$mget($, k))
+        k => X$kv2ntry(k, X$mget($, k))
     )
+);
+
+
+const X$toses = (
+    ($) => X$mget($, _toses_) || []
+);
+
+const X$props = (
+    ($) => X$mget($, _props_) || []
+);
+
+
+const X$call = (
+    ($ => $)
+);
+
+const X$callf = (
+    ($) => X$mget($, _call_) || X$call
+);
+
+
+const tostr = Function.prototype.call.bind(Object.prototype.toString);
+const X$2str = (
+    ($) => $ && $.toString ? $.toString() : '' + tostr($)
+);
+
+const X$2strf = (
+    ($) => X$mget($, _2str_) || X$2str
+);
+
+
+const X$2len = (
+    ($) => X$len(X$props($))
+);
+
+const X$2lenf = (
+    ($) => X$mget($, _2len_) || X$2len
 );
 
 
@@ -53,6 +83,14 @@ module.exports = ({
     X$mown,
 
     X$pcat,
+
+    X$metas,
+    X$toses,
+    X$props,
+
+    X$callf,
+    X$2strf,
+    X$2lenf,
 
 });
 

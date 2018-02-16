@@ -1,6 +1,7 @@
 const {X$isnil, X$isarr, X$isfun, X$isobj} = require('./predicates');
 const {X$second, X$last, X$map, X$len} = require('./arrays');
-const {X$toses, X$props, X$callf} = require('./objects');
+const {X$toses, X$props, X$callf} = require('./getters');
+
 
 
 const X$props2str = (

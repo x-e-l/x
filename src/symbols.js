@@ -2,18 +2,19 @@ module.exports = ([
     // begin
 
     // properties
-    '_metas_', '_props_',
+    '_metas_',
 
-    //
-    '_protos_',
-    '_callf_',
+    // meta keys
+    '_props_',
+    '_toses_',
+
+    '_call_',
     '_2str_',
+    '_2len_',
 
-    '_length_',
-    '_mutas_',
     '_atype_',
 
-    // constructor spec
+    // ntry keys
     '_key_', '_val_',
 
     // archetypes

@@ -1,5 +1,5 @@
-const {_props_, _protos_, _metas_} = require('./symbols');
-const {X$mget} = require('./getters');
+const {_props_, _toses_, _metas_, _key_, _val_} = require('./symbols');
+const {X$metas, X$toses, X$props} = require('./getters');
 
 const push$ = (
     ($, a) => {
@@ -8,10 +8,12 @@ const push$ = (
     }
 );
 
+
 const X$pset = (
     ($, k, v) => {
         $[k] = v;
-        const ps = $[_props_] || [];
+        /**@type Array*/
+        const ps = X$props($);
         $[_props_] = ps.includes(k) ? ps : push$(ps, k); // mutates values
         return $;
     }
@@ -19,18 +21,22 @@ const X$pset = (
 
 const X$mset = (
     ($, k, v) => {
-        const metas = $[_metas_];
+        const metas = X$metas($);
         metas[k] = v; // mutates value
         $[_metas_] = metas; // mutates value
         return $;
     }
 );
 
+const X$nset = (
+    ($, ntry) => X$pset($, ntry[_key_], ntry[_val_]) // mutates values
+);
+
 
 const X$padd = (
     ($, proto) => {
-        const ts = X$mget($, _protos_);
-        X$mset($, _protos_, push$(ts, proto)); // mutates values
+        const ts = X$toses($);
+        X$mset($, _toses_, push$(ts, proto)); // mutates values
         return $;
     }
 );
@@ -39,5 +45,6 @@ const X$padd = (
 module.exports = ({
     X$pset,
     X$mset,
+    X$nset,
     X$padd,
 });
