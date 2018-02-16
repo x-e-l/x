@@ -46,12 +46,16 @@ const X$props = (
 );
 
 
-const X$call = (
-    ($ => $)
-);
-
 const X$callf = (
-    ($) => X$mget($, _call_) || X$call
+    ($) => {
+        const callf = X$mget($, _call_);
+        if (callf) { // TODO: @azder: check if actually callable, not just truthy
+            return callf;
+        }
+        // noinspection UnnecessaryLocalVariableJS
+        const X$const = () => $;
+        return X$const; // this is the name for the "anonymous" function
+    }
 );
 
 

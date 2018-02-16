@@ -1,9 +1,9 @@
-const {_atype_, _obj_, _nil_, _arr_, _2str_} = require('./symbols');
+const {_atype_, _obj_, _nil_, _arr_, _fun_, _2str_, _call_} = require('./symbols');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
 const {X$padd, X$nset, X$mset} = require('./setters');
-const {X$obj2str, X$nil2str, X$arr2str} = require('./stringers');
+const {X$obj2str, X$nil2str, X$arr2str, X$fun2str} = require('./stringers');
 
 
 const X$O = (
@@ -48,9 +48,24 @@ const X$Arr = (function Arr($, ...$$) {
 
 });
 
+const X$Fun = (function Fun($, ...$$) {
+
+    $ = X$Obj($, ...$$);
+    $ = X$padd($, Fun);
+
+    X$mset($, _atype_, _fun_);
+    X$mset($, _2str_, X$fun2str);
+
+    X$mset($, _call_, $);
+
+    return $;
+
+});
+
 
 module.exports = ({
     X$Obj,
     X$Nil,
     X$Arr,
+    X$Fun,
 });
