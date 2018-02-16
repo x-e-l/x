@@ -14,7 +14,7 @@ const X$pset = (
         $[k] = v;
         /**@type Array*/
         const ps = X$props($);
-        $[_props_] = ps.includes(k) ? ps : push$(ps, k); // mutates values
+        X$metas($)[_props_] = ps.includes(k) ? ps : push$(ps, k); // mutates values
         return $;
     }
 );
