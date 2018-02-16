@@ -19,6 +19,13 @@ const X$kv2ntry = (
     })
 );
 
+const X$vk2ntry = (
+    (v, k) => ({
+        [_key_]: k,
+        [_val_]: v,
+    })
+);
+
 const X$itr2set = (
     ($) => new Set($)
 );
@@ -32,6 +39,7 @@ module.exports = ({
     X$2const,
     X$obj2frz,
     X$kv2ntry,
+    X$vk2ntry,
     X$itr2set,
     X$str2err,
 });
