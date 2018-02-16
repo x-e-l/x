@@ -1,4 +1,4 @@
-const {_atype_, _obj_, _nil_, _arr_, _fun_, _2str_, _call_} = require('./symbols');
+const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_} = require('./symbols');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
@@ -6,15 +6,9 @@ const {X$padd, X$nset, X$mset} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str} = require('./stringers');
 
 
-const X$O = (
-    () => Object.create(null)
-);
+function Obj($, ...$$) {
 
-
-const X$Obj = (function Obj($, ...$$) {
-
-    $ = X$nil($) ? X$O() : $;
-    $ = X$padd($, Obj);
+    $ = X$nil($) ? Object.create(null) : $;
     $ = X$reduce($$, $, X$nset);
 
     X$mset($, _atype_, _obj_);
@@ -22,36 +16,33 @@ const X$Obj = (function Obj($, ...$$) {
 
     return $;
 
-});
+}
 
-const X$Nil = (function Nil($, ...$$) {
+function Nil($, ...$$) {
 
     $ = X$Obj($, ...$$);
-    $ = X$padd($, Nil);
 
     X$mset($, _atype_, _nil_);
     X$mset($, _2str_, X$nil2str);
 
     return $;
 
-});
+}
 
-const X$Arr = (function Arr($, ...$$) {
+function Arr($, ...$$) {
 
     $ = X$Obj($, ...$$);
-    $ = X$padd($, Arr);
 
     X$mset($, _atype_, _arr_);
     X$mset($, _2str_, X$arr2str);
 
     return $;
 
-});
+}
 
-const X$Fun = (function Fun($, ...$$) {
+function Fun($, ...$$) {
 
     $ = X$Obj($, ...$$);
-    $ = X$padd($, Fun);
 
     X$mset($, _atype_, _fun_);
     X$mset($, _2str_, X$fun2str);
@@ -60,7 +51,39 @@ const X$Fun = (function Fun($, ...$$) {
 
     return $;
 
-});
+}
+
+function Cst($, ...$$) {
+
+    const constructor = $; // alias original constructor function
+
+    // TODO: @azder: deal with this case, constructor must be function
+    // $ = X$nil($) ? ($ => $) : $;
+
+    $ = X$reduce(
+        $$,
+        // adds self to protos array of created on call
+        ($, ...$$) => X$padd(constructor($, ...$$), ($ || constructor)),
+        X$nset
+    );
+
+    // construct protos array for this constructor
+    X$mset($, _toses_, [Obj, Fun, Cst]);
+
+    X$mset($, _atype_, _cst_);
+    X$mset($, _2str_, X$fun2str);
+
+    X$mset($, _call_, $);
+
+    return $;
+
+}
+
+const X$Obj = Cst(Obj);
+const X$Nil = Cst(Nil);
+const X$Arr = Cst(Arr);
+const X$Fun = Cst(Fun);
+const X$Cst = Cst(Cst);
 
 
 module.exports = ({
@@ -68,4 +91,5 @@ module.exports = ({
     X$Nil,
     X$Arr,
     X$Fun,
+    X$Cst,
 });
