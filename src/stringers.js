@@ -1,7 +1,6 @@
 const {X$isnil, X$isarr, X$isfun, X$isobj} = require('./predicates');
-const {X$second, X$last, X$map, X$len} = require('./arrays');
-const {X$toses, X$props, X$callf} = require('./getters');
-
+const {X$second, X$last, X$map} = require('./arrays');
+const {X$toses, X$props, X$callf, X$2lenf} = require('./getters');
 
 
 const X$props2str = (
@@ -33,7 +32,7 @@ const X$obj2str = (
 );
 
 const X$arr2str = (
-    ($) => '' + X$tos2str($) + '𝛼(' + X$len($) + ')[' + X$props2str($) + ']𝛼'
+    ($) => '' + X$tos2str($) + '𝛼(' + X$2lenf($)($) + ')[' + X$props2str($) + ']𝛼'
 );
 
 const X$fun2str = (
