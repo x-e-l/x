@@ -6,11 +6,10 @@ module.exports = ({
     // single import
     ... require('./predicates'),
     ... require('./transformers'),
-    // triple import
+    // triple and multiple imports
     ... require('./getters'),
     ... require('./setters'),
     ... require('./objects'),
     ... require('./stringers'),
-    // multiple imports
     ... require('./constructors'),
 });

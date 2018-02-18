@@ -1,6 +1,7 @@
 const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_, _metas_} = require('./symbols');
 
 const {X$nil} = require('./predicates');
+const {X$bind} = require('./functions');
 const {X$reduce} = require('./arrays');
 const {X$padd, X$nset, X$mset} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str} = require('./stringers');
@@ -70,7 +71,7 @@ function Cst($, ...$$) {
     X$mset($, _toses_, [Obj, Fun, Cst]);
 
     X$mset($, _atype_, _cst_);
-    X$mset($, _2str_, X$fun2str);
+    X$mset($, _2str_, X$bind(X$fun2str, constructor));
 
     X$mset($, _call_, $);
 
