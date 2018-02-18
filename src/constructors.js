@@ -1,10 +1,9 @@
-const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_} = require('./symbols');
+const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_, _metas_} = require('./symbols');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
 const {X$padd, X$nset, X$mset} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str} = require('./stringers');
-
 
 function Obj($, ...$$) {
 
@@ -63,7 +62,7 @@ function Cst($, ...$$) {
     $ = X$reduce(
         $$,
         // adds self to protos array of created on call
-        ($, ...$$) => X$padd(constructor($, ...$$), ($ || constructor)),
+        ($, ...$$) => X$padd(constructor($, ...$$), constructor),
         X$nset
     );
 
@@ -83,9 +82,19 @@ const X$Obj = Cst(Obj);
 const X$Nil = Cst(Nil);
 const X$Arr = Cst(Arr);
 const X$Fun = Cst(Fun);
-const X$Cst = Cst(Cst);
 
-const X$O = (...$$) => X$Obj(null, ...$$);
+const X$Cst = (Cst); // No extra Cst of Cst for protos sake
+
+// helper for parameterless call of X$Obj
+const X$O = (
+    () => {
+        const $ = (
+            (...$$) => X$Obj(null, ...$$)
+        );
+        $[_metas_] = X$Obj[_metas_];
+        return $;
+    }
+)();
 
 module.exports = ({
     X$O,

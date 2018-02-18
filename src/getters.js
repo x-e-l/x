@@ -1,5 +1,6 @@
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('./symbols');
 
+const {X$nil} = require('./predicates');
 const {X$str2err, X$kv2ntry} = require('./transformers');
 const {X$push, X$len, X$map} = require('./arrays');
 
@@ -21,7 +22,7 @@ const X$pown = (
 
 
 const X$metas = (
-    ($) => $[_metas_] || {}
+    ($) => X$nil($) ? [] : $[_metas_] || {}
 );
 
 
