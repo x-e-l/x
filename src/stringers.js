@@ -43,10 +43,15 @@ const X$nil2str = (
     ($) => '' + X$tos2str($) + '𝜈{' + X$props2str($) + '}𝜈'
 );
 
+const X$cst2str = (
+    ($) => '' + X$tos2str($) + 'φ(' + X$callf($) + '){' + X$props2str($) + '}φ'
+);
+
 
 module.exports = {
     X$obj2str,
     X$arr2str,
     X$fun2str,
     X$nil2str,
+    X$cst2str,
 };

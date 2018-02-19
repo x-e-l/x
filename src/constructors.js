@@ -4,7 +4,7 @@ const {X$nil} = require('./predicates');
 const {X$bind} = require('./functions');
 const {X$reduce} = require('./arrays');
 const {X$padd, X$nset, X$mset} = require('./setters');
-const {X$obj2str, X$nil2str, X$arr2str, X$fun2str} = require('./stringers');
+const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./stringers');
 
 function Obj($, ...$$) {
 
@@ -71,7 +71,7 @@ function Cst($, ...$$) {
     X$mset($, _toses_, [Obj, Fun, Cst]);
 
     X$mset($, _atype_, _cst_);
-    X$mset($, _2str_, X$bind(X$fun2str, constructor));
+    X$mset($, _2str_, X$bind(X$cst2str, constructor));
 
     X$mset($, _call_, $);
 
