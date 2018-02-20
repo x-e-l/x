@@ -1,5 +1,4 @@
-const {X$Obj, X$Arr, X$Cst} = require('../../src/constructors');
-const {X$toses} = require('../../src/getters');
+const {X$Obj, X$Arr, X$Cst, X$Nil, X$toses} = require('../../src/x');
 
 console.log('X$Obj', X$toses(X$Obj));
 console.log('X$Obj()', X$toses(X$Obj()));
@@ -8,8 +7,11 @@ console.log('X$Arr', X$toses(X$Arr));
 console.log('X$Arr()', X$toses(X$Arr()));
 console.log('X$Arr([])', X$toses(X$Arr([])));
 
-const a = function A(x) {
-    return x;
-};
+const A = X$Cst(function A() {
+    return X$Nil();
+});
 
-console.log('X$A()', X$toses(X$Cst(a)));
+console.log('A', X$toses(A));
+console.log('A()', X$toses(A()));
+
+
