@@ -1,9 +1,9 @@
 const X$len = (
-    ($) => ($.length - 0) || 0
+    ($) => ($ && $.length - 0) || 0
 );
 
 const X$first = (
-    ($) => $[0]
+    ($) => $ && $[0]
 );
 
 const X$second = (
