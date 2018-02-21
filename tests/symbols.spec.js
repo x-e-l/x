@@ -1,6 +1,6 @@
 const X$ = require('../src/symbols');
 
-describe('symbols in X$', () => {
+describe('symbols', () => {
 
     const keys = [
 
@@ -36,7 +36,17 @@ describe('symbols in X$', () => {
     it('are all of type Symbol', () => {
 
         keys.map(k => (
-            expect([k, typeof X$[k]]).toEqual([k, 'symbol'])
+            expect('' + k + ' is ' + typeof X$[k]).toEqual('' + k + ' is symbol')
+        ));
+
+    });
+
+    it('conform to the _name_ convention', () => {
+
+        const valid = /^_[0-9a-z]+_$/;
+
+        keys.map(k => (
+            expect(k).toMatch(valid)
         ));
 
     });

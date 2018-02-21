@@ -1,14 +1,14 @@
 /** Created by azder on 2018-02-20. */
 const X$ = require('../src/x');
 
-describe('symbols in X$', () => {
+describe('X$', () => {
 
 
     it('is frozen', () => {
         expect(Object.isFrozen(X$)).toBeTruthy();
     });
 
-    it('does not nullify own properties', () => {
+    it('own properties can not be nullified', () => {
 
         Object.keys(X$).map(key => {
             X$[key] = null;

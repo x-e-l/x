@@ -36,7 +36,7 @@ const X$reduce = (
     ($, i, f) => $.reduce(f, i)
 );
 
-module.exports = ({
+module.exports = Object.freeze({
 
     X$len,
     X$first,
