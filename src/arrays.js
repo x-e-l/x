@@ -7,11 +7,14 @@ const X$first = (
 );
 
 const X$second = (
-    ($) => $[1]
+    ($) => $ && $[1]
 );
 
 const X$last = (
-    ($) => $[X$len($) - 1]
+    ($) => {
+        const l = X$len($);
+        return l ? $[l - 1] : $ && void 0;
+    }
 );
 
 

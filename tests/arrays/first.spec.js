@@ -6,6 +6,8 @@ describe('arrays.first', () => {
     const b = {b: 2};
     const c = {c: 3};
 
+    const dummy = {'-1': -1};
+
     it('returns the first element of non-empty array', () => {
         expect(X$first([a, b, c])).toEqual(a);
     });
@@ -20,6 +22,10 @@ describe('arrays.first', () => {
 
     it('is giving back null for null', () => {
         expect(X$first(null)).toEqual(null);
+    });
+
+    it('does not return element with key "-1"', () => {
+        expect(X$first(dummy)).toEqual(void 0);
     });
 
 });
