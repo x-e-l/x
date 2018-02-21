@@ -15,7 +15,7 @@ module.exports = ([
     '_atype_',
 
     // ntry keys
-    '_key_', '_val_',
+    '_key_', '_val_', '_idx_',
 
     // archetypes
     '_nil_', '_arr_', '_fun_', '_cst_', '_obj_',

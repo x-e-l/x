@@ -4,7 +4,8 @@
     "description": "x.js",
     "main": "x.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest",
+        "jest": "jest --watch"
     },
     "repository": {
         "type": "git",
@@ -16,5 +17,15 @@
         "url": "https://github.com/x-e-l/x/issues"
     },
     "homepage": "https://github.com/x-e-l/x#readme",
-    "dependencies": {}
+    "jest": {
+        "testEnvironment": "node",
+        "testMatch": [
+            "**/tests/**/*.js",
+            "**/?(*.)(spec|test).js"
+        ]
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "jest": "^22.4.0"
+    }
 }

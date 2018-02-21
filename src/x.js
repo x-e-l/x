@@ -1,4 +1,4 @@
-module.exports = ({
+module.exports = Object.freeze({
     // no imports
     ... require('./symbols'),
     ... require('./functions'),
