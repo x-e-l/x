@@ -19,7 +19,7 @@ const X$last = (
 
 
 const X$push = (
-    ($, a) => [...$, a]
+    ($, a) => void 0 === $ || null === $ ? [a] : [...$, a]
 );
 
 const X$unshift = (
