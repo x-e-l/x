@@ -27,7 +27,7 @@ const X$unshift = (
 );
 
 const X$includes = (
-    ($, a) => $.includes(a)
+    ($, a) => $ && $.includes && !!$.includes(a)
 );
 
 
