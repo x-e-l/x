@@ -23,7 +23,7 @@ const X$push = (
 );
 
 const X$unshift = (
-    ($, a) => [a, ...$]
+    ($, a) => void 0 === $ || null === $ ? [a] : [a, ...$]
 );
 
 const X$includes = (
