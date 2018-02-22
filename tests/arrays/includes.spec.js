@@ -26,7 +26,7 @@ describe('arrays.includes', () => {
         expect(X$includes({}, b)).toEqual(void 0);
     });
 
-    it('is giving back null for null  .includes', () => {
+    it('is giving back null for null .includes', () => {
         expect(X$includes({includes: null}, c)).toEqual(null);
     });
 

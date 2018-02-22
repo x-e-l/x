@@ -32,7 +32,10 @@ const X$includes = (
 
 
 const X$map = (
-    ($, f) => $.map(f)
+    ($, f) => {
+        $ = ($ || []);
+        return $.map && $.map(f)
+    }
 );
 
 const X$reduce = (
