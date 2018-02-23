@@ -1,5 +1,5 @@
 const {
-    _atype_,
+    _metas_, _atype_,
     _nil_, _arr_, _fun_, _cst_,
     _obj_,
 } = require('./symbols');
@@ -11,24 +11,24 @@ const X$nil = (
 
 
 const X$isnil = (
-    ($) => !!$ && $[_atype_] === _nil_
+    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _nil_
 );
 
 const X$isarr = (
-    ($) => !!$ && $[_atype_] === _arr_
+    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _arr_
 );
 
 const X$isfun = (
-    ($) => !!$ && $[_atype_] === _fun_
+    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _fun_
 );
 
 const X$iscst = (
-    ($) => !!$ && $[_atype_] === _cst_
+    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _cst_
 );
 
 
 const X$isobj = (
-    ($) => !!$ && ($[_atype_] === _obj_ || X$nil($[_atype_]))
+    ($) => !!$ && !!$[_metas_] && ($[_metas_][_atype_] === _obj_ || X$nil($[_metas_][_atype_]))
 );
 
 
