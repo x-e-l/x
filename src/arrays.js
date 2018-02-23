@@ -39,7 +39,10 @@ const X$map = (
 );
 
 const X$reduce = (
-    ($, i, f) => $.reduce(f, i)
+    ($, i, f) => {
+        $ = ($ || []);
+        return $.reduce && $.reduce(f, i)
+    }
 );
 
 module.exports = Object.freeze({
