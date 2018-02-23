@@ -30,7 +30,13 @@ describe('arrays module', () => {
 
     });
 
-    it('are all of type function', () => {
+    it('does not export extra keys', () => {
+
+        expect(Object.keys(arrays).length).toEqual(keys.length)
+
+    });
+
+    it('exports are all of type function', () => {
 
         keys.map(k => (
             expect([k, typeof arrays[k]]).toEqual([k, 'function'])
