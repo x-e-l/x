@@ -1,12 +1,16 @@
+const isf = (
+    ($) => void 0 === $ || null === $ ? $ : typeof $ === 'function'
+);
+
 const X$call = (
-    (f, $, ...$$) => f.call(null, $, ...$$)
+    (f, $, ...$$) => isf(f) && isf(f.call) ? f.call(null, $, ...$$) : (f && f.call)
 );
 
 const X$bind = (
-    (f, $, ...$$) => f.bind(null, $, ...$$)
+    (f, $, ...$$) => isf(f) && f.bind && f.bind(null, $, ...$$)
 );
 
-module.exports = ({
+module.exports = Object.freeze({
     X$call,
     X$bind,
 });
