@@ -9,7 +9,14 @@ const X$2const = (
 );
 
 const X$obj2frz = (
-    ($) => Object.freeze({...$})
+    ($) => (
+        null === $ || void 0 === $ ||       // nil
+        '' + $ === $ ||                     // string
+        $ - 0 === $ || Number.isNaN($) ||   // number
+        true === $ || false === $           // boolean
+            ? $
+            : Object.freeze({...$})
+    )
 );
 
 const X$kv2ntry = (
