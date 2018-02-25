@@ -42,7 +42,7 @@ const X$str2err = (
     ($) => new Error($)
 );
 
-module.exports = ({
+module.exports = Object.freeze({
     X$ident,
     X$2const,
     X$obj2frz,
