@@ -7,7 +7,7 @@ const X$call = (
 );
 
 const X$bind = (
-    (f, $, ...$$) => isf(f) && f.bind && f.bind(null, $, ...$$)
+    (f, $, ...$$) => isf(f) && isf(f.bind) ? f.bind(null, $, ...$$) : (f && f.bind)
 );
 
 module.exports = Object.freeze({
