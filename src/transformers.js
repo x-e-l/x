@@ -34,12 +34,14 @@ const X$vk2ntry = (
 );
 
 const X$ntry2k = (
-    ($) => $[_key_]
+    ($) => void 0 === $ || null === $ ? $ : $[_key_]
 );
 
 const X$ntry2v = (
-    ($) => $[_key_]
+    ($) => void 0 === $ || null === $ ? $ : $[_val_]
 );
+
+// TODO: @azder: add X$new2cst function
 
 const X$itr2set = (
     ($) => new Set($)
