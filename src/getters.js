@@ -13,9 +13,10 @@ const X$mget = (
     ($, k) => $ && k && X$metas($)[k] // || Err()
 );
 
+const owns = Object.getOwnPropertySymbols;
 const X$mown = (
     ($) => X$map(
-        Object.keys(X$metas($)),
+        owns(X$metas($)),
         k => X$kv2ntry(k, X$mget($, k))
     )
 );
