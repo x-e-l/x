@@ -1,7 +1,7 @@
 const {_toses_, _metas_, _call_} = require('../../src/symbols');
 const {X$metas} = require('../../src/getters');
 
-describe('getters.pcat', () => {
+describe('getters.metas', () => {
 
     const a = {a: 1};
     const b = {b: 2};

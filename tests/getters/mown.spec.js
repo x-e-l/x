@@ -5,6 +5,8 @@ describe('getters.mown', () => {
 
     const a = {a: 1};
     const b = {b: 2};
+    const c = {c: 3};
+    const d = {d: 4};
 
     const toses = [a, b];
     const call = $ => $;
@@ -16,6 +18,8 @@ describe('getters.mown', () => {
 
     const obj = {
         [_metas_]: metas,
+        c,
+        d,
     };
 
     it('returns all the meta values for an object', () => {
