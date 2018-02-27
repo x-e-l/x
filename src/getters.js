@@ -1,33 +1,16 @@
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('./symbols');
 
-const {X$nil} = require('./predicates');
-const {X$str2err, X$kv2ntry} = require('./transformers');
+const {X$kv2ntry} = require('./transformers');
 const {X$push, X$len, X$map} = require('./arrays');
 
 
-const X$pcat = (
-    ($, proto) => X$push(X$toses($), proto)
-);
-
-const X$pget = (
-    ($, k) => $[k] || X$str2err('X$pget: missing prop: ' + X$2str(k))
-);
-
-const X$pown = (
-    ($) => X$map(
-        X$props($),
-        k => X$kv2ntry(k, X$pget($, k))
-    )
-);
-
-
 const X$metas = (
-    ($) => X$nil($) ? [] : $[_metas_] || {}
+    ($) => null === $ || void 0 === $ ? {} : $[_metas_] || {}
 );
 
 
 const X$mget = (
-    ($, k) => X$metas($)[k]
+    ($, k) => $ && k && X$metas($)[k] // || Err()
 );
 
 const X$mown = (
@@ -44,6 +27,22 @@ const X$toses = (
 
 const X$props = (
     ($) => X$mget($, _props_) || []
+);
+
+
+const X$pcat = (
+    ($, proto) => X$push(X$toses($), proto)
+);
+
+const X$pget = (
+    ($, k) => $ && $[k] //|| Err('X$pget: missing prop: ' + X$2str(k))
+);
+
+const X$pown = (
+    ($) => X$map(
+        X$props($),
+        k => X$kv2ntry(k, X$pget($, k))
+    )
 );
 
 
@@ -79,7 +78,7 @@ const X$2lenf = (
 );
 
 
-module.exports = ({
+module.exports = Object.freeze({
 
     X$pget,
     X$pown,
