@@ -39,13 +39,13 @@ describe('getters.metas', () => {
 
     it('is giving back empty metas for undefined metas on object', () => {
 
-        expect(X$metas({}, b)).toEqual({});
+        expect(X$metas({})).toEqual({});
 
     });
 
     it('is giving back empty metas for null metas on object', () => {
 
-        expect(X$metas({[_metas_]: null}, c)).toEqual({});
+        expect(X$metas({[_metas_]: null})).toEqual({});
 
     });
 

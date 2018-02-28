@@ -39,13 +39,13 @@ describe('getters.toses', () => {
 
     it('is giving back empty toses for undefined metas on object', () => {
 
-        expect(X$toses({}, b)).toEqual([]);
+        expect(X$toses({})).toEqual([]);
 
     });
 
     it('is giving back empty toses for null metas on object', () => {
 
-        expect(X$toses({[_metas_]: null}, c)).toEqual([]);
+        expect(X$toses({[_metas_]: null})).toEqual([]);
 
     });
 

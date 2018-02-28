@@ -46,13 +46,13 @@ describe('getters.props', () => {
 
     it('is giving back empty array for undefined metas on object', () => {
 
-        expect(X$props({}, b)).toEqual([]);
+        expect(X$props({})).toEqual([]);
 
     });
 
     it('is giving back empty array for null metas on object', () => {
 
-        expect(X$props({[_metas_]: null}, c)).toEqual([]);
+        expect(X$props({[_metas_]: null})).toEqual([]);
 
     });
 

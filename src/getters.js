@@ -62,7 +62,9 @@ const X$callf = (
 
 const tostr = Function.prototype.call.bind(Object.prototype.toString);
 const X$2str = (
-    ($) => $ && $.toString ? $.toString() : '' + tostr($)
+    ($) => $ && $.toString
+        ? $.toString()
+        : (null === $ || void 0 === $ ? '' : '' + tostr($))
 );
 
 const X$2strf = (
