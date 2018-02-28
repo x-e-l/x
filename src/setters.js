@@ -1,5 +1,4 @@
 const {_props_, _toses_, _metas_, _key_, _val_} = require('./symbols');
-const {X$nil} = require('./predicates');
 const {X$metas, X$toses, X$props} = require('./getters');
 
 const push$ = (
@@ -23,8 +22,11 @@ const X$pset = (
         $[k] = v;
 
         /**@type Array*/
-        const ps = X$props($);
-        X$metas($)[_props_] = ps.includes(k) ? ps : push$(ps, k); // mutates values
+        const props = X$props($);
+        const metas = X$metas($);
+
+        metas[_props_] = props.includes(k) ? props : push$(props, k); // mutates values
+        $[_metas_] = metas; // mutates value
 
         return $;
     }
@@ -52,7 +54,11 @@ const X$mset = (
 );
 
 const X$nset = (
-    ($, ntry) => X$nil(ntry) ? $ : X$pset($, ntry[_key_], ntry[_val_]) // mutates values
+
+    ($, ntry) => null === $ || void 0 === $
+        ? $
+        : X$pset($, ntry[_key_], ntry[_val_]) // mutates values
+
 );
 
 

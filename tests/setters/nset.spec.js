@@ -1,7 +1,7 @@
-const {_metas_, _props_} = require('../../src/symbols');
-const {X$pset} = require('../../src/setters');
+const {_metas_, _props_, _key_, _val_} = require('../../src/symbols');
+const {X$nset} = require('../../src/setters');
 
-describe('getters.pset', () => {
+describe('getters.nset', () => {
 
     it('modifies the original object properties', () => {
 
@@ -12,26 +12,20 @@ describe('getters.pset', () => {
         const d = {d: 4};
         const e = {e: 5};
 
-        const obj = {a, b, c, [_metas_]: {[_props_]: ['a', 'b', 'c']}};
-
-        const actual1 = X$pset(obj, 'a', d);
-        const expected1 = {
-            a:         d,
-            b,
-            c,
+        const obj = {
+            a, b, c,
             [_metas_]: {[_props_]: ['a', 'b', 'c']},
         };
 
+        const actual1 = X$nset(obj, {[_key_]: 'a', [_val_]: d});
+        const expected1props = ['a', 'b', 'c'];
+        const expected1 = {a: d, b, c, [_metas_]: {[_props_]: expected1props}};
+
         expect(actual1).toEqual(expected1);
 
-        const actual2 = X$pset(actual1, 'e', e);
-        const expected2 = {
-            a:         d,
-            b,
-            c,
-            e,
-            [_metas_]: {[_props_]: ['a', 'b', 'c', 'e']},
-        };
+        const actual2 = X$nset(actual1, {[_key_]: 'e', [_val_]: e});
+        const expected2props = ['a', 'b', 'c', 'e'];
+        const expected2 = {a: d, b, c, e, [_metas_]: {[_props_]: expected2props}};
 
         expect(actual2).toEqual(expected2);
 
@@ -49,14 +43,14 @@ describe('getters.pset', () => {
         const obj = {a, b, [_metas_]: metas};
 
 
-        const actual1 = X$pset(obj, 'c', c);
+        const actual1 = X$nset(obj, {[_key_]: 'c', [_val_]: c});
         const expected1props = ['a', 'b', 'c'];
         const expected1 = {a, b, c, [_metas_]: {[_props_]: expected1props}};
 
         expect(actual1).toEqual(expected1);
 
 
-        const actual2 = X$pset(actual1, 'a', c);
+        const actual2 = X$nset(actual1, {[_key_]: 'a', [_val_]: c});
         const expected2props = ['a', 'b', 'c'];
         const expected2 = {a: c, b, c, [_metas_]: {[_props_]: expected2props}};
 
@@ -65,19 +59,19 @@ describe('getters.pset', () => {
     });
 
     it('returns null for null object', () => {
-        expect(X$pset(null, 'a')).toBe(null);
+        expect(X$nset(null, 'a')).toBe(null);
     });
 
     it('returns undefined for undefined object', () => {
-        expect(X$pset(void 0, 'a')).toBe(void 0);
+        expect(X$nset(void 0, 'a')).toBe(void 0);
     });
 
     it.skip('returns Err object for null key', () => {
-        expect(X$pset({}, null));
+        expect(X$nset({}, null));
     });
 
     it.skip('returns Err object for undefined key', () => {
-        expect(X$pset({}, void 0));
+        expect(X$nset({}, void 0));
     });
 
 
