@@ -32,12 +32,23 @@ const X$pset = (
 );
 
 const X$mset = (
+
     ($, k, v) => {
+
+        if (null === $ || void 0 === $) {
+            return $;
+        }
+
+        // TODO: @azder: check k as well
+
         const metas = X$metas($);
+
         metas[k] = v; // mutates value
         $[_metas_] = metas; // mutates value
+
         return $;
     }
+
 );
 
 const X$nset = (
