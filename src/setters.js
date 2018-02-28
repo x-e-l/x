@@ -11,13 +11,24 @@ const push$ = (
 
 
 const X$pset = (
+
     ($, k, v) => {
+
+        if (null === $ || void 0 === $) {
+            return $;
+        }
+
+        // TODO: @azder: check k as well
+
         $[k] = v;
+
         /**@type Array*/
         const ps = X$props($);
         X$metas($)[_props_] = ps.includes(k) ? ps : push$(ps, k); // mutates values
+
         return $;
     }
+
 );
 
 const X$mset = (
@@ -43,7 +54,7 @@ const X$padd = (
 );
 
 
-module.exports = ({
+module.exports = Object.freeze({
     X$pset,
     X$mset,
     X$nset,
