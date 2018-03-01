@@ -9,9 +9,13 @@ const X$df = (
 
 const X$has = (
     ($, k) => (
-        /**@type{function(*=): Set<*>}*/
-        X$itr2set(X$props($))
-    ).has(k)
+        null === $ || void 0 === $
+            ? $
+            : (
+                /**@type{function(*=): Set<*>}*/
+                X$itr2set(X$props($))
+            ).has(k)
+    )
 );
 
 const X$2str = (
