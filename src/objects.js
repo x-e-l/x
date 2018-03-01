@@ -18,7 +18,7 @@ const X$2str = (
     ($) => X$call(X$2strf($), $)
 );
 
-module.exports = ({
+module.exports = Object.freeze({
     X$df,
     X$has,
     X$2str,

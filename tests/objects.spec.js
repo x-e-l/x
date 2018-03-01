@@ -1,38 +1,37 @@
-const setters = require('../src/setters');
+const objects = require('../src/objects');
 
-describe('setters module', () => {
+describe('objects module', () => {
 
     const keys = [
 
-        'X$pset',
-        'X$mset',
-        'X$nset',
-        'X$padd',
+        'X$df',
+        'X$has',
+        'X$2str',
 
     ].sort();
 
     it('is frozen', () => {
-        expect(Object.isFrozen(setters)).toBeTruthy();
+        expect(Object.isFrozen(objects)).toBeTruthy();
     });
 
     it('exports all keys', () => {
 
         keys.map(k => (
-            expect(setters[k]).toBeDefined()
+            expect(objects[k]).toBeDefined()
         ));
 
     });
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(setters).length).toEqual(keys.length)
+        expect(Object.keys(objects).length).toEqual(keys.length)
 
     });
 
     it('exports are all of type function', () => {
 
         keys.map(k => (
-            expect([k, typeof setters[k]]).toEqual([k, 'function'])
+            expect([k, typeof objects[k]]).toEqual([k, 'function'])
         ));
 
     });

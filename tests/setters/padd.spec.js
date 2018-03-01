@@ -35,6 +35,7 @@ describe('getters.padd', () => {
     });
 
     // TODO: @azder: test if it only adds functions
+    // TODO: @azder: test if it works when _metas_ and/or _toses_ are nil
 
 });
 

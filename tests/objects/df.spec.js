@@ -1,41 +1,38 @@
-const {_metas_, _toses_} = require('../../src/symbols');
-const {X$padd} = require('../../src/setters');
+const {X$df} = require('../../src/objects');
 
-describe('getters.padd', () => {
+describe('objects.df', () => {
 
-    it('modifies the original object prototype array', () => {
+    it('returns the second parameter when not null or undefined', () => {
 
         const a = {a: 1};
         const b = {b: 2};
-        const c = {c: 3};
 
-        const d = {d: 4};
-        const e = {e: 5};
+        const obj = {a, b};
 
-        const obj = {a, b, [_metas_]: {[_toses_]: [c]}};
-
-        const actual1 = X$padd(obj, d);
-        const expected1 = {a, b, [_metas_]: {[_toses_]: [c, d]}};
-
-        expect(actual1).toEqual(expected1);
-
-        const actual2 = X$padd(actual1, e);
-        const expected2 = {a, b, [_metas_]: {[_toses_]: [c, d, e]}};
-
-        expect(actual2).toEqual(expected2);
+        expect(X$df(null, obj)).toBe(obj);
+        expect(X$df(void 0, obj)).toBe(obj);
 
     });
 
-    it('returns null for null object', () => {
-        expect(X$padd(null, 'a')).toBe(null);
+    it('returns the first parameter when second one is null or undefined', () => {
+
+        const a = {a: 1};
+        const b = {b: 2};
+
+        const obj = {a, b};
+
+        expect(X$df(obj, null)).toBe(obj);
+        expect(X$df(obj, void 0)).toBe(obj);
+
     });
 
-    it('returns undefined for undefined object', () => {
-        expect(X$padd(void 0, 'a')).toBe(void 0);
+    it('returns null for null first parameter and missing second parameter', () => {
+        expect(X$df(null)).toBe(null);
     });
 
-    // TODO: @azder: test if it only adds functions
-    // TODO: @azder: test if it works when _metas_ and/or _toses_ are nil
+    it('returns undefined for undefined first parameter and missing second parameter', () => {
+        expect(X$df()).toBe(void 0);
+    });
 
 });
 
