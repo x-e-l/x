@@ -48,10 +48,10 @@ const X$cst2str = (
 );
 
 
-module.exports = {
+module.exports = Object.freeze({
     X$obj2str,
     X$arr2str,
     X$fun2str,
     X$nil2str,
     X$cst2str,
-};
+});

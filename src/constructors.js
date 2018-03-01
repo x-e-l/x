@@ -97,7 +97,7 @@ const X$O = (
     }
 )();
 
-module.exports = ({
+module.exports = Object.freeze({
     X$O,
     X$Obj,
     X$Nil,
