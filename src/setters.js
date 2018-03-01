@@ -63,11 +63,14 @@ const X$nset = (
 
 
 const X$padd = (
-    ($, proto) => {
-        const ts = X$toses($);
-        X$mset($, _toses_, push$(ts, proto)); // mutates values
-        return $;
-    }
+
+    ($, proto) => X$mset(
+        $,
+        _toses_,
+        push$(X$toses($), proto) // mutates values
+    )
+
+
 );
 
 

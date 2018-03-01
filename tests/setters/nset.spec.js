@@ -1,7 +1,7 @@
 const {_metas_, _props_, _key_, _val_} = require('../../src/symbols');
 const {X$nset} = require('../../src/setters');
 
-describe('getters.nset', () => {
+describe('setters.nset', () => {
 
     it('modifies the original object properties', () => {
 

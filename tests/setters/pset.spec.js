@@ -1,7 +1,7 @@
 const {_metas_, _props_} = require('../../src/symbols');
 const {X$pset} = require('../../src/setters');
 
-describe('getters.pset', () => {
+describe('setters.pset', () => {
 
     it('modifies the original object properties', () => {
 
