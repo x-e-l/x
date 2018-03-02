@@ -18,9 +18,9 @@ const X$tos2str = (
         const t = X$last(ts);
 
         return (
-            (X$second(ts) === t && (X$isarr($) || X$isfun($) || X$isnil($)))
+            X$second(ts) === t && (X$isarr($) || X$isfun($) || X$isnil($))
                 ? ''
-                : (X$isobj($) ? '' : '' + (t && t.name ? t.name : '∅') + ':')
+                : '' + (t && t.name ? t.name + ':' : '')
         )
 
     }
@@ -28,23 +28,33 @@ const X$tos2str = (
 
 
 const X$obj2str = (
-    ($) => '' + X$tos2str($) + '𝜔{' + X$props2str($) + '}𝜔'
+    ($) => (null === $ || void 0 === $)
+        ? '∅(' + $ + ')∅'
+        : '' + X$tos2str($) + '𝜔{' + X$props2str($) + '}𝜔'
 );
 
 const X$arr2str = (
-    ($) => '' + X$tos2str($) + '𝛼(' + X$2lenf($)($) + ')[' + X$props2str($) + ']𝛼'
+    ($) => (null === $ || void 0 === $)
+        ? '∅(' + $ + ')∅'
+        : '' + X$tos2str($) + '𝛼(' + X$2lenf($)($) + ')[' + X$props2str($) + ']𝛼'
 );
 
 const X$fun2str = (
-    ($) => '' + X$tos2str($) + '𝜆(' + X$callf($) + '){' + X$props2str($) + '}𝜆'
+    ($) => (null === $ || void 0 === $)
+        ? '∅(' + $ + ')∅'
+        : '' + X$tos2str($) + '𝜆(' + X$callf($) + '){' + X$props2str($) + '}𝜆'
 );
 
 const X$nil2str = (
-    ($) => '' + X$tos2str($) + '𝜈{' + X$props2str($) + '}𝜈'
+    ($) => (null === $ || void 0 === $)
+        ? '∅(' + $ + ')∅'
+        : '' + X$tos2str($) + '𝜈{' + X$props2str($) + '}𝜈'
 );
 
 const X$cst2str = (
-    ($) => '' + X$tos2str($) + 'φ(' + X$callf($) + '){' + X$props2str($) + '}φ'
+    ($) => (null === $ || void 0 === $)
+        ? '∅(' + $ + ')∅'
+        : '' + X$tos2str($) + 'φ(' + X$callf($) + '){' + X$props2str($) + '}φ'
 );
 
 
