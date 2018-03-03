@@ -1,9 +1,9 @@
 const {_metas_, _props_, _toses_} = require('../../src/symbols');
-const {X$obj2str} = require('../../src/stringers');
+const {X$nil2str} = require('../../src/stringers');
 
-describe('stringers.obj2str', () => {
+describe('stringers.nil2str', () => {
 
-    const vtag = '𝜔';
+    const vtag = '𝜈';
     const ntag = '∅';
 
     it('returns a string for an object', () => {
@@ -13,7 +13,7 @@ describe('stringers.obj2str', () => {
 
         const obj = {a, b, [_metas_]: {[_props_]: ['a', 'b']}};
 
-        expect(X$obj2str(obj)).toBe(`${vtag}{a:1,b:2}${vtag}`);
+        expect(X$nil2str(obj)).toBe(`${vtag}{a:1,b:2}${vtag}`);
 
     });
 
@@ -25,7 +25,7 @@ describe('stringers.obj2str', () => {
 
         const obj = {a, b, c, [_metas_]: {[_props_]: ['a', 'b']}};
 
-        expect(X$obj2str(obj)).toBe(`${vtag}{a:1,b:2}${vtag}`);
+        expect(X$nil2str(obj)).toBe(`${vtag}{a:1,b:2}${vtag}`);
 
     });
 
@@ -46,16 +46,16 @@ describe('stringers.obj2str', () => {
 
         const obj = {a, b, [_metas_]: metas};
 
-        expect(X$obj2str(obj)).toBe(`D:${vtag}{a:1,b:2}${vtag}`);
+        expect(X$nil2str(obj)).toBe(`D:${vtag}{a:1,b:2}${vtag}`);
 
     });
 
     it('returns nil string representation for null', () => {
-        expect(X$obj2str(null)).toBe(`${ntag}(null)${ntag}`);
+        expect(X$nil2str(null)).toBe(`${ntag}(null)${ntag}`);
     });
 
     it('returns nil string representation for undefined', () => {
-        expect(X$obj2str()).toBe(`${ntag}(undefined)${ntag}`);
+        expect(X$nil2str()).toBe(`${ntag}(undefined)${ntag}`);
     });
 
 });

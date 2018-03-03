@@ -47,14 +47,19 @@ const X$pown = (
 );
 
 
+const isf = (
+    ($) => typeof $ === 'function'
+);
+
 const X$callf = (
     ($) => {
         const callf = X$mget($, _call_);
         if (callf) { // TODO: @azder: check if actually callable, not just truthy
             return callf;
         }
+
         // noinspection UnnecessaryLocalVariableJS
-        const X$const = () => $;
+        const X$const = isf($) ? $ : () => $;
         return X$const; // this is the name for the "anonymous" function
     }
 );

@@ -1,9 +1,16 @@
-const {X$isnil, X$isarr, X$isfun, X$isobj} = require('./predicates');
+const {X$isnil, X$isarr, X$isfun} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');
 const {X$toses, X$props, X$callf, X$2lenf} = require('./getters');
 
 
-const X$props2str = (
+const OUT = '∅';
+const OBJ = '𝜔';
+const ARR = '𝛼';
+const FUN = '𝜆';
+const NIL = '𝜈';
+const CST = 'φ';
+
+const props2str = (
     ($) => X$map(
         X$props($),
         k => '' + k + ':' + $[k]
@@ -29,32 +36,32 @@ const X$tos2str = (
 
 const X$obj2str = (
     ($) => (null === $ || void 0 === $)
-        ? '∅(' + $ + ')∅'
-        : '' + X$tos2str($) + '𝜔{' + X$props2str($) + '}𝜔'
+        ? OUT + '(' + $ + ')' + OUT
+        : '' + X$tos2str($) + OBJ + '{' + props2str($) + '}' + OBJ
 );
 
 const X$arr2str = (
     ($) => (null === $ || void 0 === $)
-        ? '∅(' + $ + ')∅'
-        : '' + X$tos2str($) + '𝛼(' + X$2lenf($)($) + ')[' + X$props2str($) + ']𝛼'
+        ? OUT + '(' + $ + ')' + OUT
+        : '' + X$tos2str($) + ARR + '(' + X$2lenf($)($) + ')[' + props2str($) + ']' + ARR
 );
 
 const X$fun2str = (
     ($) => (null === $ || void 0 === $)
-        ? '∅(' + $ + ')∅'
-        : '' + X$tos2str($) + '𝜆(' + X$callf($) + '){' + X$props2str($) + '}𝜆'
+        ? OUT + '(' + $ + ')' + OUT
+        : '' + X$tos2str($) + FUN + '(' + X$callf($) + '){' + props2str($) + '}' + FUN
 );
 
 const X$nil2str = (
     ($) => (null === $ || void 0 === $)
-        ? '∅(' + $ + ')∅'
-        : '' + X$tos2str($) + '𝜈{' + X$props2str($) + '}𝜈'
+        ? OUT + '(' + $ + ')' + OUT
+        : '' + X$tos2str($) + NIL + '{' + props2str($) + '}' + NIL
 );
 
 const X$cst2str = (
     ($) => (null === $ || void 0 === $)
-        ? '∅(' + $ + ')∅'
-        : '' + X$tos2str($) + 'φ(' + X$callf($) + '){' + X$props2str($) + '}φ'
+        ? OUT + '(' + $ + ')' + OUT
+        : '' + X$tos2str($) + CST + '(' + X$callf($) + '){' + props2str($) + '}' + CST
 );
 
 
