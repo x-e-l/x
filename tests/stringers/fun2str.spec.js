@@ -75,7 +75,7 @@ describe('stringers.fun2str', () => {
 
         const obj = {a, b, c, [_metas_]: metas};
 
-        expect(X$fun2str(obj)).toBe(`D:${vtag}($ => $ + $){a:1,b:2}${vtag}`);
+        expect(X$fun2str(obj)).toBe(`D:${vtag}([_call_]){a:1,b:2}${vtag}`);
 
     });
 
