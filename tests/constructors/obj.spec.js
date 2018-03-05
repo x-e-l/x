@@ -6,15 +6,15 @@ const {
 } = require('../../src/symbols');
 const {X$obj2str, X$cst2str} = require('../../src/stringers');
 
-const {X$O, Obj, Fun, Cst} = require('../../src/constructors');
+const {X$Obj, Obj, Fun, Cst} = require('../../src/constructors');
 
-describe('constructors.O', () => {
+describe('constructors.Obj', () => {
 
     it('is a constructor', () => {
 
-        expect(typeof X$O).toEqual('function');
+        expect(typeof X$Obj).toEqual('function');
 
-        const metas = X$O[_metas_];
+        const metas = X$Obj[_metas_];
 
         expect(metas[_toses_]).toEqual([Obj, Fun, Cst]);
         expect(metas[_atype_]).toBe(_cst_);
@@ -26,7 +26,7 @@ describe('constructors.O', () => {
 
     it('returns an object with no prototype', () => {
 
-        expect(X$O().prototype).toBe(void 0);
+        expect(X$Obj().prototype).toBe(void 0);
 
     });
 
@@ -38,7 +38,7 @@ describe('constructors.O', () => {
             [_toses_]: [Obj],
         };
 
-        const object = X$O();
+        const object = X$Obj();
 
         expect(Object.keys(object)).toEqual([]);
 
@@ -55,7 +55,8 @@ describe('constructors.O', () => {
             [_toses_]: [Obj],
         };
 
-        const object = X$O(
+        const object = X$Obj(
+            null,
             {[_key_]: 'a', [_val_]: 1},
             {[_key_]: 'b', [_val_]: 2},
         );
@@ -74,7 +75,7 @@ describe('constructors.O', () => {
             [_toses_]: [Obj],
         };
 
-        expect(X$O(null)).toEqual({[_metas_]: metas});
+        expect(X$Obj(null)).toEqual({[_metas_]: metas});
 
     });
 
@@ -86,7 +87,7 @@ describe('constructors.O', () => {
             [_toses_]: [Obj],
         };
 
-        expect(X$O()).toEqual({[_metas_]: metas});
+        expect(X$Obj()).toEqual({[_metas_]: metas});
 
     });
 
