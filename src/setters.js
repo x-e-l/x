@@ -55,7 +55,11 @@ const X$mset = (
 
 const X$nset = (
 
-    ($, ntry) => null === $ || void 0 === $
+    ($, ntry) => (
+        null === $ || void 0 === $
+        ||
+        null === ntry || void 0 === ntry // TODO: @azder: return Err()
+    )
         ? $
         : X$pset($, ntry[_key_], ntry[_val_]) // mutates values
 
