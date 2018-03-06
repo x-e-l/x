@@ -7,7 +7,7 @@ describe('setters module', () => {
         'X$pset',
         'X$mset',
         'X$nset',
-        'X$padd',
+        'X$tadd',
         'X$preg',
 
     ].sort();

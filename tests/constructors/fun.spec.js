@@ -20,7 +20,7 @@ describe('constructors.Fun', () => {
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('($, ...$$) => X$padd(f($, ...$$), f)');
+        expect('' + metas[_call_]).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
 
     });
 

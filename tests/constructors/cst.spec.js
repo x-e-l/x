@@ -10,8 +10,6 @@ const {X$Cst, Obj, Fun, Cst} = require('../../src/constructors');
 
 describe('constructors.Cst', () => {
 
-    const CST_STR = '($, ...$$) => X$padd(f($, ...$$), f)';
-
     it('is a constructor', () => {
 
         expect(typeof X$Cst).toEqual('function');
@@ -94,7 +92,7 @@ describe('constructors.Cst', () => {
         };
 
         expect(cst.length).toEqual(1);
-        expect('' + cst).toBe(CST_STR);
+        expect('' + cst).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
 
         expect(Object.keys(cst)).toEqual([]);
         expect(cst[_metas_]).toEqual(metas);
@@ -116,7 +114,7 @@ describe('constructors.Cst', () => {
         };
 
         expect(cst.length).toEqual(1);
-        expect('' + cst).toBe(CST_STR);
+        expect('' + cst).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
 
         expect(Object.keys(cst)).toEqual([]);
         expect(cst[_metas_]).toEqual(metas);

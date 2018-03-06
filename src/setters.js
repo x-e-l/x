@@ -83,7 +83,7 @@ const X$nset = (
 );
 
 
-const X$padd = ( // TODO: @azder: rename to X$tadd
+const X$tadd = (
 
     ($, proto) => X$mset(
         $,
@@ -100,5 +100,5 @@ module.exports = Object.freeze({
     X$pset,
     X$mset,
     X$nset,
-    X$padd,
+    X$tadd,
 });
