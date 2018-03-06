@@ -1,3 +1,5 @@
+const {isf} = require('./u');
+
 const {X$isnil, X$isarr, X$isfun} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');
 const {X$toses, X$props, X$callf, X$2lenf} = require('./getters');
@@ -10,6 +12,7 @@ const FUN = '𝜆';
 const NIL = '𝜈';
 const CST = 'φ';
 
+
 const ps2s = (
     ($) => X$map(
         X$props($),
@@ -18,7 +21,7 @@ const ps2s = (
 );
 
 const f2s = (
-    ($) => $ && typeof $ === 'function' && $.name ? $.name : $
+    ($) => $ && isf($) && $.name ? $.name : $
 );
 
 

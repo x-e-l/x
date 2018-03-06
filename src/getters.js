@@ -1,3 +1,5 @@
+const {isf} = require('./u');
+
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('./symbols');
 
 const {X$kv2ntry} = require('./transformers');
@@ -47,20 +49,19 @@ const X$pown = (
 );
 
 
-const isf = (
-    ($) => typeof $ === 'function'
-);
-
 const X$callf = (
     ($) => {
+
         const callf = X$mget($, _call_);
-        if (callf) { // TODO: @azder: check if actually callable, not just truthy
+
+        if (isf(callf)) {
             return callf;
         }
 
         // noinspection UnnecessaryLocalVariableJS
         const X$const = isf($) ? $ : () => $;
         return X$const; // this is the name for the "anonymous" function
+
     }
 );
 
