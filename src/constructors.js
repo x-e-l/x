@@ -45,7 +45,7 @@ function Arr($, ...$$) {
 
 function Fun($, ...$$) {
 
-    $ = X$Obj($, ...$$);
+    $ = X$Obj(null === $ || void 0 === $ ? ($ => $) : $, ...$$);
 
     X$mset($, _atype_, _fun_);
     X$mset($, _2str_, X$fun2str);

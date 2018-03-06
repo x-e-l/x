@@ -24,13 +24,13 @@ describe('constructors.Arr', () => {
 
     });
 
-    it('returns an object with no prototype', () => {
+    it('returns an array with no prototype', () => {
 
         expect(X$Arr().prototype).toBe(void 0);
 
     });
 
-    it('paramless returns an object with no keys, except default _metas_', () => {
+    it('paramless returns an array with no keys, except default _metas_', () => {
 
         const metas = {
             [_atype_]: _arr_,
@@ -46,7 +46,7 @@ describe('constructors.Arr', () => {
 
     });
 
-    it('with params returns an object with specified keys, existing keys and expected _metas_', () => {
+    it('with params returns an array with specified keys, existing keys and expected _metas_', () => {
 
         const lastkey = 9;
         const firstkey = 'a';
