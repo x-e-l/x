@@ -85,7 +85,17 @@ const X$Nil = Cst(Nil);
 const X$Arr = Cst(Arr);
 const X$Fun = Cst(Fun);
 
-const X$Cst = (Cst); // No extra Cst of Cst for protos sake
+
+// No extra Cst of Cst for _metas_ sake
+const X$Cst = (Cst);
+// just manually add _metas_
+X$Cst[_metas_] = {
+    [_atype_]: _cst_,
+    [_2str_]:  X$cst2str,
+    [_toses_]: [Obj, Fun, Cst],
+    [_call_]:  X$Cst,
+};
+
 
 // helper for parameterless call of X$Obj
 const X$O = (

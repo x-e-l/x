@@ -102,7 +102,7 @@ describe('constructors.Fun', () => {
     it('returns an empty array with no keys, except default _metas_, for undefined', () => {
 
 
-        const fun = X$Fun(null);
+        const fun = X$Fun();
 
         const metas = {
             [_atype_]: _fun_,
