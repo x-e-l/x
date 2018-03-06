@@ -9,17 +9,15 @@ const push$ = (
 );
 
 
-const X$pset = (
+const X$preg = (
 
-    ($, k, v) => {
+    ($, k) => {
 
         if (null === $ || void 0 === $) {
             return $;
         }
 
-        // TODO: @azder: check k as well
-
-        $[k] = v;
+        // TODO: @azder: check k as well, maybe return Err()
 
         /**@type Array*/
         const props = X$props($);
@@ -29,6 +27,25 @@ const X$pset = (
         $[_metas_] = metas; // mutates value
 
         return $;
+
+    }
+
+);
+
+const X$pset = (
+
+    ($, k, v) => {
+
+        if (null === $ || void 0 === $) {
+            return $;
+        }
+
+        // TODO: @azder: check k as well, maybe return Err()
+
+        $[k] = v; // mutates value
+
+        return X$preg($, k); // mutates value
+
     }
 
 );
@@ -66,7 +83,7 @@ const X$nset = (
 );
 
 
-const X$padd = (
+const X$padd = ( // TODO: @azder: rename to X$tadd
 
     ($, proto) => X$mset(
         $,
@@ -79,6 +96,7 @@ const X$padd = (
 
 
 module.exports = Object.freeze({
+    X$preg,
     X$pset,
     X$mset,
     X$nset,

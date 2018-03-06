@@ -2,13 +2,16 @@ const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_, _met
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
-const {X$padd, X$nset, X$mset} = require('./setters');
+const {X$padd, X$nset, X$mset, X$preg} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./stringers');
 
 
 function Obj($, ...$$) {
 
     $ = X$nil($) ? Object.create(null) : $;
+
+    $ = X$reduce(Object.keys($), $, X$preg);
+
     $ = X$reduce($$, $, X$nset);
 
     X$mset($, _atype_, _obj_);
