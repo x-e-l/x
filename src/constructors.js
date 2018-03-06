@@ -34,7 +34,7 @@ function Nil($, ...$$) {
 
 function Arr($, ...$$) {
 
-    $ = X$Obj($, ...$$);
+    $ = X$Obj(null === $ || void 0 === $ ? [] : $, ...$$);
 
     X$mset($, _atype_, _arr_);
     X$mset($, _2str_, X$arr2str);
@@ -114,7 +114,7 @@ const exported = {
 };
 
 if ('test' === process.env.NODE_ENV) {
-    Object.assign(exported, {Obj, Nil, Arr, Fun, Cst})
+    Object.assign(exported, {Obj, Nil, Arr, Fun, Cst}) // TODO: @azder: these should be the X$* ones
 }
 
 module.exports = Object.freeze(exported);

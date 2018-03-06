@@ -38,11 +38,11 @@ describe('constructors.Nil', () => {
             [_toses_]: [Obj, Nil],
         };
 
-        const object = X$Nil();
+        const nil = X$Nil();
 
-        expect(Object.keys(object)).toEqual([]);
+        expect(Object.keys(nil)).toEqual([]);
 
-        expect(object[_metas_]).toEqual(metas);
+        expect(nil[_metas_]).toEqual(metas);
 
     });
 
@@ -61,17 +61,17 @@ describe('constructors.Nil', () => {
             c: {c: 3},
         };
 
-        const object = X$Nil(
+        const nil = X$Nil(
             obj,
             {[_key_]: 'a', [_val_]: 1},
             {[_key_]: 'b', [_val_]: 2},
         );
 
-        const keys = Object.keys(object);
+        const keys = Object.keys(nil);
 
         expect(keys.length).toBe(props.length);
-        expect(object[_metas_][_props_]).toEqual(props);
-        expect(object[_metas_]).toEqual(metas);
+        expect(nil[_metas_][_props_]).toEqual(props);
+        expect(nil[_metas_]).toEqual(metas);
 
     });
 
