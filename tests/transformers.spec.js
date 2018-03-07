@@ -9,11 +9,11 @@ describe('transformers module', () => {
         'X$2const',
         'X$obj2frz',
 
-        'X$kv2ntry',
-        'X$vk2ntry',
+        'X$kv2ref',
+        'X$vk2ref',
 
-        'X$ntry2k',
-        'X$ntry2v',
+        'X$ref2k',
+        'X$ref2v',
 
         'X$itr2set',
         'X$str2err',

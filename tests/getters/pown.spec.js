@@ -44,7 +44,7 @@ describe('getters.pown', () => {
 
     it('ignores the unregistered property values of an object', () => {
 
-        expect(X$pown(obj).filter(ntry => 'd' === ntry[_key_])).toEqual([]);
+        expect(X$pown(obj).filter(ref => 'd' === ref[_key_])).toEqual([]);
 
     });
 

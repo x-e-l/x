@@ -19,25 +19,25 @@ const X$obj2frz = (
     )
 );
 
-const X$kv2ntry = (
+const X$kv2ref = (
     (k, v) => ({
         [_key_]: k,
         [_val_]: v,
     })
 );
 
-const X$vk2ntry = (
+const X$vk2ref = (
     (v, k) => ({
         [_key_]: k,
         [_val_]: v,
     })
 );
 
-const X$ntry2k = (
+const X$ref2k = (
     ($) => void 0 === $ || null === $ ? $ : $[_key_]
 );
 
-const X$ntry2v = (
+const X$ref2v = (
     ($) => void 0 === $ || null === $ ? $ : $[_val_]
 );
 
@@ -55,10 +55,10 @@ module.exports = Object.freeze({
     X$ident,
     X$2const,
     X$obj2frz,
-    X$kv2ntry,
-    X$vk2ntry,
-    X$ntry2k,
-    X$ntry2v,
+    X$kv2ref,
+    X$vk2ref,
+    X$ref2k,
+    X$ref2v,
     X$itr2set,
     X$str2err,
 });

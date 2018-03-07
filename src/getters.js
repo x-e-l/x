@@ -2,7 +2,7 @@ const {isf} = require('./u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('./symbols');
 
-const {X$kv2ntry} = require('./transformers');
+const {X$kv2ref} = require('./transformers');
 const {X$push, X$len, X$map} = require('./arrays');
 
 
@@ -19,7 +19,7 @@ const owns = Object.getOwnPropertySymbols;
 const X$mown = (
     ($) => X$map(
         owns(X$metas($)),
-        k => X$kv2ntry(k, X$mget($, k))
+        k => X$kv2ref(k, X$mget($, k))
     )
 );
 
@@ -44,7 +44,7 @@ const X$pget = (
 const X$pown = (
     ($) => X$map(
         X$props($),
-        k => X$kv2ntry(k, X$pget($, k))
+        k => X$kv2ref(k, X$pget($, k))
     )
 );
 
