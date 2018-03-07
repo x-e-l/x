@@ -1,5 +1,5 @@
 const {_toses_, _metas_} = require('../../src/symbols');
-const {X$pcat} = require('../../src/getters');
+const {X$pcat} = require('../../src/boot/getters');
 
 describe('getters.pcat', () => {
 

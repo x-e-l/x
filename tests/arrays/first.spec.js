@@ -1,4 +1,4 @@
-const {X$first} = require('../../src/arrays');
+const {X$first} = require('../../src/boot/arrays');
 
 describe('arrays.first', () => {
 

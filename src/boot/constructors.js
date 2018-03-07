@@ -1,4 +1,4 @@
-const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_, _metas_} = require('./symbols');
+const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_, _metas_} = require('../symbols');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');

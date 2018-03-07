@@ -1,4 +1,4 @@
-const {isf} = require('./u');
+const {isf} = require('../u');
 
 const {X$isnil, X$isarr, X$isfun} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');

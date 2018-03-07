@@ -1,5 +1,5 @@
 const {_key_, _val_} = require('../../src/symbols');
-const {X$kv2ref} = require('../../src/transformers');
+const {X$kv2ref} = require('../../src/boot/transformers');
 
 describe('transformers.kv2ref', () => {
 

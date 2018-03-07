@@ -1,4 +1,4 @@
-const {_props_, _toses_, _metas_, _key_, _val_} = require('./symbols');
+const {_props_, _toses_, _metas_, _key_, _val_} = require('../symbols');
 const {X$metas, X$toses, X$props} = require('./getters');
 
 const push$ = (

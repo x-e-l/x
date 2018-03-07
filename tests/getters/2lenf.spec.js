@@ -1,5 +1,5 @@
 const {_toses_, _metas_, _call_, _props_, _2len_} = require('../../src/symbols');
-const {X$2lenf} = require('../../src/getters');
+const {X$2lenf} = require('../../src/boot/getters');
 
 describe('getters.2lenf', () => {
 

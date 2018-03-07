@@ -1,4 +1,4 @@
-const predicates = require('../src/predicates');
+const predicates = require('../src/boot/predicates');
 
 describe('predicates module', () => {
 

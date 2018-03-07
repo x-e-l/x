@@ -1,4 +1,4 @@
-const transformers = require('../src/transformers');
+const transformers = require('../src/boot/transformers');
 
 describe('transformers module', () => {
 

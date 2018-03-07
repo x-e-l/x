@@ -1,4 +1,4 @@
-const {X$call} = require('../../src/functions');
+const {X$call} = require('../../src/boot/functions');
 
 describe('functions.call', () => {
 

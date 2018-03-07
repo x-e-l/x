@@ -1,5 +1,5 @@
 const {_metas_, _props_} = require('../../src/symbols');
-const {X$has} = require('../../src/objects');
+const {X$has} = require('../../src/boot/objects');
 
 describe('objects.has', () => {
 

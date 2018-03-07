@@ -1,4 +1,4 @@
-const {X$itr2set} = require('../../src/transformers');
+const {X$itr2set} = require('../../src/boot/transformers');
 
 describe('transformers.itr2set', () => {
 

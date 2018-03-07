@@ -1,4 +1,4 @@
-const functions = require('../src/functions');
+const functions = require('../src/boot/functions');
 
 describe('functions module', () => {
 

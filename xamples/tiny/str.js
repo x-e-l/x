@@ -1,5 +1,5 @@
 const {_props_} = require('../../src/symbols');
-const {X$arr2str, X$fun2str, X$nil2str, X$obj2str} = require('../../src/stringers');
+const {X$arr2str, X$fun2str, X$nil2str, X$obj2str} = require('../../src/boot/stringers');
 
 const array = [1, 2, 3, 4]; // array values
 array[_props_] = ['0', '1', '2', '3']; // array indices

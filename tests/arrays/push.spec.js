@@ -1,4 +1,4 @@
-const {X$push} = require('../../src/arrays');
+const {X$push} = require('../../src/boot/arrays');
 
 describe('arrays.push', () => {
 

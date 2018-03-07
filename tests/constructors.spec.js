@@ -1,4 +1,4 @@
-const constructors = require('../src/constructors');
+const constructors = require('../src/boot/constructors');
 
 describe('constructors module', () => {
 

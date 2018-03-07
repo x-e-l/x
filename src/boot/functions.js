@@ -1,4 +1,4 @@
-const {isf} = require('./u');
+const {isf} = require('../u');
 
 
 const X$call = (

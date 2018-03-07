@@ -1,4 +1,4 @@
-const {X$ident} = require('../../src/transformers');
+const {X$ident} = require('../../src/boot/transformers');
 
 describe('transformers.ident', () => {
 

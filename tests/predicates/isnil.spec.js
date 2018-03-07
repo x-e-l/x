@@ -1,5 +1,5 @@
 const {_metas_, _atype_, _nil_} = require('../../src/symbols');
-const {X$isnil} = require('../../src/predicates');
+const {X$isnil} = require('../../src/boot/predicates');
 
 describe('predicates.isnil', () => {
 

@@ -1,5 +1,5 @@
 const {_toses_, _metas_, _call_, _props_, _key_, _val_} = require('../../src/symbols');
-const {X$pown} = require('../../src/getters');
+const {X$pown} = require('../../src/boot/getters');
 
 describe('getters.pown', () => {
 

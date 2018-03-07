@@ -1,5 +1,5 @@
 const {_props_, _call_, _metas_} = require('../../src/symbols');
-const {X$pown, X$mown, X$callf} = require('../../src/getters');
+const {X$pown, X$mown, X$callf} = require('../../src/boot/getters');
 
 const array = [1, 2, 3, 4]; // array values
 array[_metas_] = {

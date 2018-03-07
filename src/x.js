@@ -1,15 +1,15 @@
 module.exports = Object.freeze({
     // no imports
     ... require('./symbols'),
-    ... require('./functions'),
-    ... require('./arrays'),
+    ... require('./boot/functions'),
+    ... require('./boot/arrays'),
     // single import
-    ... require('./predicates'),
-    ... require('./transformers'),
+    ... require('./boot/predicates'),
+    ... require('./boot/transformers'),
     // triple and multiple imports
-    ... require('./getters'),
-    ... require('./setters'),
-    ... require('./objects'),
-    ... require('./stringers'),
-    ... require('./constructors'),
+    ... require('./boot/getters'),
+    ... require('./boot/setters'),
+    ... require('./boot/objects'),
+    ... require('./boot/stringers'),
+    ... require('./boot/constructors'),
 });

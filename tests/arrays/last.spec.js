@@ -1,4 +1,4 @@
-const {X$last} = require('../../src/arrays');
+const {X$last} = require('../../src/boot/arrays');
 
 describe('arrays.last', () => {
 

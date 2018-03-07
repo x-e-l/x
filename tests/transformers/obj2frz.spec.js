@@ -1,4 +1,4 @@
-const {X$obj2frz} = require('../../src/transformers');
+const {X$obj2frz} = require('../../src/boot/transformers');
 
 describe('transformers.obj2frz', () => {
 

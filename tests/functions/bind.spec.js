@@ -1,4 +1,4 @@
-const {X$bind} = require('../../src/functions');
+const {X$bind} = require('../../src/boot/functions');
 
 describe('functions.bind', () => {
 

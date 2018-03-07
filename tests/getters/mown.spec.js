@@ -1,5 +1,5 @@
 const {_toses_, _metas_, _call_, _key_, _val_} = require('../../src/symbols');
-const {X$mown} = require('../../src/getters');
+const {X$mown} = require('../../src/boot/getters');
 
 describe('getters.mown', () => {
 

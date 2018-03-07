@@ -1,4 +1,4 @@
-const {X$2const} = require('../../src/transformers');
+const {X$2const} = require('../../src/boot/transformers');
 
 describe('transformers.2const', () => {
 

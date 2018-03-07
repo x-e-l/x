@@ -1,5 +1,5 @@
 const {_metas_, _toses_} = require('../../src/symbols');
-const {X$tadd} = require('../../src/setters');
+const {X$tadd} = require('../../src/boot/setters');
 
 describe('getters.padd', () => {
 

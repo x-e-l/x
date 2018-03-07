@@ -1,5 +1,5 @@
 const {_metas_, _props_, _toses_} = require('../../src/symbols');
-const {X$nil2str} = require('../../src/stringers');
+const {X$nil2str} = require('../../src/boot/stringers');
 
 describe('stringers.nil2str', () => {
 

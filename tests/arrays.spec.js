@@ -1,4 +1,4 @@
-const arrays = require('../src/arrays');
+const arrays = require('../src/boot/arrays');
 
 describe('arrays module', () => {
 

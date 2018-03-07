@@ -1,4 +1,4 @@
-const {X$str2err} = require('../../src/transformers');
+const {X$str2err} = require('../../src/boot/transformers');
 
 describe('transformers.str2err', () => {
 

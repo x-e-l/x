@@ -1,5 +1,5 @@
 const {_key_, _val_} = require('../../src/symbols');
-const {X$ref2k} = require('../../src/transformers');
+const {X$ref2k} = require('../../src/boot/transformers');
 
 describe('transformers.ref2k', () => {
 

@@ -1,4 +1,4 @@
-const {X$df} = require('../../src/objects');
+const {X$df} = require('../../src/boot/objects');
 
 describe('objects.df', () => {
 

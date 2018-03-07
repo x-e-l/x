@@ -1,5 +1,5 @@
 const {_metas_, _atype_, _obj_} = require('../../src/symbols');
-const {X$isobj} = require('../../src/predicates');
+const {X$isobj} = require('../../src/boot/predicates');
 
 describe('predicates.isobj', () => {
 

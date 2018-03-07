@@ -1,4 +1,4 @@
-const {X$pget} = require('../../src/getters');
+const {X$pget} = require('../../src/boot/getters');
 
 describe('getters.pget', () => {
 

@@ -4,9 +4,9 @@ const {
     _key_, _val_,
 } = require('../../src/symbols');
 
-const {X$nil2str, X$cst2str} = require('../../src/stringers');
+const {X$nil2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$Nil, Obj, Fun, Cst, Nil} = require('../../src/constructors');
+const {X$Nil, Obj, Fun, Cst, Nil} = require('../../src/boot/constructors');
 
 describe('constructors.Nil', () => {
 

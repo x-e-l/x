@@ -1,5 +1,5 @@
 const {_metas_, _props_} = require('../../src/symbols');
-const {X$preg} = require('../../src/setters');
+const {X$preg} = require('../../src/boot/setters');
 
 describe('setters.preg', () => {
 

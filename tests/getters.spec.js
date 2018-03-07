@@ -1,4 +1,4 @@
-const getters = require('../src/getters');
+const getters = require('../src/boot/getters');
 
 describe('getters module', () => {
 

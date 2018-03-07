@@ -1,4 +1,4 @@
-const setters = require('../src/setters');
+const setters = require('../src/boot/setters');
 
 describe('setters module', () => {
 

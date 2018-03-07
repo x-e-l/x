@@ -1,4 +1,4 @@
-const {X$includes} = require('../../src/arrays');
+const {X$includes} = require('../../src/boot/arrays');
 
 describe('arrays.includes', () => {
 

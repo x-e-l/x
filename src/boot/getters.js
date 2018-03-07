@@ -1,6 +1,6 @@
-const {isf} = require('./u');
+const {isf} = require('../u');
 
-const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('./symbols');
+const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('../symbols');
 
 const {X$kv2ref} = require('./transformers');
 const {X$push, X$len, X$map} = require('./arrays');

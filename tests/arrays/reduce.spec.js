@@ -1,4 +1,4 @@
-const {X$reduce} = require('../../src/arrays');
+const {X$reduce} = require('../../src/boot/arrays');
 
 describe('arrays.reduce', () => {
 

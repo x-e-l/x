@@ -1,5 +1,5 @@
 const {_toses_, _metas_, _call_} = require('../../src/symbols');
-const {X$toses} = require('../../src/getters');
+const {X$toses} = require('../../src/boot/getters');
 
 describe('getters.toses', () => {
 

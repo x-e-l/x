@@ -4,9 +4,9 @@ const {
     _key_, _val_,
 } = require('../../src/symbols');
 
-const {X$arr2str, X$cst2str} = require('../../src/stringers');
+const {X$arr2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$Arr, Obj, Fun, Cst, Arr} = require('../../src/constructors');
+const {X$Arr, Obj, Fun, Cst, Arr} = require('../../src/boot/constructors');
 
 describe('constructors.Arr', () => {
 

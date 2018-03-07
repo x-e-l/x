@@ -1,5 +1,5 @@
 const {_metas_, _2str_} = require('../../src/symbols');
-const {X$2str} = require('../../src/objects');
+const {X$2str} = require('../../src/boot/objects');
 
 describe('objects.2str', () => {
 

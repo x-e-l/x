@@ -1,4 +1,4 @@
-const stringers = require('../src/stringers');
+const stringers = require('../src/boot/stringers');
 
 describe('stringers module', () => {
 

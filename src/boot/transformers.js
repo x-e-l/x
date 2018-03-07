@@ -1,4 +1,4 @@
-const {_key_, _val_} = require('./symbols');
+const {_key_, _val_} = require('../symbols');
 
 const X$ident = (
     ($) => ($)

@@ -1,5 +1,5 @@
 const {_metas_, _atype_, _fun_} = require('../../src/symbols');
-const {X$isfun} = require('../../src/predicates');
+const {X$isfun} = require('../../src/boot/predicates');
 
 describe('predicates.isfun', () => {
 

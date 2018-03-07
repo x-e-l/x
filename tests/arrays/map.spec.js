@@ -1,4 +1,4 @@
-const {X$map} = require('../../src/arrays');
+const {X$map} = require('../../src/boot/arrays');
 
 describe('arrays.map', () => {
 

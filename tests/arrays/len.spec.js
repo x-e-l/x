@@ -1,4 +1,4 @@
-const {X$len} = require('../../src/arrays');
+const {X$len} = require('../../src/boot/arrays');
 
 describe('arrays.len', () => {
 

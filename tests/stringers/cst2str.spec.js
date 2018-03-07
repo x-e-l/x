@@ -1,5 +1,5 @@
 const {_metas_, _props_, _toses_, _call_} = require('../../src/symbols');
-const {X$cst2str} = require('../../src/stringers');
+const {X$cst2str} = require('../../src/boot/stringers');
 
 describe('stringers.cst2str', () => {
 

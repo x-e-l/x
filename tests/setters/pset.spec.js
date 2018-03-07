@@ -1,5 +1,5 @@
 const {_metas_, _props_} = require('../../src/symbols');
-const {X$pset} = require('../../src/setters');
+const {X$pset} = require('../../src/boot/setters');
 
 describe('setters.pset', () => {
 

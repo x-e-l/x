@@ -2,7 +2,7 @@ const {
     _metas_, _atype_,
     _nil_, _arr_, _fun_, _cst_,
     _obj_,
-} = require('./symbols');
+} = require('../symbols');
 
 
 const X$nil = (

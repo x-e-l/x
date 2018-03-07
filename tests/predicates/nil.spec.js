@@ -1,4 +1,4 @@
-const {X$nil} = require('../../src/predicates');
+const {X$nil} = require('../../src/boot/predicates');
 
 describe('predicates.nil', () => {
 

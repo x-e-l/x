@@ -1,4 +1,4 @@
-const objects = require('../src/objects');
+const objects = require('../src/boot/objects');
 
 describe('objects module', () => {
 

@@ -1,5 +1,5 @@
 const {_metas_, _atype_, _arr_} = require('../../src/symbols');
-const {X$isarr} = require('../../src/predicates');
+const {X$isarr} = require('../../src/boot/predicates');
 
 describe('predicates.isarr', () => {
 

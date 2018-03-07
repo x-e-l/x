@@ -1,5 +1,5 @@
 const {_metas_, _atype_, _cst_} = require('../../src/symbols');
-const {X$iscst} = require('../../src/predicates');
+const {X$iscst} = require('../../src/boot/predicates');
 
 describe('predicates.iscst', () => {
 
