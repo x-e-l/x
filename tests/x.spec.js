@@ -18,4 +18,6 @@ describe('X$', () => {
     });
 
 
+    // TODO: @azder: sum the exported from other modules and check if re-exported in X$
+
 });

@@ -1,7 +1,10 @@
+// noinspection JSUnusedLocalSymbols
 module.exports = Object.freeze({
 
 
-    isf: ($ => typeof $ === 'function')
+    isf: ($ => typeof $ === 'function'),
+
+    tok: ($ => ($$) => $)
 
 
 });

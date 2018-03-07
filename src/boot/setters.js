@@ -58,7 +58,7 @@ const X$mset = (
             return $;
         }
 
-        // TODO: @azder: check k as well
+        // TODO: @azder: check k as well, maybe return Err()
 
         const metas = X$metas($);
 

@@ -1,5 +1,5 @@
 const u = require('../src/u');
-const {isf} = u;
+const {isf, tok} = u;
 
 describe('u', () => {
 
@@ -60,5 +60,28 @@ describe('u', () => {
 
     });
 
+    describe('has `tok` that ', () => {
+
+        it('returns a function that accepts one argument', () => {
+
+            const f = tok();
+            expect(typeof f).toBe('function');
+            expect(f.length).toBe(1);
+
+        });
+
+        it('returns a function when its param is not a function', () => {
+
+            expect(typeof tok()).toBe('function');
+            expect(typeof tok(null)).toBe('function');
+            expect(typeof tok(0)).toBe('function');
+            expect(typeof tok('')).toBe('function');
+            expect(typeof tok({})).toBe('function');
+            expect(typeof tok(new RegExp(''))).toBe('function');
+
+        });
+
+
+    });
 
 });
