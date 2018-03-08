@@ -6,11 +6,12 @@ describe('predicates module', () => {
 
     const keys = sorted([
 
+        'X$isx',
+
         'X$isnil',
         'X$isarr',
         'X$isfun',
         'X$iscst',
-
         'X$isobj',
 
     ]);

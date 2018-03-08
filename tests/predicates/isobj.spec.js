@@ -40,9 +40,9 @@ describe('predicates.isobj', () => {
         expect(X$isobj(object)).toBe(true);
     });
 
-    it('returns true for object with _metas_ but no _obj_ archetype', () => {
+    it('returns false for object with _metas_ but no _obj_ archetype', () => {
         const object = {[_metas_]: {}};
-        expect(X$isobj(object)).toBe(true);
+        expect(X$isobj(object)).toBe(false);
     });
 
 });
