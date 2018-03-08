@@ -1,10 +1,10 @@
-const {X$new2cst} = require('../../src/boot/transformers');
+const {X$new2fun} = require('../../src/boot/transformers');
 
 describe('transformers.new2cst', () => {
 
     it('for null, returns constant function that always returns null', () => {
 
-        const cst = X$new2cst(null);
+        const cst = X$new2fun(null);
 
         expect(typeof cst).toBe('function');
         expect(cst.length).toEqual(1);
@@ -19,7 +19,7 @@ describe('transformers.new2cst', () => {
 
     it('for undefined, returns constant function that always returns undefined', () => {
 
-        const cst = X$new2cst(void 0);
+        const cst = X$new2fun(void 0);
 
         expect(typeof cst).toBe('function');
         expect(cst.length).toEqual(1);

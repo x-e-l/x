@@ -15,7 +15,7 @@ describe('transformers module', () => {
         'X$ref2k',
         'X$ref2v',
 
-        'X$new2cst',
+        'X$new2fun',
 
         'X$itr2set',
         'X$str2err',
