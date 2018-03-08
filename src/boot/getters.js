@@ -1,4 +1,4 @@
-const {isf, nil} = require('../u');
+const {isf, nil, owns, tstr} = require('../u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('../symbols');
 
@@ -15,7 +15,6 @@ const X$mget = (
     ($, k) => $ && k && X$metas($)[k] // || Err()
 );
 
-const owns = Object.getOwnPropertySymbols;
 const X$mown = (
     ($) => X$map(
         owns(X$metas($)),
@@ -66,11 +65,10 @@ const X$callf = (
 );
 
 
-const tostr = Function.prototype.call.bind(Object.prototype.toString);
 const X$2str = (
     ($) => $ && $.toString
         ? $.toString()
-        : (nil($) ? '' : '' + tostr($))
+        : (nil($) ? '' : '' + tstr($))
 );
 
 const X$2strf = (

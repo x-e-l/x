@@ -3,7 +3,7 @@ const {
     _2str_, _call_, _toses_, _metas_
 } = require('../symbols');
 
-const {iife, isf, tok, nil} = require('../u');
+const {iife, isf, tok, nil, ftos} = require('../u');
 
 const {X$reduce} = require('./arrays');
 const {X$any2prx} = require('./transformers');
@@ -61,8 +61,7 @@ function Fun($, ...$$) {
 
 }
 
-const ftos = Function.prototype.toString;
-const proxy = (
+const proxy$ = (
     ($) => {
         const $new = X$any2prx(
             $,
@@ -83,7 +82,7 @@ function Cst($, ...$$) {
     $ = isf($) ? $ : tok($);
 
     // proxy internal constructor function in order to enhance its behaviour
-    $ = proxy($);
+    $ = proxy$($);
 
     // sets all the supplied properties for the constructor
     $ = X$reduce($$, $, X$nset);

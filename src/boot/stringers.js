@@ -1,4 +1,4 @@
-const {isf, nil} = require('../u');
+const {nil, f2s} = require('../u');
 
 const {X$isnil, X$isarr, X$isfun} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');
@@ -13,15 +13,11 @@ const NIL = '𝜈';
 const CST = 'φ';
 
 
-const ps2s = (
+const ps2s = ( // TODO: @azder: rename to X$ops2str
     ($) => X$map(
         X$props($),
         k => '' + k + ':' + $[k]
     )
-);
-
-const f2s = (
-    ($) => $ && isf($) && $.name ? $.name : $
 );
 
 

@@ -17,9 +17,37 @@ const nil = (
 );
 
 
+const f2s = (
+    ($) => $ && isf($) && $.name ? $.name : $
+);
+
+
+const ftos = Function.prototype.toString;
+const owns = Object.getOwnPropertySymbols;
+const tstr = Function.prototype.call.bind(Object.prototype.toString);
+
+
+const push$ = (
+    ($, item) => {
+        $.push(item);
+        return $;
+    }
+);
+
+
 module.exports = Object.freeze({
+
     isf,
     tok,
     iife,
     nil,
+
+    f2s,
+
+    ftos,
+    owns,
+    tstr,
+
+    push$,
+
 });
