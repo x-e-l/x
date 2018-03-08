@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const getters = require('../src/boot/getters');
 
 describe('getters module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$pget',
         'X$pown',
@@ -20,7 +22,7 @@ describe('getters module', () => {
         'X$2strf',
         'X$2lenf',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(getters)).toBeTruthy();

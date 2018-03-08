@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const transformers = require('../src/boot/transformers');
 
 describe('transformers module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$ident',
 
@@ -21,7 +23,7 @@ describe('transformers module', () => {
         'X$str2err',
         'X$any2prx',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(transformers)).toBeTruthy();

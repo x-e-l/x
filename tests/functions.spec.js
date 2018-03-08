@@ -1,13 +1,15 @@
+const {sorted} = require('./test-utils');
+
 const functions = require('../src/boot/functions');
 
 describe('functions module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$call',
         'X$bind',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(functions)).toBeTruthy();

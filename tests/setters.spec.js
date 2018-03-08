@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const setters = require('../src/boot/setters');
 
 describe('setters module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$pset',
         'X$mset',
@@ -10,7 +12,7 @@ describe('setters module', () => {
         'X$tadd',
         'X$preg',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(setters)).toBeTruthy();

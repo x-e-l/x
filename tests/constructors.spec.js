@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const constructors = require('../src/boot/constructors');
 
 describe('constructors module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$O',
         'X$Obj',
@@ -11,7 +13,7 @@ describe('constructors module', () => {
         'X$Fun',
         'X$Cst',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(constructors)).toBeTruthy();

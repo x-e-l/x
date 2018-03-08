@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const predicates = require('../src/boot/predicates');
 
 describe('predicates module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$isnil',
         'X$isarr',
@@ -11,7 +13,7 @@ describe('predicates module', () => {
 
         'X$isobj',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(predicates)).toBeTruthy();

@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const X$ = require('../src/symbols');
 
 describe('symbols', () => {
 
-    const keys = [
+    const keys = sorted([
 
         // properties
         '_metas_',
@@ -23,7 +25,7 @@ describe('symbols', () => {
         // archetypes
         '_nil_', '_arr_', '_fun_', '_cst_', '_obj_',
 
-    ].sort();
+    ]);
 
     it('are all exported', () => {
 

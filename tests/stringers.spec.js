@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const stringers = require('../src/boot/stringers');
 
 describe('stringers module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$obj2str',
         'X$arr2str',
@@ -10,7 +12,7 @@ describe('stringers module', () => {
         'X$nil2str',
         'X$cst2str',
 
-    ].sort();
+    ]);
 
     it('is frozen', () => {
         expect(Object.isFrozen(stringers)).toBeTruthy();

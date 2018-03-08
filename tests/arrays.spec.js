@@ -1,8 +1,10 @@
+const {sorted} = require('./test-utils');
+
 const arrays = require('../src/boot/arrays');
 
 describe('arrays module', () => {
 
-    const keys = [
+    const keys = sorted([
 
         'X$len',
         'X$first',
@@ -16,7 +18,8 @@ describe('arrays module', () => {
         'X$map',
         'X$reduce',
 
-    ].sort();
+    ]);
+
 
     it('is frozen', () => {
         expect(Object.isFrozen(arrays)).toBeTruthy();

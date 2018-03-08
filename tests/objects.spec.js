@@ -1,14 +1,18 @@
+const {sorted} = require('./test-utils');
+
 const objects = require('../src/boot/objects');
 
 describe('objects module', () => {
 
-    const keys = [
+
+    const keys = sorted([
 
         'X$df',
         'X$has',
         'X$2str',
 
-    ].sort();
+    ]);
+
 
     it('is frozen', () => {
         expect(Object.isFrozen(objects)).toBeTruthy();
