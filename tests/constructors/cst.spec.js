@@ -6,7 +6,7 @@ const {
 
 const {X$cst2str, X$obj2str} = require('../../src/boot/stringers');
 
-const {X$Cst, X$O, Obj, Fun, Cst} = require('../../src/boot/constructors');
+const {X$Cst, X$O, X$Obj, X$Fun} = require('../../src/boot/constructors');
 
 describe('constructors.Cst', () => {
 
@@ -16,7 +16,9 @@ describe('constructors.Cst', () => {
 
         const metas = X$Cst[_metas_];
 
-        expect(metas[_toses_]).toEqual([Obj, Fun, Cst]);
+        // proxied functions, have the same string representation
+        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
@@ -34,16 +36,15 @@ describe('constructors.Cst', () => {
 
         const cst = X$Cst();
 
-        const metas = {
-            [_atype_]: _cst_,
-            [_2str_]:  X$cst2str,
-            [_toses_]: [Obj, Fun, Cst],
-            [_call_]:  cst,
-        };
 
         expect(Object.keys(cst)).toEqual([]);
 
-        expect(cst[_metas_]).toEqual(metas);
+        // proxied functions, have the same string representation
+        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+
+        expect(cst[_metas_][_atype_]).toEqual(_cst_);
+        expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
+        expect(cst[_metas_][_call_]).toEqual(cst);
 
     });
 
@@ -62,20 +63,18 @@ describe('constructors.Cst', () => {
             {[_key_]: lastkey, [_val_]: 2},
         );
 
-        const metas = {
-            [_props_]: props,
-            [_atype_]: _cst_,
-            [_2str_]:  X$cst2str,
-            [_toses_]: [Obj, Fun, Cst],
-            [_call_]:  cst,
-        };
-
         const keys = Object.keys(cst);
 
         expect(keys.length).toBe(props.length);
         expect(cst.length).toBe(fun.length);
 
-        expect(cst[_metas_]).toEqual(metas);
+
+        // proxied functions, have the same string representation
+        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+
+        expect(cst[_metas_][_atype_]).toEqual(_cst_);
+        expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
+        expect(cst[_metas_][_call_]).toEqual(cst);
         expect(cst[_metas_][_props_]).toEqual(props);
 
     });
@@ -84,19 +83,19 @@ describe('constructors.Cst', () => {
 
         const cst = X$Cst(null);
 
-        const metas = {
-            [_atype_]: _cst_,
-            [_2str_]:  X$cst2str,
-            [_toses_]: [Obj, Fun, Cst],
-            [_call_]:  cst,
-        };
-
         expect(cst.length).toEqual(1);
-        expect('' + cst).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
+        expect('' + cst).toBe('$$ => $');
 
         expect(Object.keys(cst)).toEqual([]);
-        expect(cst[_metas_]).toEqual(metas);
         expect(typeof cst).toBe('function');
+
+
+        // proxied functions, have the same string representation
+        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+
+        expect(cst[_metas_][_atype_]).toEqual(_cst_);
+        expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
+        expect(cst[_metas_][_call_]).toEqual(cst);
 
 
     });
@@ -106,19 +105,18 @@ describe('constructors.Cst', () => {
 
         const cst = X$Cst();
 
-        const metas = {
-            [_atype_]: _cst_,
-            [_2str_]:  X$cst2str,
-            [_toses_]: [Obj, Fun, Cst],
-            [_call_]:  cst,
-        };
-
         expect(cst.length).toEqual(1);
-        expect('' + cst).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
+        expect('' + cst).toBe('$$ => $');
 
         expect(Object.keys(cst)).toEqual([]);
-        expect(cst[_metas_]).toEqual(metas);
         expect(typeof cst).toBe('function');
+
+        // proxied functions, have the same string representation
+        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+
+        expect(cst[_metas_][_atype_]).toEqual(_cst_);
+        expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
+        expect(cst[_metas_][_call_]).toEqual(cst);
 
     });
 
@@ -142,8 +140,8 @@ describe('constructors.Cst', () => {
         expect(obj[_metas_][_atype_]).toBe(_obj_);
         expect(obj[_metas_][_2str_]).toBe(X$obj2str);
 
-        // TODO: @azder: ensure proper toses chain is created
-        // expect(obj[_metas_][_toses_]).toBe([Obj, TestObject]);
+        // proxied functions, have the same string representation
+        expect('' + obj[_metas_][_toses_]).toBe('' + [X$Obj, TestObject]);
 
         expect(internal).toBeCalled();
         expect(internal.mock.calls.length).toBe(1);

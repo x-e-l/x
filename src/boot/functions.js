@@ -10,6 +10,9 @@ const X$bind = (
 );
 
 
+// TODO: @azder: maybe add a `X$dnib = ($,f,...$$) => ` and `X$lacc = ($,f,...$$) =>`
+
+
 module.exports = Object.freeze({
     X$call,
     X$bind,

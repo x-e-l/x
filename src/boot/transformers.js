@@ -46,16 +46,16 @@ const X$ref2v = (
 );
 
 
-const X$new2cst = (
+const X$new2fun = (
     ($) => isf($)
         ? (...$$) => new $(...$$)
         : tok($)
 );
 
 
-const X$itr2set = X$new2cst(Set);
-const X$str2err = X$new2cst(Error);
-
+const X$itr2set = X$new2fun(Set);
+const X$str2err = X$new2fun(Error);
+const X$any2prx = X$new2fun(Proxy);
 
 module.exports = Object.freeze({
 
@@ -68,9 +68,10 @@ module.exports = Object.freeze({
     X$ref2k,
     X$ref2v,
 
-    X$new2cst,
+    X$new2cst: X$new2fun, // TODO: @azder: rename this
 
     X$itr2set,
     X$str2err,
+    X$any2prx,
 
 });

@@ -19,6 +19,7 @@ describe('transformers module', () => {
 
         'X$itr2set',
         'X$str2err',
+        'X$any2prx',
 
     ].sort();
 

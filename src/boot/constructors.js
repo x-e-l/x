@@ -7,6 +7,7 @@ const {iife, isf, tok} = require('../u');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
+const {X$any2prx} = require('./transformers');
 const {X$tadd, X$nset, X$mset, X$preg} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./stringers');
 
@@ -61,25 +62,29 @@ function Fun($, ...$$) {
 
 }
 
-
-const constructor = (
-    (f) => ($, ...$$) => X$tadd(f($, ...$$), f)
+const ftos = Function.prototype.toString;
+const proxy = (
+    ($old) => {
+        const $new = X$any2prx(
+            $old,
+            {
+                // adds self to toses array of created the object when called
+                apply: (f, $, $$) => X$tadd(f.apply($, $$), $new),
+                // workaround for proxied functions not using Function.prototype.toString
+                get:   ($, k) => 'toString' === k ? ftos.bind($) : $[k],
+            }
+        );
+        return $new;
+    }
 );
-
-// const constructor = (
-//     (f) => {
-//         const c = ($, ...$$) => X$tadd(f($, ...$$), c);
-//         return c;
-//     }
-// );
 
 function Cst($, ...$$) {
 
     // constructor must be function, even if constant one
     $ = isf($) ? $ : tok($);
 
-    // adds self to toses array of created the object when called
-    $ = constructor($);
+    // proxy internal constructor function in order to enhance its behaviour
+    $ = proxy($);
 
     // sets all the supplied properties for the constructor
     $ = X$reduce($$, $, X$nset);
@@ -87,6 +92,7 @@ function Cst($, ...$$) {
     // manually set toses array for this constructor
     X$mset($, _toses_, [Obj, Fun, Cst]);
 
+    // standard metas for a constructor
     X$mset($, _atype_, _cst_);
     X$mset($, _2str_, X$cst2str);
     X$mset($, _call_, $);
@@ -133,17 +139,11 @@ const X$O = iife(() => {
 });
 
 
-const exported = {
+module.exports = Object.freeze({
     X$O,
     X$Obj,
     X$Nil,
     X$Arr,
     X$Fun,
     X$Cst,
-};
-
-if ('test' === process.env.NODE_ENV) {
-    Object.assign(exported, {Obj, Nil, Arr, Fun, Cst}) // TODO: @azder: these should be the X$* ones
-}
-
-module.exports = Object.freeze(exported);
+});

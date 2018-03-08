@@ -6,7 +6,7 @@ const {
 
 const {X$nil2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$Nil, Obj, Fun, Cst, Nil} = require('../../src/boot/constructors');
+const {X$Nil, X$Obj, X$Fun, X$Cst} = require('../../src/boot/constructors');
 
 describe('constructors.Nil', () => {
 
@@ -16,11 +16,13 @@ describe('constructors.Nil', () => {
 
         const metas = X$Nil[_metas_];
 
-        expect(metas[_toses_]).toEqual([Obj, Fun, Cst]);
+        // proxied functions, have the same string representation
+        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
+        expect('' + metas[_call_]).toBe('' + X$Nil);
 
     });
 
@@ -35,7 +37,7 @@ describe('constructors.Nil', () => {
         const metas = {
             [_atype_]: _nil_,
             [_2str_]:  X$nil2str,
-            [_toses_]: [Obj, Nil],
+            [_toses_]: [X$Obj, X$Nil],
         };
 
         const nil = X$Nil();
@@ -54,7 +56,7 @@ describe('constructors.Nil', () => {
             [_props_]: props,
             [_atype_]: _nil_,
             [_2str_]:  X$nil2str,
-            [_toses_]: [Obj, Nil],
+            [_toses_]: [X$Obj, X$Nil],
         };
 
         const obj = {
@@ -80,7 +82,7 @@ describe('constructors.Nil', () => {
         const metas = {
             [_atype_]: _nil_,
             [_2str_]:  X$nil2str,
-            [_toses_]: [Obj, Nil],
+            [_toses_]: [X$Obj, X$Nil],
         };
 
         expect(X$Nil(null)).toEqual({[_metas_]: metas});
@@ -92,7 +94,7 @@ describe('constructors.Nil', () => {
         const metas = {
             [_atype_]: _nil_,
             [_2str_]:  X$nil2str,
-            [_toses_]: [Obj, Nil],
+            [_toses_]: [X$Obj, X$Nil],
         };
 
         expect(X$Nil()).toEqual({[_metas_]: metas});

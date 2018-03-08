@@ -6,7 +6,7 @@ const {
 
 const {X$fun2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$Fun, Obj, Fun, Cst} = require('../../src/boot/constructors');
+const {X$Fun, X$Obj, X$Cst} = require('../../src/boot/constructors');
 
 describe('constructors.Fun', () => {
 
@@ -16,11 +16,12 @@ describe('constructors.Fun', () => {
 
         const metas = X$Fun[_metas_];
 
-        expect(metas[_toses_]).toEqual([Obj, Fun, Cst]);
+        // proxied functions, have the same string representation
+        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('($, ...$$) => X$tadd(f($, ...$$), f)');
+        expect('' + metas[_call_]).toBe('' + X$Fun);
 
     });
 
@@ -37,7 +38,7 @@ describe('constructors.Fun', () => {
         const metas = {
             [_atype_]: _fun_,
             [_2str_]:  X$fun2str,
-            [_toses_]: [Obj, Fun],
+            [_toses_]: [X$Obj, X$Fun],
             [_call_]:  fun,
         };
 
@@ -64,7 +65,7 @@ describe('constructors.Fun', () => {
             [_props_]: props,
             [_atype_]: _fun_,
             [_2str_]:  X$fun2str,
-            [_toses_]: [Obj, Fun],
+            [_toses_]: [X$Obj, X$Fun],
             [_call_]:  fun,
         };
 
@@ -85,7 +86,7 @@ describe('constructors.Fun', () => {
         const metas = {
             [_atype_]: _fun_,
             [_2str_]:  X$fun2str,
-            [_toses_]: [Obj, Fun],
+            [_toses_]: [X$Obj, X$Fun],
             [_call_]:  fun,
         };
 
@@ -107,7 +108,7 @@ describe('constructors.Fun', () => {
         const metas = {
             [_atype_]: _fun_,
             [_2str_]:  X$fun2str,
-            [_toses_]: [Obj, Fun],
+            [_toses_]: [X$Obj, X$Fun],
             [_call_]:  fun,
         };
 
