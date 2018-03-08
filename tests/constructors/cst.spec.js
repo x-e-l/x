@@ -1,12 +1,12 @@
 const {
     _metas_, _props_, _2str_, _toses_, _call_, _atype_,
-    _cst_,
+    _cst_, _obj_,
     _key_, _val_,
 } = require('../../src/symbols');
 
-const {X$cst2str} = require('../../src/boot/stringers');
+const {X$cst2str, X$obj2str} = require('../../src/boot/stringers');
 
-const {X$Cst, Obj, Fun, Cst} = require('../../src/boot/constructors');
+const {X$Cst, X$O, Obj, Fun, Cst} = require('../../src/boot/constructors');
 
 describe('constructors.Cst', () => {
 
@@ -119,6 +119,34 @@ describe('constructors.Cst', () => {
         expect(Object.keys(cst)).toEqual([]);
         expect(cst[_metas_]).toEqual(metas);
         expect(typeof cst).toBe('function');
+
+    });
+
+    it('executes the internal builder function', () => {
+
+        const mocked = (
+            $ => {
+                $ = X$O();
+                $.a = 1;
+                $.b = 2;
+                return $;
+            }
+        );
+
+        const internal = jest.fn(mocked);
+        const TestObject = X$Cst(internal);
+
+        const obj = TestObject();
+
+        expect(Object.keys(obj)).toEqual(['a', 'b']);
+        expect(obj[_metas_][_atype_]).toBe(_obj_);
+        expect(obj[_metas_][_2str_]).toBe(X$obj2str);
+
+        // TODO: @azder: ensure proper toses chain is created
+        // expect(obj[_metas_][_toses_]).toBe([Obj, TestObject]);
+
+        expect(internal).toBeCalled();
+        expect(internal.mock.calls.length).toBe(1);
 
     });
 

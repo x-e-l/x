@@ -3,7 +3,7 @@ const {
     _2str_, _call_, _toses_, _metas_
 } = require('../symbols');
 
-const {iife} = require('../u');
+const {iife, isf, tok} = require('../u');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
@@ -66,12 +66,22 @@ const constructor = (
     (f) => ($, ...$$) => X$tadd(f($, ...$$), f)
 );
 
+// const constructor = (
+//     (f) => {
+//         const c = ($, ...$$) => X$tadd(f($, ...$$), c);
+//         return c;
+//     }
+// );
+
 function Cst($, ...$$) {
 
-    // $ = X$nil($) ? ($ => $) : $; // TODO: @azder: deal with this case, constructor must be function
+    // constructor must be function, even if constant one
+    $ = isf($) ? $ : tok($);
 
     // adds self to toses array of created the object when called
     $ = constructor($);
+
+    // sets all the supplied properties for the constructor
     $ = X$reduce($$, $, X$nset);
 
     // manually set toses array for this constructor
