@@ -7,7 +7,7 @@ const {iife, isf, tok, nil, ftos} = require('../u');
 
 const {X$reduce} = require('./arrays');
 const {X$any2prx} = require('./transformers');
-const {X$tadd, X$nset, X$mset, X$preg} = require('./setters');
+const {X$tadd, X$rset, X$mset, X$preg} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./stringers');
 
 
@@ -17,7 +17,7 @@ function Obj($, ...$$) {
 
     $ = X$reduce(Object.keys($), $, X$preg);
 
-    $ = X$reduce($$, $, X$nset);
+    $ = X$reduce($$, $, X$rset);
 
     X$mset($, _atype_, _obj_);
     X$mset($, _2str_, X$obj2str);
@@ -85,7 +85,7 @@ function Cst($, ...$$) {
     $ = proxy$($);
 
     // sets all the supplied properties for the constructor
-    $ = X$reduce($$, $, X$nset);
+    $ = X$reduce($$, $, X$rset);
 
     // manually set toses array for this constructor
     X$mset($, _toses_, [Obj, Fun, Cst]);
@@ -138,10 +138,13 @@ const X$O = iife(() => {
 
 
 module.exports = Object.freeze({
+
     X$O,
+
     X$Obj,
     X$Nil,
     X$Arr,
     X$Fun,
     X$Cst,
+
 });

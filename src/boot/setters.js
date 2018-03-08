@@ -65,7 +65,7 @@ const X$mset = (
 
 );
 
-const X$nset = (
+const X$rset = (
 
     ($, ref) => (
         nil($)
@@ -94,6 +94,6 @@ module.exports = Object.freeze({
     X$preg,
     X$pset,
     X$mset,
-    X$nset,
+    X$rset,
     X$tadd,
 });

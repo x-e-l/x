@@ -6,7 +6,7 @@ describe('setters module', () => {
 
         'X$pset',
         'X$mset',
-        'X$nset',
+        'X$rset',
         'X$tadd',
         'X$preg',
 
