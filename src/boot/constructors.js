@@ -1,4 +1,9 @@
-const {_atype_, _obj_, _nil_, _arr_, _fun_, _cst_, _2str_, _call_, _toses_, _metas_} = require('../symbols');
+const {
+    _atype_, _obj_, _nil_, _arr_, _fun_, _cst_,
+    _2str_, _call_, _toses_, _metas_
+} = require('../symbols');
+
+const {iife} = require('../u');
 
 const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
@@ -86,32 +91,36 @@ const X$Arr = Cst(Arr);
 const X$Fun = Cst(Fun);
 
 
-// No extra Cst of Cst for _metas_ sake
-const X$Cst = (Cst);
-// just manually add _metas_
-X$Cst[_metas_] = {
-    [_atype_]: _cst_,
-    [_2str_]:  X$cst2str,
-    [_toses_]: [Obj, Fun, Cst],
-    [_call_]:  X$Cst,
-};
+const X$Cst = iife(() => {
+
+    // No extra Cst of Cst for _metas_ sake
+    const $ = Cst;
+
+    // just manually add _metas_
+    $[_metas_] = {
+        [_atype_]: _cst_,
+        [_2str_]:  X$cst2str,
+        [_toses_]: [Obj, Fun, Cst],
+        [_call_]:  $,
+    };
+
+    return $;
+
+});
 
 
 // helper for parameterless call of X$Obj
-const X$O = (
-    (
-        () => {
+const X$O = iife(() => {
 
-            const $ = (
-                (...$$) => X$Obj(null, ...$$)
-            );
+    const $ = (
+        (...$$) => X$Obj(null, ...$$)
+    );
 
-            $[_metas_] = X$Obj[_metas_];
+    $[_metas_] = X$Obj[_metas_];
 
-            return $;
-        }
-    )()
-);
+    return $;
+
+});
 
 
 const exported = {

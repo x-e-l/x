@@ -1,5 +1,5 @@
 const u = require('../src/u');
-const {isf, tok} = u;
+const {isf, tok, iife} = u;
 
 describe('u', () => {
 
@@ -78,6 +78,41 @@ describe('u', () => {
             expect(typeof tok('')).toBe('function');
             expect(typeof tok({})).toBe('function');
             expect(typeof tok(new RegExp(''))).toBe('function');
+
+        });
+
+
+    });
+
+    describe('has `iife` that ', () => {
+
+        it('executes a function provided as the one argument and returns its result', () => {
+
+            const mocked = () => 'result';
+            const f = jest.fn(mocked);
+
+            const result = iife(f);
+
+            expect(f).toBeCalled();
+            expect(f).toBeCalledWith();
+
+            expect(f.mock.calls).toEqual([[]]);
+            // expect(f.mock.calls.length).toEqual(1);
+
+            expect(result).toBe('result');
+
+
+        });
+
+        it('returns the given param when not a function', () => {
+
+            expect(iife()).toBe(void 0);
+            expect(iife(null)).toBe(null);
+            expect(iife(0)).toBe(0);
+            expect(iife('')).toBe('');
+
+            const obj = {a: 1, b: 2, c: 3};
+            expect(iife(obj)).toBe(obj);
 
         });
 
