@@ -33,7 +33,7 @@ const X$props = (
 );
 
 
-const X$pcat = (
+const X$tcat = (
     ($, proto) => X$push(X$toses($), proto)
 );
 
@@ -95,7 +95,7 @@ module.exports = Object.freeze({
     X$mget,
     X$mown,
 
-    X$pcat,
+    X$tcat,
 
     X$metas,
     X$toses,

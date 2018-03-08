@@ -1,7 +1,7 @@
 const {_toses_, _metas_} = require('../../src/symbols');
-const {X$pcat} = require('../../src/boot/getters');
+const {X$tcat} = require('../../src/boot/getters');
 
-describe('getters.pcat', () => {
+describe('getters.tcat', () => {
 
     const a = {a: 1};
     const b = {b: 2};
@@ -17,38 +17,38 @@ describe('getters.pcat', () => {
 
     it('adds proto at the end of the toses', () => {
 
-        expect(X$pcat(obj, c)).toEqual([a, b, c]);
+        expect(X$tcat(obj, c)).toEqual([a, b, c]);
 
     });
 
     it('does not alter original toses array', () => {
 
-        expect(X$pcat(obj, c)).toEqual([a, b, c]);
+        expect(X$tcat(obj, c)).toEqual([a, b, c]);
         expect(toses).toEqual([a, b]);
 
     });
 
     it('is giving back [item] for undefined object', () => {
 
-        expect(X$pcat(void 0, b)).toEqual([b]);
+        expect(X$tcat(void 0, b)).toEqual([b]);
 
     });
 
     it('is giving back [item] for null object', () => {
 
-        expect(X$pcat(null, c)).toEqual([c]);
+        expect(X$tcat(null, c)).toEqual([c]);
 
     });
 
     it('is giving back [item] for undefined toses array', () => {
 
-        expect(X$pcat({}, b)).toEqual([b]);
+        expect(X$tcat({}, b)).toEqual([b]);
 
     });
 
     it('is giving back [item] for null toses array', () => {
 
-        expect(X$pcat({}, c)).toEqual([c]);
+        expect(X$tcat({}, c)).toEqual([c]);
 
     });
 

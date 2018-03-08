@@ -10,7 +10,7 @@ describe('getters module', () => {
         'X$mget',
         'X$mown',
 
-        'X$pcat',
+        'X$tcat',
 
         'X$metas',
         'X$toses',
