@@ -4,8 +4,6 @@ describe('predicates module', () => {
 
     const keys = [
 
-        'X$nil',
-
         'X$isnil',
         'X$isarr',
         'X$isfun',

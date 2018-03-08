@@ -34,7 +34,7 @@ describe('getters.padd', () => {
         expect(X$tadd(void 0, 'a')).toBe(void 0);
     });
 
-    // TODO: @azder: test if it only adds functions
+    // TODO: @azder: test if it adds only functions
     // TODO: @azder: test if it works when _metas_ and/or _toses_ are nil
     // TODO: @azder: test if same function is added twice in a row
 

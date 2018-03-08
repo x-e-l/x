@@ -3,9 +3,8 @@ const {
     _2str_, _call_, _toses_, _metas_
 } = require('../symbols');
 
-const {iife, isf, tok} = require('../u');
+const {iife, isf, tok, nil} = require('../u');
 
-const {X$nil} = require('./predicates');
 const {X$reduce} = require('./arrays');
 const {X$any2prx} = require('./transformers');
 const {X$tadd, X$nset, X$mset, X$preg} = require('./setters');
@@ -14,7 +13,7 @@ const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./strin
 
 function Obj($, ...$$) {
 
-    $ = X$nil($) ? Object.create(null) : $;
+    $ = nil($) ? Object.create(null) : $;
 
     $ = X$reduce(Object.keys($), $, X$preg);
 

@@ -1,5 +1,5 @@
 const u = require('../src/u');
-const {isf, tok, iife} = u;
+const {isf, tok, iife, nil} = u;
 
 describe('u', () => {
 
@@ -116,6 +116,23 @@ describe('u', () => {
 
         });
 
+
+    });
+
+    describe('has `nil` that', () => {
+
+        it('returns `true` for `undefined` and null', () => {
+            expect(nil()).toBe(true);
+            expect(nil(null)).toBe(true);
+        });
+
+        it('returns `false` for empty string, number 0, `NaN`, `false`, `true`', () => {
+            expect(nil('')).toBe(false);
+            expect(nil(0)).toBe(false);
+            expect(nil(NaN)).toBe(false);
+            expect(nil(false)).toBe(false);
+            expect(nil(true)).toBe(false);
+        });
 
     });
 

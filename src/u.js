@@ -12,8 +12,14 @@ const tok = ($ => ($$) => $);
 const iife = ($ => isf($) ? $() : $);
 
 
+const nil = (
+    ($) => (null === $) || (void 0 === $)
+);
+
+
 module.exports = Object.freeze({
     isf,
     tok,
     iife,
+    nil,
 });

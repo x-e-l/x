@@ -4,37 +4,32 @@ const {
     _obj_,
 } = require('../symbols');
 
-
-const X$nil = (
-    ($) => (null === $) || (void 0 === $)
-);
+const {nil} = require('../u');
 
 
 const X$isnil = (
-    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _nil_
+    ($) => !!$ && !!$[_metas_] && _nil_ === $[_metas_][_atype_]
 );
 
 const X$isarr = (
-    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _arr_
+    ($) => !!$ && !!$[_metas_] && _arr_ === $[_metas_][_atype_]
 );
 
 const X$isfun = (
-    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _fun_
+    ($) => !!$ && !!$[_metas_] && _fun_ === $[_metas_][_atype_]
 );
 
 const X$iscst = (
-    ($) => !!$ && !!$[_metas_] && $[_metas_][_atype_] === _cst_
+    ($) => !!$ && !!$[_metas_] && _cst_ === $[_metas_][_atype_]
 );
 
 
 const X$isobj = (
-    ($) => !!$ && !!$[_metas_] && ($[_metas_][_atype_] === _obj_ || X$nil($[_metas_][_atype_]))
+    ($) => !!$ && !!$[_metas_] && (_obj_ === $[_metas_][_atype_] || nil($[_metas_][_atype_]))
 );
 
 
 module.exports = Object.freeze({
-
-    X$nil,
 
     X$isnil,
     X$isarr,

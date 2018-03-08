@@ -52,7 +52,7 @@ describe('getters.tcat', () => {
 
     });
 
-    // TODO: @azder: test if it only adds functions
+    // TODO: @azder: test if it adds only functions
     // TODO: @azder: test if it works when _metas_ are nil
     // TODO: @azder: test if same function is added twice in a row
 

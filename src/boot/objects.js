@@ -1,10 +1,10 @@
-const {X$nil} = require('./predicates');
+const {nil} = require('../u');
 const {X$call} = require('./functions');
 const {X$itr2set} = require('./transformers');
 const {X$props, X$2strf} = require('./getters');
 
 const X$df = (
-    ($, v) => X$nil(v) ? $ : v
+    ($, v) => nil(v) ? $ : v
 );
 
 const X$has = (
