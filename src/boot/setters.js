@@ -1,3 +1,4 @@
+const {nil} = require('../u');
 const {_props_, _toses_, _metas_, _key_, _val_} = require('../symbols');
 const {X$metas, X$toses, X$props} = require('./getters');
 
@@ -13,7 +14,7 @@ const X$preg = (
 
     ($, k) => {
 
-        if (null === $ || void 0 === $) {
+        if (nil($)) {
             return $;
         }
 
@@ -36,7 +37,7 @@ const X$pset = (
 
     ($, k, v) => {
 
-        if (null === $ || void 0 === $) {
+        if (nil($)) {
             return $;
         }
 
@@ -54,7 +55,7 @@ const X$mset = (
 
     ($, k, v) => {
 
-        if (null === $ || void 0 === $) {
+        if (nil($)) {
             return $;
         }
 
@@ -73,9 +74,9 @@ const X$mset = (
 const X$nset = (
 
     ($, ref) => (
-        null === $ || void 0 === $
+        nil($)
         ||
-        null === ref || void 0 === ref // TODO: @azder: return Err()
+        nil(ref) // TODO: @azder: return Err()
     )
         ? $
         : X$pset($, ref[_key_], ref[_val_]) // mutates values

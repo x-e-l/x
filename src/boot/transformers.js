@@ -1,5 +1,5 @@
 const {_key_, _val_} = require('../symbols');
-const {isf, tok} = require('../u');
+const {isf, tok, nil} = require('../u');
 
 const X$ident = (
     ($) => ($)
@@ -12,7 +12,7 @@ const X$2const = (
 
 const X$obj2frz = (
     ($) => (
-        null === $ || void 0 === $ ||       // nil
+        nil($) ||       // nil
         '' + $ === $ ||                     // string
         $ - 0 === $ || Number.isNaN($) ||   // number
         true === $ || false === $           // boolean
@@ -38,11 +38,11 @@ const X$vk2ref = (
 
 
 const X$ref2k = (
-    ($) => void 0 === $ || null === $ ? $ : $[_key_]
+    ($) => nil($) ? $ : $[_key_]
 );
 
 const X$ref2v = (
-    ($) => void 0 === $ || null === $ ? $ : $[_val_]
+    ($) => nil($) ? $ : $[_val_]
 );
 
 

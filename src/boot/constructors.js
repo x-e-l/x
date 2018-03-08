@@ -39,7 +39,7 @@ function Nil($, ...$$) {
 
 function Arr($, ...$$) {
 
-    $ = X$Obj(null === $ || void 0 === $ ? [] : $, ...$$);
+    $ = X$Obj(nil($) ? [] : $, ...$$);
 
     X$mset($, _atype_, _arr_);
     X$mset($, _2str_, X$arr2str);
@@ -50,7 +50,7 @@ function Arr($, ...$$) {
 
 function Fun($, ...$$) {
 
-    $ = X$Obj(null === $ || void 0 === $ ? ($ => $) : $, ...$$);
+    $ = X$Obj(nil($) ? ($ => $) : $, ...$$);
 
     X$mset($, _atype_, _fun_);
     X$mset($, _2str_, X$fun2str);

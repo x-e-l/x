@@ -9,7 +9,7 @@ const X$df = (
 
 const X$has = (
     ($, k) => (
-        null === $ || void 0 === $
+        nil($)
             ? $
             : (
                 /**@type{function(*=): Set<*>}*/

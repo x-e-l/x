@@ -1,4 +1,4 @@
-const {isf} = require('../u');
+const {isf, nil} = require('../u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('../symbols');
 
@@ -7,7 +7,7 @@ const {X$push, X$len, X$map} = require('./arrays');
 
 
 const X$metas = (
-    ($) => null === $ || void 0 === $ ? {} : $[_metas_] || {}
+    ($) => nil($) ? {} : $[_metas_] || {}
 );
 
 
@@ -70,7 +70,7 @@ const tostr = Function.prototype.call.bind(Object.prototype.toString);
 const X$2str = (
     ($) => $ && $.toString
         ? $.toString()
-        : (null === $ || void 0 === $ ? '' : '' + tostr($))
+        : (nil($) ? '' : '' + tostr($))
 );
 
 const X$2strf = (

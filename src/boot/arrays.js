@@ -1,3 +1,5 @@
+const {nil} = require('../u');
+
 const X$len = (
     ($) => ($ && $.length - 0) || 0
 );
@@ -19,11 +21,11 @@ const X$last = (
 
 
 const X$push = (
-    ($, a) => void 0 === $ || null === $ ? [a] : [...$, a]
+    ($, a) => nil($) ? [a] : [...$, a]
 );
 
 const X$unshift = (
-    ($, a) => void 0 === $ || null === $ ? [a] : [a, ...$]
+    ($, a) => nil($) ? [a] : [a, ...$]
 );
 
 const X$includes = (

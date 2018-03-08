@@ -1,4 +1,4 @@
-const {isf} = require('../u');
+const {isf, nil} = require('../u');
 
 const {X$isnil, X$isarr, X$isfun} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');
@@ -42,31 +42,31 @@ const X$tos2str = (
 
 
 const X$obj2str = (
-    ($) => (null === $ || void 0 === $)
+    ($) => (nil($))
         ? OUT + '(' + $ + ')' + OUT
         : '' + X$tos2str($) + OBJ + '{' + ps2s($) + '}' + OBJ
 );
 
 const X$arr2str = (
-    ($) => (null === $ || void 0 === $)
+    ($) => (nil($))
         ? OUT + '(' + $ + ')' + OUT
         : '' + X$tos2str($) + ARR + '(' + X$2lenf($)($) + ')[' + ps2s($) + ']' + ARR
 );
 
 const X$fun2str = (
-    ($) => (null === $ || void 0 === $)
+    ($) => (nil($))
         ? OUT + '(' + $ + ')' + OUT
         : '' + X$tos2str($) + FUN + '(' + f2s(X$callf($)) + '){' + ps2s($) + '}' + FUN
 );
 
 const X$nil2str = (
-    ($) => (null === $ || void 0 === $)
+    ($) => (nil($))
         ? OUT + '(' + $ + ')' + OUT
         : '' + X$tos2str($) + NIL + '{' + ps2s($) + '}' + NIL
 );
 
 const X$cst2str = (
-    ($) => (null === $ || void 0 === $)
+    ($) => (nil($))
         ? OUT + '(' + $ + ')' + OUT
         : '' + X$tos2str($) + CST + '(' + f2s(X$callf($)) + '){' + ps2s($) + '}' + CST
 );
