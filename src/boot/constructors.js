@@ -64,12 +64,12 @@ function Fun($, ...$$) {
 
 const ftos = Function.prototype.toString;
 const proxy = (
-    ($old) => {
+    ($) => {
         const $new = X$any2prx(
-            $old,
+            $,
             {
-                // adds self to toses array of created the object when called
-                apply: (f, $, $$) => X$tadd(f.apply($, $$), $new),
+                // adds the proxy to the toses array of the created object when called
+                apply: ($old, _, $$) => X$tadd($old.apply(null, $$), $new),
                 // workaround for proxied functions not using Function.prototype.toString
                 get:   ($, k) => 'toString' === k ? ftos.bind($) : $[k],
             }
