@@ -1,6 +1,6 @@
 const {sorted} = require('./test-utils');
 
-const X$ = require('../src/symbols');
+const symbols = require('../src/symbols');
 
 describe('symbols', () => {
 
@@ -16,6 +16,7 @@ describe('symbols', () => {
         '_call_',
         '_2str_',
         '_2len_',
+        '_2bul_',
 
         '_atype_',
 
@@ -30,7 +31,7 @@ describe('symbols', () => {
     it('are all exported', () => {
 
         keys.map(k => (
-            expect(X$[k]).toBeDefined()
+            expect(symbols[k]).toBeDefined()
         ));
 
     });
@@ -38,18 +39,22 @@ describe('symbols', () => {
     it('are all of type Symbol', () => {
 
         keys.map(k => (
-            expect('' + k + ' is ' + typeof X$[k]).toEqual('' + k + ' is symbol')
+            expect('' + k + ' is ' + typeof symbols[k]).toEqual('' + k + ' is symbol')
         ));
 
     });
 
-    it('conform to the _name_ convention', () => {
+    it('are all conforming to the _name_ convention', () => {
 
         const valid = /^_[0-9a-z]+_$/;
 
-        keys.map(k => (
-            expect(k).toMatch(valid)
-        ));
+        keys.map(k => expect(k).toMatch(valid));
+
+    });
+
+    it('are the only ones exported', () => {
+
+        expect(Object.keys(symbols).length).toEqual(keys.length)
 
     });
 

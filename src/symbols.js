@@ -11,6 +11,7 @@ module.exports = ([
     '_call_',
     '_2str_',
     '_2len_',
+    '_2bul_',
 
     '_atype_',
 
