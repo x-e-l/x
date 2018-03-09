@@ -7,7 +7,7 @@ const X$ = require('../src/x');
 const symbols = require('../src/symbols');
 
 const arrays = require('../src/boot/arrays');
-const constructors = require('../src/boot/constructors');
+const constructors = require('../src/boot/archetypes');
 const functions = require('../src/boot/functions');
 const getters = require('../src/boot/getters');
 const objects = require('../src/boot/objects');

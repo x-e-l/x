@@ -1,6 +1,6 @@
 const {X$toses} = require('../../src/boot/getters');
 
-const {X$O, X$Obj, X$Nil, X$Arr, X$Fun, X$Cst} = require('../../src/boot/constructors');
+const {X$O, X$Obj, X$Nil, X$Arr, X$Fun, X$Cst} = require('../../src/boot/archetypes');
 
 const f = ($, a, b) => a + b;
 

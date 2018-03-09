@@ -2,7 +2,7 @@ const {X$call} = require('../../src/boot/functions');
 const {X$kv2ref} = require('../../src/boot/transformers');
 const {X$2strf, X$toses, X$props, X$callf} = require('../../src/boot/getters');
 
-const {X$Obj, X$Nil, X$Arr, X$Fun} = require('../../src/boot/constructors');
+const {X$Obj, X$Nil, X$Arr, X$Fun} = require('../../src/boot/archetypes');
 
 [
     ['o', X$Obj(

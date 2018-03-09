@@ -6,15 +6,15 @@ const {
 } = require('../../src/symbols');
 const {X$obj2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$O, X$Obj, X$Fun, X$Cst} = require('../../src/boot/constructors');
+const {X$Obj, X$Fun, X$Cst} = require('../../src/boot/archetypes');
 
-describe('constructors.O', () => {
+describe('archetypes.Obj', () => {
 
     it('is a constructor', () => {
 
-        expect(typeof X$O).toEqual('function');
+        expect(typeof X$Obj).toEqual('function');
 
-        const metas = X$O[_metas_];
+        const metas = X$Obj[_metas_];
 
         // proxied functions, have the same string representation
         expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
@@ -28,7 +28,7 @@ describe('constructors.O', () => {
 
     it('returns an object with no prototype', () => {
 
-        expect(X$O().prototype).toBe(void 0);
+        expect(X$Obj().prototype).toBe(void 0);
 
     });
 
@@ -40,7 +40,7 @@ describe('constructors.O', () => {
             [_toses_]: [X$Obj],
         };
 
-        const object = X$O();
+        const object = X$Obj();
 
         expect(Object.keys(object)).toEqual([]);
 
@@ -48,22 +48,31 @@ describe('constructors.O', () => {
 
     });
 
-    it('with params returns an object with specified keys, plus expected _metas_', () => {
+    it('with params returns an object with specified keys, existing keys and expected _metas_', () => {
+
+        const props = ['c', 'a', 'b'];
 
         const metas = {
-            [_props_]: ['a', 'b'],
+            [_props_]: props,
             [_atype_]: _obj_,
             [_2str_]:  X$obj2str,
             [_toses_]: [X$Obj],
         };
 
-        const object = X$O(
+        const obj = {
+            c: {c: 3},
+        };
+
+        const object = X$Obj(
+            obj,
             {[_key_]: 'a', [_val_]: 1},
             {[_key_]: 'b', [_val_]: 2},
         );
 
-        expect(Object.keys(object)).toEqual(['a', 'b']);
+        const keys = Object.keys(object);
 
+        expect(keys.length).toBe(props.length);
+        expect(object[_metas_][_props_]).toEqual(props);
         expect(object[_metas_]).toEqual(metas);
 
     });
@@ -76,7 +85,7 @@ describe('constructors.O', () => {
             [_toses_]: [X$Obj],
         };
 
-        expect(X$O(null)).toEqual({[_metas_]: metas});
+        expect(X$Obj(null)).toEqual({[_metas_]: metas});
 
     });
 
@@ -88,7 +97,7 @@ describe('constructors.O', () => {
             [_toses_]: [X$Obj],
         };
 
-        expect(X$O()).toEqual({[_metas_]: metas});
+        expect(X$Obj()).toEqual({[_metas_]: metas});
 
     });
 

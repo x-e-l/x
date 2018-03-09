@@ -6,9 +6,9 @@ const {
 
 const {X$fun2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$Fun, X$Obj, X$Cst} = require('../../src/boot/constructors');
+const {X$Fun, X$Obj, X$Cst} = require('../../src/boot/archetypes');
 
-describe('constructors.Fun', () => {
+describe('archetypes.Fun', () => {
 
     it('is a constructor', () => {
 

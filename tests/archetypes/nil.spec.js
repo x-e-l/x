@@ -6,9 +6,9 @@ const {
 
 const {X$nil2str, X$cst2str} = require('../../src/boot/stringers');
 
-const {X$Nil, X$Obj, X$Fun, X$Cst} = require('../../src/boot/constructors');
+const {X$Nil, X$Obj, X$Fun, X$Cst} = require('../../src/boot/archetypes');
 
-describe('constructors.Nil', () => {
+describe('archetypes.Nil', () => {
 
     it('is a constructor', () => {
 

@@ -1,8 +1,8 @@
 const {sorted} = require('./test-utils');
 
-const constructors = require('../src/boot/constructors');
+const constructors = require('../src/boot/archetypes');
 
-describe('constructors module', () => {
+describe('archetypes module', () => {
 
     const keys = sorted([
 
@@ -27,10 +27,8 @@ describe('constructors module', () => {
 
     });
 
-    it.skip('does not export extra keys', () => {
+    it('does not export extra keys', () => {
 
-        // there is a check ('test'===process.env.NODE_ENV) in constructors.js
-        // that exports Obj, Nil, Arr, Fun, Cst as well
         expect(Object.keys(constructors).length).toEqual(keys.length)
 
     });

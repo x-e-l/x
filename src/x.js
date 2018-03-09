@@ -11,5 +11,5 @@ module.exports = Object.freeze({
     ... require('./boot/setters'),
     ... require('./boot/objects'),
     ... require('./boot/stringers'),
-    ... require('./boot/constructors'),
+    ... require('./boot/archetypes'),
 });
