@@ -1,6 +1,7 @@
 const {nil, push$} = require('../u');
 
 const {_props_, _toses_, _metas_, _key_, _val_} = require('../symbols');
+const {X$last} = require('./arrays');
 const {X$metas, X$toses, X$props} = require('./getters');
 
 
@@ -80,11 +81,13 @@ const X$rset = (
 
 const X$tadd = (
 
-    ($, proto) => X$mset(
-        $,
-        _toses_,
-        push$(X$toses($), proto) // mutates values
-    )
+    ($, proto) => {
+        const toses = X$toses($);
+        if (X$last(toses) === proto) {
+            return $;
+        }
+        return X$mset($, _toses_, push$(toses, proto)); // mutates values
+    }
 
 
 );

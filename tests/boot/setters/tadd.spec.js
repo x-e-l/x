@@ -1,7 +1,7 @@
 const {_metas_, _toses_} = require('../../../src/symbols');
 const {X$tadd} = require('../../../src/boot/setters');
 
-describe('getters.padd', () => {
+describe('setters.tadd', () => {
 
     it('modifies the original object prototype array', () => {
 
@@ -26,17 +26,72 @@ describe('getters.padd', () => {
 
     });
 
+    it('adds only functions', () => {
+
+        const a = {a: 1};
+        const b = {b: 2};
+
+        const toses = [];
+
+        const obj = {a, b, [_metas_]: {[_toses_]: toses}};
+        const res = {a, b, [_metas_]: {[_toses_]: toses}};
+
+        expect(X$tadd(obj, 1)).toEqual(res);
+        expect(X$tadd(obj, false)).toEqual(res);
+        expect(X$tadd(obj, {})).toEqual(res);
+
+    });
+
+    it('works when _metas_ or _toses_ are nil', () => {
+
+        const a = {a: 1};
+        const b = {b: 2};
+
+        const f = $ => $;
+        const g = () => 8;
+
+        const obj1 = {a, b};
+        const res1 = {a, b, [_metas_]: {[_toses_]: [f]}};
+
+        expect(X$tadd(obj1, f)).toEqual(res1);
+
+        const obj2 = {a, b, [_metas_]: {}};
+        const res2 = {a, b, [_metas_]: {[_toses_]: [g]}};
+
+        expect(X$tadd(obj2, g)).toEqual(res2);
+
+    });
+
+    it('does not add the same function twice in a row', () => {
+
+        const a = {a: 1};
+        const b = {b: 2};
+
+        const f = $ => $;
+
+        const obj1 = {a, b, [_metas_]: {[_toses_]: [f]}};
+        const res1 = {a, b, [_metas_]: {[_toses_]: [f]}};
+
+        expect(X$tadd(obj1, f)).toEqual(res1);
+
+        const res2 = {a, b, [_metas_]: {[_toses_]: [f]}};
+
+        expect(X$tadd(obj1, f)).toEqual(res2);
+
+    });
+
     it('returns null for null object', () => {
+
         expect(X$tadd(null, 'a')).toBe(null);
+
     });
 
     it('returns undefined for undefined object', () => {
+
         expect(X$tadd(void 0, 'a')).toBe(void 0);
+
     });
 
-    // TODO: @azder: test if it adds only functions
-    // TODO: @azder: test if it works when _metas_ and/or _toses_ are nil
-    // TODO: @azder: test if same function is added twice in a row
 
 });
 

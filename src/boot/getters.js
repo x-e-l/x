@@ -3,7 +3,7 @@ const {isf, nil, owns, tstr} = require('../u');
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('../symbols');
 
 const {X$kv2ref} = require('./transformers');
-const {X$push, X$len, X$map} = require('./arrays');
+const {X$push, X$len, X$map, X$last} = require('./arrays');
 
 
 const X$metas = (
@@ -33,7 +33,17 @@ const X$props = (
 
 
 const X$tcat = (
-    ($, proto) => X$push(X$toses($), proto)
+    ($, proto) => {
+
+        const toses = X$toses($);
+
+        if (isf(proto) && X$last(toses) !== proto) {
+            return X$push(toses, proto)
+        }
+
+        return toses;
+
+    }
 );
 
 const X$pget = (

@@ -3,9 +3,9 @@ const {X$tcat} = require('../../../src/boot/getters');
 
 describe('getters.tcat', () => {
 
-    const a = {a: 1};
-    const b = {b: 2};
-    const c = {c: 3};
+    const a = $ => 1;
+    const b = $ => 2;
+    const c = $ => 3;
 
     const toses = [a, b];
 
@@ -28,9 +28,25 @@ describe('getters.tcat', () => {
 
     });
 
+    it('adds only functions', () => {
+
+        expect(X$tcat(obj, 1)).toEqual([a, b]);
+        expect(X$tcat(obj, false)).toEqual([a, b]);
+        expect(X$tcat(obj, {})).toEqual([a, b]);
+
+    });
+
+    it('does not add the same function twice in a row', () => {
+
+        expect(X$tcat(obj, c)).toEqual([a, b, c]);
+        expect(X$tcat(obj, c)).toEqual([a, b, c]);
+        expect(X$tcat(obj, c)).toEqual([a, b, c]);
+
+    });
+
     it('is giving back [item] for undefined object', () => {
 
-        expect(X$tcat(void 0, b)).toEqual([b]);
+        expect(X$tcat(void 0, c)).toEqual([c]);
 
     });
 
@@ -40,21 +56,29 @@ describe('getters.tcat', () => {
 
     });
 
-    it('is giving back [item] for undefined toses array', () => {
-
-        expect(X$tcat({}, b)).toEqual([b]);
-
-    });
-
-    it('is giving back [item] for null toses array', () => {
+    it('is giving back [item] for undefined metas object', () => {
 
         expect(X$tcat({}, c)).toEqual([c]);
 
     });
 
-    // TODO: @azder: test if it adds only functions
-    // TODO: @azder: test if it works when _metas_ are nil
-    // TODO: @azder: test if same function is added twice in a row
+    it('is giving back [item] for null metas object', () => {
+
+        expect(X$tcat({}, c)).toEqual([c]);
+
+    });
+
+    it('is giving back [item] for undefined toses array', () => {
+
+        expect(X$tcat({[_metas_]: {}}, c)).toEqual([c]);
+
+    });
+
+    it('is giving back [item] for null toses array', () => {
+
+        expect(X$tcat({[_metas_]: null}, c)).toEqual([c]);
+
+    });
 
 });
 
