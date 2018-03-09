@@ -5,6 +5,7 @@ const {
 
 const {iife, isf, tok, nil, ftos} = require('../u');
 
+const {X$isx} = require('./predicates');
 const {X$reduce} = require('./arrays');
 const {X$any2prx} = require('./transformers');
 const {X$tadd, X$rset, X$mset, X$preg} = require('./setters');
@@ -28,7 +29,7 @@ function Obj($, ...$$) {
 
 function Nil($, ...$$) {
 
-    $ = X$Obj($, ...$$);
+    $ = X$isx($) ? $ : X$Obj($, ...$$);
 
     X$mset($, _atype_, _nil_);
     X$mset($, _2str_, X$nil2str);
