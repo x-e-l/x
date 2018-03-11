@@ -1,4 +1,4 @@
-const {isf, nil, owns, tstr} = require('../u');
+const {isf, nil, owns, tstr, frz$} = require('../u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_, _2bul_} = require('../symbols');
 
@@ -108,7 +108,7 @@ const X$2bulf = (
 );
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     X$pget,
     X$pown,

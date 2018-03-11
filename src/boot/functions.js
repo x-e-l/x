@@ -1,4 +1,4 @@
-const {isf} = require('../u');
+const {isf, frz$} = require('../u');
 
 
 const X$call = (
@@ -13,7 +13,7 @@ const X$bind = (
 // TODO: @azder: maybe add a `X$dnib = ($,f,...$$) => ` and `X$lacc = ($,f,...$$) =>`
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
     X$call,
     X$bind,
 });

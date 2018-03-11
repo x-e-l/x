@@ -1,5 +1,5 @@
 const {_key_, _val_} = require('../symbols');
-const {isf, tok, nil} = require('../u');
+const {isf, tok, nil, frz$} = require('../u');
 
 const X$ident = (
     ($) => ($)
@@ -17,7 +17,7 @@ const X$obj2frz = (
         $ - 0 === $ || Number.isNaN($) ||   // number
         true === $ || false === $           // boolean
             ? $
-            : Object.freeze({...$})
+            : frz$({...$})
     )
 );
 
@@ -57,7 +57,7 @@ const X$itr2set = X$new2fun(Set);
 const X$str2err = X$new2fun(Error);
 const X$any2prx = X$new2fun(Proxy);
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     X$ident,
     X$2const,

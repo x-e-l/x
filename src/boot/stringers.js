@@ -1,4 +1,4 @@
-const {nil, f2s} = require('../u');
+const {nil, f2s, frz$} = require('../u');
 
 const {X$isnil, X$isarr, X$isfun} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');
@@ -68,7 +68,7 @@ const X$cst2str = (
 );
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
     X$obj2str,
     X$arr2str,
     X$fun2str,

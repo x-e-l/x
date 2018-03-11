@@ -1,4 +1,6 @@
-module.exports = Object.freeze({
+const {frz$} = require('./u');
+
+module.exports = frz$({
     // no imports
     ... require('./symbols'),
     ... require('./boot/functions'),

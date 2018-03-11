@@ -1,4 +1,4 @@
-const {nil} = require('../u');
+const {nil, frz$} = require('../u');
 
 const X$len = (
     ($) => ($ && $.length - 0) || 0
@@ -47,7 +47,7 @@ const X$reduce = (
     }
 );
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     X$len,
     X$first,

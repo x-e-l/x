@@ -1,4 +1,4 @@
-const {tok, nan} = require('../u');
+const {tok, nan, frz$} = require('../u');
 const {_2bul_, _2str_, X$O, X$Obj, X$Cst, X$mset, X$2bul} = require('../x');
 
 
@@ -36,7 +36,7 @@ const X$Bul = X$Cst(function Bul($, ...$$) {
 });
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     X$Bul,
 

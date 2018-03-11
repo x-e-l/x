@@ -3,7 +3,7 @@ const {
     _2str_, _call_, _toses_, _metas_
 } = require('../symbols');
 
-const {iife, isf, tok, nil, ftos} = require('../u');
+const {iife, isf, tok, nil, ftos, frz$} = require('../u');
 
 const {X$isx} = require('./predicates');
 const {X$reduce} = require('./arrays');
@@ -138,7 +138,7 @@ const X$O = iife(() => {
 });
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     X$O,
 

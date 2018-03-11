@@ -1,4 +1,4 @@
-const {nil} = require('../u');
+const {nil, frz$} = require('../u');
 const {X$call} = require('./functions');
 const {X$itr2set} = require('./transformers');
 const {X$props, X$2strf, X$2bulf} = require('./getters');
@@ -26,7 +26,7 @@ const X$2bul = (
     ($) => X$call(X$2bulf($), $)
 );
 
-module.exports = Object.freeze({
+module.exports = frz$({
     X$df,
     X$has,
     X$2str,

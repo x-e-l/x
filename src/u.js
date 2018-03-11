@@ -37,6 +37,7 @@ const owns = Object.getOwnPropertySymbols;
 const tstr = Function.prototype.call.bind(Object.prototype.toString);
 
 const nan = Number.isNaN;
+const frz$ = Object.freeze;
 
 const push$ = (
     ($, item) => {
@@ -46,7 +47,7 @@ const push$ = (
 );
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     isf,
     tok,
@@ -63,6 +64,7 @@ module.exports = Object.freeze({
 
     nan,
 
+    frz$,
     push$,
 
 });

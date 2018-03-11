@@ -1,5 +1,5 @@
 const u = require('../src/u');
-const {isf, tok, iife, nil, prim, ftos, nan, owns} = u;
+const {isf, tok, iife, nil, prim, ftos, nan, owns, frz$} = u;
 
 describe('u', () => {
 
@@ -184,6 +184,12 @@ describe('u', () => {
     it('has `nan` that is an alias for `Number.isNaN`', () => {
 
         expect(nan).toBe(Number.isNaN);
+
+    });
+
+    it('has `frz$` that is an alias for `Object.freeze`', () => {
+
+        expect(frz$).toBe(Object.freeze);
 
     });
 

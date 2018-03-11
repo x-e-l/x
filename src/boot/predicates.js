@@ -1,3 +1,5 @@
+const {frz$} = require('../u');
+
 const {
     _metas_, _atype_,
     _nil_, _arr_, _fun_, _cst_,
@@ -31,7 +33,7 @@ const X$isobj = (
 );
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
 
     X$isx,
 

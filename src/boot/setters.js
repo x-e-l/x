@@ -1,4 +1,4 @@
-const {nil, push$} = require('../u');
+const {nil, push$, frz$} = require('../u');
 
 const {_props_, _toses_, _metas_, _key_, _val_} = require('../symbols');
 const {X$last} = require('./arrays');
@@ -93,7 +93,7 @@ const X$tadd = (
 );
 
 
-module.exports = Object.freeze({
+module.exports = frz$({
     X$preg,
     X$pset,
     X$mset,
