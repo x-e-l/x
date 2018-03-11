@@ -1,7 +1,8 @@
 const {isf, nil, owns, tstr} = require('../u');
 
-const {_toses_, _props_, _metas_, _2str_, _call_, _2len_} = require('../symbols');
+const {_toses_, _props_, _metas_, _2str_, _call_, _2len_, _2bul_} = require('../symbols');
 
+const {X$isx, X$isnil} = require('./predicates');
 const {X$kv2ref} = require('./transformers');
 const {X$push, X$len, X$map, X$last} = require('./arrays');
 
@@ -95,6 +96,18 @@ const X$2lenf = (
 );
 
 
+const X$2bul = (
+    ($) =>
+        X$isx($)
+            ? ($) => !X$isnil($)
+            : ($) => !!$
+);
+
+const X$2bulf = (
+    ($) => X$mget($, _2bul_) || X$2bul($)
+);
+
+
 module.exports = Object.freeze({
 
     X$pget,
@@ -112,6 +125,7 @@ module.exports = Object.freeze({
     X$callf,
     X$2strf,
     X$2lenf,
+    X$2bulf,
 
 });
 

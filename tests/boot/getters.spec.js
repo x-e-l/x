@@ -21,6 +21,7 @@ describe('getters module', () => {
         'X$callf',
         'X$2strf',
         'X$2lenf',
+        'X$2bulf',
 
     ]);
 
@@ -38,6 +39,7 @@ describe('getters module', () => {
 
     it('does not export extra keys', () => {
 
+        expect(Object.keys(getters).sort()).toEqual(keys);
         expect(Object.keys(getters).length).toEqual(keys.length)
 
     });

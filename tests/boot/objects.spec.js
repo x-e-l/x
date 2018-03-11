@@ -10,6 +10,7 @@ describe('objects module', () => {
         'X$df',
         'X$has',
         'X$2str',
+        'X$2bul',
 
     ]);
 
@@ -28,6 +29,7 @@ describe('objects module', () => {
 
     it('does not export extra keys', () => {
 
+        expect(Object.keys(objects).sort()).toEqual(keys);
         expect(Object.keys(objects).length).toEqual(keys.length)
 
     });

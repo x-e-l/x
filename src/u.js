@@ -5,8 +5,12 @@
 const isf = ($ => typeof $ === 'function');
 
 
-// noinspection JSUnusedLocalSymbols
-const tok = ($ => ($$) => $);
+const tok = ($ => {
+    // noinspection JSUnusedLocalSymbols
+    // noinspection UnnecessaryLocalVariableJS
+    const K = ($$) => $;
+    return K;
+});
 
 
 const iife = ($ => isf($) ? $() : $);

@@ -6,7 +6,7 @@ const {
 
 
 const X$isx = (
-    ($) => !!$ && !!$[_metas_]
+    ($) => !!($ && $[_metas_])
 );
 
 
