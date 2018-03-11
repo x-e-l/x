@@ -1,40 +1,38 @@
-const {tok} = require('../u');
-const {_2bul_, _2str_, X$Obj, X$Cst, X$mset, X$2bul} = require('../x');
+const {tok, nan} = require('../u');
+const {_2bul_, _2str_, X$O, X$Obj, X$Cst, X$mset, X$2bul} = require('../x');
 
 
 const TRU = '⊨';
 const FAL = '⊭';
 
 
-const tru = (
-    ($, ...$$) =>
-        X$mset(
-            X$mset(
-                X$Obj($, ...$$),
-                _2bul_,
-                tok(true)
-            ),
-            _2str_,
-            tok(TRU)
-        )
-);
-
-const fal = (
-    ($, ...$$) =>
-        X$mset(
-            X$mset(
-                X$Obj($, ...$$),
-                _2bul_,
-                tok(false)
-            ),
-            _2str_,
-            tok(FAL)
-        )
+const mset$ = (
+    ($, $b, $s) => X$mset(X$mset($, _2bul_, tok($b)), _2str_, tok($s))
 );
 
 
 const X$Bul = X$Cst(function Bul($, ...$$) {
-    return X$2bul($) ? tru($, ...$$) : fal($, ...$$);
+
+    // check for $ being primitive, since it will not allow adding properties
+
+    if (null === $ || void 0 === $ || false === $ || '' === $ || 0 === $ || nan($)) {
+        return mset$(X$O(...$$), $, FAL);
+    }
+
+    if (true === $) {
+        return mset$(X$O(...$$), $, TRU);
+    }
+
+    const type = typeof $;
+
+    if ('string' === type || 'number' === type) {
+        return mset$(X$O(...$$), $, TRU);
+    }
+
+    return X$2bul($)
+        ? mset$(X$Obj($, ...$$), true, TRU)
+        : mset$(X$Obj($, ...$$), false, FAL);
+
 });
 
 

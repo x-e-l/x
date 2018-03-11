@@ -1,5 +1,5 @@
 const u = require('../src/u');
-const {isf, tok, iife, nil} = u;
+const {isf, tok, iife, nil, prim, ftos, nan, owns} = u;
 
 describe('u', () => {
 
@@ -135,5 +135,58 @@ describe('u', () => {
         });
 
     });
+
+    describe('has `prim` that', () => {
+
+        it('returns `true` for primitive values', () => {
+
+            expect([void 0, prim()]).toEqual([void 0, true]);
+            expect([null, prim(null)]).toEqual([null, true]);
+
+            expect(['', prim('')]).toEqual(['', true]);
+
+            expect([0, prim(0)]).toEqual([0, true]);
+            expect([NaN, prim(NaN)]).toEqual([NaN, true]);
+
+            expect([false, prim(false)]).toEqual([false, true]);
+            expect([true, prim(true)]).toEqual([true, true]);
+
+        });
+
+        it('returns `false` for non primitive values', () => {
+
+            expect(prim({})).toBe(false);
+            expect(prim([])).toBe(false);
+
+            // noinspection JSPrimitiveTypeWrapperUsage
+            expect(prim(new Boolean())).toBe(false);
+            // noinspection JSPrimitiveTypeWrapperUsage
+            expect(prim(new String())).toBe(false);
+            // noinspection JSPrimitiveTypeWrapperUsage
+            expect(prim(new Number())).toBe(false);
+
+        });
+
+    });
+
+    it('has `owns` that is an alias for `Object.getOwnPropertySymbols`', () => {
+
+        expect(owns).toBe(Object.getOwnPropertySymbols);
+
+    });
+
+    it('has `ftos` that is an alias for `Funtion.prototype.toString`', () => {
+
+        expect(ftos).toBe(Function.prototype.toString);
+
+    });
+
+    it('has `nan` that is an alias for `Number.isNaN`', () => {
+
+        expect(nan).toBe(Number.isNaN);
+
+    });
+
+    // TODO: @azder: add tests for f2s, tstr, push$,
 
 });

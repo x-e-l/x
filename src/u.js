@@ -21,6 +21,12 @@ const nil = (
 );
 
 
+const primitives = ['boolean', 'number', 'string'];
+const prim = (
+    ($) => nil($) || primitives.includes(typeof $)
+);
+
+
 const f2s = (
     ($) => $ && isf($) && $.name ? $.name : $
 );
@@ -30,6 +36,7 @@ const ftos = Function.prototype.toString;
 const owns = Object.getOwnPropertySymbols;
 const tstr = Function.prototype.call.bind(Object.prototype.toString);
 
+const nan = Number.isNaN;
 
 const push$ = (
     ($, item) => {
@@ -44,13 +51,17 @@ module.exports = Object.freeze({
     isf,
     tok,
     iife,
+
     nil,
+    prim,
 
     f2s,
 
     ftos,
     owns,
     tstr,
+
+    nan,
 
     push$,
 
