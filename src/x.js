@@ -1,17 +1,7 @@
 const {frz$} = require('./u');
 
 module.exports = frz$({
-    // no imports
-    ... require('./symbols'),
-    ... require('./boot/functions'),
-    ... require('./boot/arrays'),
-    // single import
-    ... require('./boot/predicates'),
-    ... require('./boot/transformers'),
-    // triple and multiple imports
-    ... require('./boot/getters'),
-    ... require('./boot/setters'),
-    ... require('./boot/objects'),
-    ... require('./boot/stringers'),
-    ... require('./boot/archetypes'),
+    ... require('./boot'),
+    ... require('./csts/bul'),
+    ... require('./ops/logic'),
 });
