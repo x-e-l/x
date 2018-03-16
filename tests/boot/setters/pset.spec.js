@@ -1,4 +1,4 @@
-const {_metas_, _props_} = require('../../../src/symbols');
+const {_metas_, _props_, _atype_, _nil_, _2str_} = require('../../../src/symbols');
 const {X$pset} = require('../../../src/boot/setters');
 
 describe('setters.pset', () => {
@@ -65,19 +65,52 @@ describe('setters.pset', () => {
     });
 
     it('returns null for null object', () => {
+
         expect(X$pset(null, 'a')).toBe(null);
+
     });
 
     it('returns undefined for undefined object', () => {
+
         expect(X$pset(void 0, 'a')).toBe(void 0);
+
     });
 
-    it.skip('returns Err object for null key', () => {
-        expect(X$pset({}, null));
+    it.skip('throws error for trying to modify Nil object', () => {
+
+        const obj = {
+            [_metas_]: {
+                [_atype_]: _nil_,
+                [_2str_]:  () => 'actual Nil object'
+            }
+        };
+
+        expect(
+            () => X$pset(obj)
+        ).toThrow(
+            /^X-NILMOD: X\$pset\(actual Nil object,_\)/
+        );
+
     });
 
-    it.skip('returns Err object for undefined key', () => {
-        expect(X$pset({}, void 0));
+    it.skip('throws error for null key', () => {
+
+        expect(
+            () => X$pset({}, null)
+        ).toThrow(
+            /^X-NILKEY: X\$pset\(_,null\)/
+        );
+
+    });
+
+    it.skip('throws error for undefined key', () => {
+
+        expect(
+            () => X$pset({})
+        ).toThrow(
+            /^X-NILKEY: X\$pset\(_,undefined\)/
+        );
+
     });
 
 

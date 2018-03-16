@@ -39,17 +39,23 @@ const X$preg = (
 
 const X$pset = (
 
-    ($, k, v) => {
+    ($, $key, $val) => {
 
         if (nil($)) {
             return $;
         }
 
-        // TODO: @azder: check k as well, maybe return Err()
+        // if (X$isnil($)) {
+        //     throw Error(`${NILMOD}: X$pset(${X$2str($)},_)`);
+        // }
+        //
+        // if (nil($key)) {
+        //     throw Error(`${NILKEY}: X$pset(_,${$key})`);
+        // }
 
-        $[k] = v; // mutates value
+        $[$key] = $val; // mutates value
 
-        return X$preg($, k); // mutates value
+        return X$preg($, $key); // mutates value
 
     }
 
