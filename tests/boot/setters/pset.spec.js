@@ -76,7 +76,7 @@ describe('setters.pset', () => {
 
     });
 
-    it.skip('throws error for trying to modify Nil object', () => {
+    it('throws error for trying to modify Nil object', () => {
 
         const obj = {
             [_metas_]: {
@@ -93,7 +93,7 @@ describe('setters.pset', () => {
 
     });
 
-    it.skip('throws error for null key', () => {
+    it('throws error for null key', () => {
 
         expect(
             () => X$pset({}, null)
@@ -103,7 +103,7 @@ describe('setters.pset', () => {
 
     });
 
-    it.skip('throws error for undefined key', () => {
+    it('throws error for undefined key', () => {
 
         expect(
             () => X$pset({})

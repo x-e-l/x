@@ -45,13 +45,13 @@ const X$pset = (
             return $;
         }
 
-        // if (X$isnil($)) {
-        //     throw Error(`${NILMOD}: X$pset(${X$2str($)},_)`);
-        // }
-        //
-        // if (nil($key)) {
-        //     throw Error(`${NILKEY}: X$pset(_,${$key})`);
-        // }
+        if (X$isnil($)) {
+            throw Error(`${NILMOD}: X$pset(${X$2str($)},_)`);
+        }
+
+        if (nil($key)) {
+            throw Error(`${NILKEY}: X$pset(_,${$key})`);
+        }
 
         $[$key] = $val; // mutates value
 
