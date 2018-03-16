@@ -1,4 +1,4 @@
-const {_metas_, _props_} = require('../../../src/symbols');
+const {_metas_, _atype_, _nil_, _2str_} = require('../../../src/symbols');
 const {X$mset} = require('../../../src/boot/setters');
 
 describe('setters.mset', () => {
@@ -34,12 +34,41 @@ describe('setters.mset', () => {
         expect(X$mset(void 0, 'a')).toBe(void 0);
     });
 
-    it.skip('returns Err object for null key', () => {
-        expect(X$mset({}, null));
+    it.skip('throws error for trying to modify Nil object', () => {
+
+        const obj = {
+            [_metas_]: {
+                [_atype_]: _nil_,
+                [_2str_]:  () => 'actual Nil object'
+            }
+        };
+
+        expect(
+            () => X$mset(obj)
+        ).toThrow(
+            /^X-NILMOD: X\$mset\(actual Nil object,_\)/
+        );
+
     });
 
-    it.skip('returns Err object for undefined key', () => {
-        expect(X$mset({}, void 0));
+    it.skip('throws error for null key', () => {
+
+        expect(
+            () => X$mset({}, null)
+        ).toThrow(
+            /^X-NILKEY: X\$mset\(_,null\)/
+        );
+
+    });
+
+    it.skip('throws error for undefined key', () => {
+
+        expect(
+            () => X$mset({})
+        ).toThrow(
+            /^X-NILKEY: X\$mset\(_,undefined\)/
+        );
+
     });
 
 
