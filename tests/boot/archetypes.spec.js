@@ -7,11 +7,14 @@ describe('archetypes module', () => {
     const keys = sorted([
 
         'X$O',
+
         'X$Obj',
         'X$Nil',
         'X$Arr',
         'X$Fun',
         'X$Cst',
+
+        'X$Err',
 
     ]);
 

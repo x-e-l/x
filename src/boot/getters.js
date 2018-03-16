@@ -1,4 +1,4 @@
-const {isf, nil, owns, tstr, frz$} = require('../u');
+const {isf, nil, owns, otos, frz$} = require('../u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_, _2bul_} = require('../symbols');
 
@@ -79,7 +79,7 @@ const X$callf = (
 const X$2str = (
     ($) => $ && $.toString
         ? $.toString()
-        : (nil($) ? '' : '' + tstr($))
+        : (nil($) ? '' : '' + otos($))
 );
 
 const X$2strf = (

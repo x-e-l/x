@@ -3,11 +3,12 @@ const {
     _2str_, _call_, _toses_, _metas_
 } = require('../symbols');
 
-const {iife, isf, tok, nil, ftos, frz$} = require('../u');
+const {iife, isf, tok, nil, ftos, ownk, frz$} = require('../u');
 
-const {X$isx} = require('./predicates');
+const {X$isx, X$isnil} = require('./predicates');
+const {X$2str} = require('./objects');
 const {X$reduce} = require('./arrays');
-const {X$any2prx} = require('./transformers');
+const {X$any2prx, X$kv2ref} = require('./transformers');
 const {X$tadd, X$rset, X$mset, X$preg} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./stringers');
 
@@ -38,6 +39,19 @@ function Nil($, ...$$) {
 
 }
 
+function Err($, ...$$) {
+
+    const $error = X$isx($)
+        ? Error(X$2str($))
+        : ($ instanceof Error ? $ : Error($));
+
+    const $erefs = ownk($error).map(key => X$kv2ref(key, $error[key]));
+    const $orefs = nil($) ? [] : ownk($).map(key => X$kv2ref(key, $[key]));
+
+    return X$Nil($error, ...$erefs, ...$orefs, ...$$);
+
+}
+
 function Arr($, ...$$) {
 
     $ = X$Obj(nil($) ? [] : $, ...$$);
@@ -64,11 +78,25 @@ function Fun($, ...$$) {
 
 const proxy$ = (
     ($) => {
+        // noinspection JSUnusedGlobalSymbols
         const $new = X$any2prx(
             $,
             {
                 // adds the proxy to the toses array of the created object when called
-                apply: ($old, _, $$) => X$tadd($old.apply(null, $$), $new),
+                apply: function apply($old, _, [$, ...$$]) {
+
+                    if (X$isnil($)) {
+                        return $;
+                    }
+
+                    try {
+                        return X$tadd($old.apply(null, [$, ...$$]), $new);
+                    } catch (e) {
+                        // noinspection JSUnresolvedFunction
+                        Error.captureStackTrace(e, apply); // captureStackTrace is v8/nodejs specific
+                        return X$Err(e);
+                    }
+                },
                 // workaround for proxied functions not using Function.prototype.toString
                 get:   ($, k) => 'toString' === k ? ftos.bind($) : $[k],
             }
@@ -100,10 +128,12 @@ function Cst($, ...$$) {
 
 }
 
+
 const X$Obj = Cst(Obj);
 const X$Nil = Cst(Nil);
 const X$Arr = Cst(Arr);
 const X$Fun = Cst(Fun);
+const X$Err = Cst(Err);
 
 
 const X$Cst = iife(() => {
@@ -140,12 +170,17 @@ const X$O = iife(() => {
 
 module.exports = frz$({
 
+    // null object helper
     X$O,
 
+    // actual archetypes
     X$Obj,
     X$Nil,
     X$Arr,
     X$Fun,
     X$Cst,
+
+    // nil constructor for errors
+    X$Err,
 
 });

@@ -1,5 +1,5 @@
 const u = require('../src/u');
-const {isf, tok, iife, nil, prim, ftos, nan, owns, frz$} = u;
+const {isf, tok, iife, nil, prim, ftos, nan, owns, ownk, frz$} = u;
 
 describe('u', () => {
 
@@ -175,6 +175,12 @@ describe('u', () => {
 
     });
 
+    it('has `ownk` that is an alias for `Object.getOwnPropertyNames`', () => {
+
+        expect(ownk).toBe(Object.getOwnPropertyNames);
+
+    });
+
     it('has `ftos` that is an alias for `Funtion.prototype.toString`', () => {
 
         expect(ftos).toBe(Function.prototype.toString);
@@ -193,6 +199,7 @@ describe('u', () => {
 
     });
 
-    // TODO: @azder: add tests for f2s, tstr, push$,
+
+    // TODO: @azder: add tests for f2s, otos , push$,
 
 });

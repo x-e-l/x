@@ -26,15 +26,16 @@ const prim = (
     ($) => nil($) || primitives.includes(typeof $)
 );
 
-
 const f2s = (
     ($) => $ && isf($) && $.name ? $.name : $
 );
 
 
 const ftos = Function.prototype.toString;
+const otos = Function.prototype.call.bind(Object.prototype.toString);
+
 const owns = Object.getOwnPropertySymbols;
-const tstr = Function.prototype.call.bind(Object.prototype.toString);
+const ownk = Object.getOwnPropertyNames;
 
 const nan = Number.isNaN;
 const frz$ = Object.freeze;
@@ -59,8 +60,9 @@ module.exports = frz$({
     f2s,
 
     ftos,
+    otos,
     owns,
-    tstr,
+    ownk,
 
     nan,
 
