@@ -55,7 +55,7 @@ describe('setters.mset', () => {
 
     });
 
-    it.skip('throws error for null key', () => {
+    it('throws error for null key', () => {
 
         expect(
             () => X$mset({}, null)
@@ -65,7 +65,7 @@ describe('setters.mset', () => {
 
     });
 
-    it.skip('throws error for undefined key', () => {
+    it('throws error for undefined key', () => {
 
         expect(
             () => X$mset({})

@@ -72,10 +72,10 @@ const X$mset = (
         // if (X$isnil($)) {
         //     throw Error(`${NILMOD}: X$mset(${X$2str($)},_)`);
         // }
-        //
-        // if (nil($key)) {
-        //     throw Error(`${NILKEY}: X$mset(_,${$key})`);
-        // }
+
+        if (nil($key)) {
+            throw Error(`${NILKEY}: X$mset(_,${$key})`);
+        }
 
         const metas = X$metas($);
 
