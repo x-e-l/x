@@ -70,13 +70,21 @@ describe('archetypes.O', () => {
 
     it('returns an object with no keys, except default _metas_, for null', () => {
 
-        const metas = {
-            [_atype_]: _obj_,
-            [_2str_]:  X$obj2str,
-            [_toses_]: [X$Obj],
-        };
+        const object = X$O(null);
 
-        expect(X$O(null)).toEqual({[_metas_]: metas});
+        expect(object.stack).toBe()
+
+        expect(
+            object
+        ).toEqual(
+            {
+                [_metas_]: {
+                    [_atype_]: _obj_,
+                    [_2str_]:  X$obj2str,
+                    [_toses_]: [X$Obj],
+                }
+            }
+        );
 
     });
 

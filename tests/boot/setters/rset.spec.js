@@ -1,4 +1,4 @@
-const {_metas_, _props_, _key_, _val_} = require('../../../src/symbols');
+const {_metas_, _props_, _key_, _val_, _atype_, _nil_, _2str_} = require('../../../src/symbols');
 const {X$rset} = require('../../../src/boot/setters');
 
 describe('setters.rset', () => {
@@ -59,19 +59,33 @@ describe('setters.rset', () => {
     });
 
     it('returns null for null object', () => {
+
         expect(X$rset(null, 'a')).toBe(null);
+
     });
 
     it('returns undefined for undefined object', () => {
+
         expect(X$rset(void 0, 'a')).toBe(void 0);
+
     });
 
-    it.skip('returns Err object for null key', () => {
-        expect(X$rset({}, null));
-    });
 
-    it.skip('returns Err object for undefined key', () => {
-        expect(X$rset({}, void 0));
+    it('throws error for trying to modify Nil object', () => {
+
+        const obj = {
+            [_metas_]: {
+                [_atype_]: _nil_,
+                [_2str_]:  () => 'actual Nil object'
+            }
+        };
+
+        expect(
+            () => X$rset(obj)
+        ).toThrow(
+            /^X-NILMOD: X\$rset\(actual Nil object,_\)/
+        );
+
     });
 
 
