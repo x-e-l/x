@@ -27,11 +27,15 @@ describe('setters.mset', () => {
     });
 
     it('returns null for null object', () => {
+
         expect(X$mset(null, 'a')).toBe(null);
+
     });
 
     it('returns undefined for undefined object', () => {
+
         expect(X$mset(void 0, 'a')).toBe(void 0);
+
     });
 
     it.skip('throws error for trying to modify Nil object', () => {
