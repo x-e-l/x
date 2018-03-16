@@ -9,9 +9,6 @@ describe('setters.preg', () => {
         const b = {b: 2};
         const c = {c: 3};
 
-        const d = {d: 4};
-        const e = {e: 5};
-
         const obj = {a, b, c, [_metas_]: {[_props_]: ['a', 'b', 'c']}};
 
         const actual1 = X$preg(obj, 'a');
@@ -34,7 +31,6 @@ describe('setters.preg', () => {
 
         const a = {a: 1};
         const b = {b: 2};
-        const c = {c: 3};
 
         const obj = {a, b, [_metas_]: {[_props_]: ['a', 'b']}};
 
