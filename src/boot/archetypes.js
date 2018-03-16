@@ -32,10 +32,12 @@ function Nil($, ...$$) {
 
     $ = X$isx($) ? $ : X$Obj($, ...$$);
 
-    X$mset($, _atype_, _nil_);
     X$mset($, _2str_, X$nil2str);
 
-    return $;
+    // must be last change since it is a flag for immutability
+    X$mset($, _atype_, _nil_);
+
+    return frz$($);
 
 }
 

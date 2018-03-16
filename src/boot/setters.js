@@ -46,6 +46,7 @@ const X$pset = (
         }
 
         if (X$isnil($)) {
+            // TODO: @azder: should probably throw (check X$mset)
             return $;
         }
 
@@ -69,10 +70,12 @@ const X$mset = (
             return $;
         }
 
-        // if (X$isnil($)) {
-        //     // throw Error(`${NILMOD}: X$mset(${X$2str($)},_)`);
-        //     throw Error(`${NILMOD}: X$mset(${$},_)`);
-        // }
+        if (X$isnil($)) {
+            // throw Error(`${NILMOD}: X$mset(${X$2str($)},_)`);
+            // throw Error(`${NILMOD}: X$mset(${$},_)`);
+            // TODO: @azder: should probably throw, check if JEST can work with the above
+            return $;
+        }
 
         if (nil($key)) {
             throw Error(`${NILKEY}: X$mset(_,${$key})`);
