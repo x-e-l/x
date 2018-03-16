@@ -1,6 +1,6 @@
-const {X$df} = require('../../../src/boot/objects');
+const {X$df} = require('../../src/ops/misc');
 
-describe('objects.df', () => {
+describe('operators.misc.df', () => {
 
     it('returns the second parameter when not null or undefined', () => {
 

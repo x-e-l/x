@@ -1,7 +1,7 @@
 const {_metas_, _props_} = require('../../src/symbols');
 const {X$has} = require('../../src/ops/reflect');
 
-describe('objects.has', () => {
+describe('operators.reflect.has', () => {
 
     it('returns true if key exists in the props meta of the object', () => {
 

@@ -2,7 +2,7 @@ const {_metas_, _2bul_} = require('../../src/symbols');
 const {X$ba} = require('../../src/ops/logic');
 
 
-describe('logic.ba', () => {
+describe('operators.logic.ba', () => {
 
     it('returns true object for objects with _2bul_ that return true', () => {
 

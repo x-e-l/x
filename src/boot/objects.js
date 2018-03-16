@@ -1,12 +1,7 @@
-const {nil, frz$} = require('../u');
+const {frz$} = require('../u');
 
 const {X$call} = require('./functions');
 const {X$2strf, X$2bulf} = require('./getters');
-
-
-const X$df = (
-    ($, v) => nil(v) ? $ : v
-);
 
 
 const X$2str = (
@@ -20,7 +15,6 @@ const X$2bul = (
 
 
 module.exports = frz$({
-    X$df,
     X$2str,
     X$2bul,
 });

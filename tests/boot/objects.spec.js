@@ -7,7 +7,6 @@ describe('objects module', () => {
 
     const keys = sorted([
 
-        'X$df',
         'X$2str',
         'X$2bul',
 
