@@ -1,25 +1,34 @@
 const {nil, push$, frz$} = require('../u');
+const {NILMOD, NILKEY} = require('../e');
 
 const {_props_, _toses_, _metas_, _key_, _val_} = require('../symbols');
+const {X$isnil} = require('./predicates');
 const {X$last} = require('./arrays');
 const {X$metas, X$toses, X$props} = require('./getters');
+const {X$2str} = require('./objects');
 
 
 const X$preg = (
 
-    ($, k) => {
+    ($, $key) => {
 
         if (nil($)) {
             return $;
         }
 
-        // TODO: @azder: check k as well, maybe return Err()
+        if (X$isnil($)) {
+            throw Error(`${NILMOD}: X$preg(${X$2str($)},_)`);
+        }
+
+        if (nil($key)) {
+            throw Error(`${NILKEY}: X$preg(_,${$key})`);
+        }
 
         /**@type Array*/
         const props = X$props($);
         const metas = X$metas($);
 
-        metas[_props_] = props.includes(k) ? props : push$(props, k); // mutates values
+        metas[_props_] = props.includes($key) ? props : push$(props, $key); // mutates values
         $[_metas_] = metas; // mutates value
 
         return $;
@@ -48,17 +57,23 @@ const X$pset = (
 
 const X$mset = (
 
-    ($, k, v) => {
+    ($, $key, $val) => {
 
         if (nil($)) {
             return $;
         }
 
-        // TODO: @azder: check k as well, maybe return Err()
+        if (X$isnil($)) {
+            throw Error(`${NILMOD}: X$mset(${X$2str($)},_)`);
+        }
+
+        if (nil($key)) {
+            throw Error(`${NILKEY}: X$mset(_,${$key})`);
+        }
 
         const metas = X$metas($);
 
-        metas[k] = v; // mutates value
+        metas[$key] = $val; // mutates value
         $[_metas_] = metas; // mutates value
 
         return $;
@@ -68,13 +83,15 @@ const X$mset = (
 
 const X$rset = (
 
-    ($, ref) => (
-        nil($)
-        ||
-        nil(ref) // TODO: @azder: return Err()
-    )
-        ? $
-        : X$pset($, ref[_key_], ref[_val_]) // mutates values
+    ($, $ref) => {
+
+        if (nil($ref)) {
+            throw Error(`${NILMOD}: X$rset(${X$2str($)},_)`);
+        }
+
+        return nil($) ? $ : X$pset($, $ref[_key_], $ref[_val_]) // mutates values
+
+    }
 
 );
 

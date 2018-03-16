@@ -19,7 +19,7 @@ function Obj($, ...$$) {
 
     $ = X$reduce(Object.keys($), $, X$preg);
 
-    $ = X$reduce($$, $, X$rset);
+    $ = X$reduce($$, $, ($obj, $ref) => nil($ref) ? $obj : X$rset($obj, $ref));
 
     X$mset($, _atype_, _obj_);
     X$mset($, _2str_, X$obj2str);
@@ -98,7 +98,11 @@ const proxy$ = (
                     }
                 },
                 // workaround for proxied functions not using Function.prototype.toString
-                get:   ($, k) => 'toString' === k ? ftos.bind($) : $[k],
+                get:   ($, k) => (
+                    'toString' === k
+                        ? (/**@type function*/ftos).bind($)
+                        : $[k]
+                ),
             }
         );
         return $new;

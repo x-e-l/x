@@ -1,4 +1,6 @@
 const {nil, frz$} = require('../u');
+const {NILKEY} = require('../e');
+
 const {X$call} = require('./functions');
 const {X$itr2set} = require('./transformers');
 const {X$props, X$2strf, X$2bulf} = require('./getters');
@@ -8,14 +10,23 @@ const X$df = (
 );
 
 const X$has = (
-    ($, k) => (
-        nil($)
-            ? $
-            : (
-                /**@type{function(*=): Set<*>}*/
-                X$itr2set(X$props($))
-            ).has(k)
-    )
+
+    ($, $key) => {
+
+        if (nil($)) {
+            return $;
+        }
+
+        if (nil($key)) {
+            throw Error(`${NILKEY}: X$has(_,${$key})`);
+        }
+
+        return (
+            /**@type{function(*=): Set<*>}*/
+            X$itr2set(X$props($))
+        ).has($key)
+    }
+
 );
 
 const X$2str = (

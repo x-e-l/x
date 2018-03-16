@@ -37,13 +37,62 @@ describe('objects.has', () => {
         expect(X$has()).toBe(void 0);
     });
 
-    it.skip('returns Err() for null key', () => {
-        expect(X$has({}, null)).toBe(null);
+    it('returns false for null key', () => {
+
+        const obj1 = {};
+        const obj2 = {[null]: 1};
+        const obj3 = {[null]: 1, [_metas_]: {[_props_]: [null]}};
+
+        const expected = /^X-NILKEY: X\$has\(_,null\)/;
+
+        expect(
+            () => X$has(obj1, null)
+        ).toThrow(
+            expected
+        );
+
+        expect(
+            () => X$has(obj2, null)
+        ).toThrow(
+            expected
+        );
+
+        expect(
+            () => X$has(obj3, null)
+        ).toThrow(
+            expected
+        );
+
     });
 
-    it.skip('returns Err() for undefined key', () => {
-        expect(X$has({})).toBe(void 0);
+    it('throws error for undefined key', () => {
+
+        const obj1 = {};
+        const obj2 = {[void 0]: 1};
+        const obj3 = {[void 0]: 1, [_metas_]: {[_props_]: [void 0]}};
+
+        const expected = /^X-NILKEY: X\$has\(_,undefined\)/;
+
+        expect(
+            () => X$has(obj1)
+        ).toThrow(
+            expected
+        );
+
+        expect(
+            () => X$has(obj2)
+        ).toThrow(
+            expected
+        );
+
+        expect(
+            () => X$has(obj3)
+        ).toThrow(
+            expected
+        );
+
     });
+
 
 });
 
