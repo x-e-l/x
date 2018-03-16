@@ -46,7 +46,7 @@ const X$pset = (
         }
 
         if (X$isnil($)) {
-            throw Error(`${NILMOD}: X$pset(${X$2str($)},_)`);
+            return $;
         }
 
         if (nil($key)) {
@@ -70,7 +70,8 @@ const X$mset = (
         }
 
         // if (X$isnil($)) {
-        //     throw Error(`${NILMOD}: X$mset(${X$2str($)},_)`);
+        //     // throw Error(`${NILMOD}: X$mset(${X$2str($)},_)`);
+        //     throw Error(`${NILMOD}: X$mset(${$},_)`);
         // }
 
         if (nil($key)) {

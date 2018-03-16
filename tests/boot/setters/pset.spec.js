@@ -76,20 +76,29 @@ describe('setters.pset', () => {
 
     });
 
-    it('throws error for trying to modify Nil object', () => {
+    it('does not modify Nil object', () => {
 
-        const obj = {
+        const str = () => `actual Nil object`;
+
+        const actual = X$pset({
             [_metas_]: {
                 [_atype_]: _nil_,
-                [_2str_]:  () => 'actual Nil object'
+                [_2str_]:  str
             }
-        };
+        });
 
-        expect(
-            () => X$pset(obj)
-        ).toThrow(
-            /^X-NILMOD: X\$pset\(actual Nil object,_\)/
-        );
+
+        expect(JSON.stringify(actual)).toBe('{}');
+        expect(Object.getOwnPropertyNames(actual)).toEqual([]);
+        expect(Object.getOwnPropertySymbols(actual)).toEqual([_metas_]);
+
+
+        expect(Object.getOwnPropertyNames(actual[_metas_])).toEqual([]);
+        expect(Object.getOwnPropertySymbols(actual[_metas_])).toEqual([_atype_, _2str_]);
+
+        expect(actual[_metas_][_atype_]).toEqual(_nil_);
+        expect('' + actual[_metas_][_2str_]).toEqual('' + str);
+
 
     });
 
