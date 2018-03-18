@@ -3,8 +3,8 @@ const {X$nil2str} = require('../../../src/boot/stringers');
 
 describe('stringers.nil2str', () => {
 
-    const vtag = '𝜈';
-    const ntag = '∅';
+    const vtag = '∅';
+    const ntag = '⦰';
 
     it('returns a string for an object', () => {
 
@@ -51,11 +51,15 @@ describe('stringers.nil2str', () => {
     });
 
     it('returns nil string representation for null', () => {
+
         expect(X$nil2str(null)).toBe(`${ntag}(null)${ntag}`);
+
     });
 
     it('returns nil string representation for undefined', () => {
+
         expect(X$nil2str()).toBe(`${ntag}(undefined)${ntag}`);
+
     });
 
 });

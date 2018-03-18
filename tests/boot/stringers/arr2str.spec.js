@@ -4,7 +4,13 @@ const {X$arr2str} = require('../../../src/boot/stringers');
 describe('stringers.arr2str', () => {
 
     const vtag = '𝛼';
-    const ntag = '∅';
+    const ntag = '⦰';
+
+    it('returns a string for an empty array', () => {
+
+        expect(X$arr2str([])).toBe(`${vtag}[]${vtag}`);
+
+    });
 
     it('returns a string for an array', () => {
 
@@ -51,11 +57,15 @@ describe('stringers.arr2str', () => {
     });
 
     it('returns nil string representation for null', () => {
+
         expect(X$arr2str(null)).toBe(`${ntag}(null)${ntag}`);
+
     });
 
     it('returns nil string representation for undefined', () => {
+
         expect(X$arr2str()).toBe(`${ntag}(undefined)${ntag}`);
+
     });
 
 });

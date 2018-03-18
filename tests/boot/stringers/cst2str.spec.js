@@ -4,7 +4,13 @@ const {X$cst2str} = require('../../../src/boot/stringers');
 describe('stringers.cst2str', () => {
 
     const vtag = 'φ';
-    const ntag = '∅';
+    const ntag = '⦰';
+
+    it('returns a string for a simple constructor', () => {
+
+        expect(X$cst2str($ => $)).toBe('φ($ => $)φ');
+
+    });
 
     it('returns a string for a constructor', () => {
 

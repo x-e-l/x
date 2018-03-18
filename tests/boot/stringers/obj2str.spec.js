@@ -4,7 +4,35 @@ const {X$obj2str} = require('../../../src/boot/stringers');
 describe('stringers.obj2str', () => {
 
     const vtag = '𝜔';
-    const ntag = '∅';
+    const ntag = '⦰';
+
+    it('returns a string for empty object', () => {
+
+        expect(X$obj2str({})).toBe(`${vtag}{}${vtag}`);
+        expect(X$obj2str(Object.create(null))).toBe(`${vtag}{}${vtag}`);
+
+    });
+
+    it('returns a string for a trivial object', () => {
+
+        const obj1 = {a: 1, b: 2};
+        expect(X$obj2str(obj1)).toBe(`${vtag}(${obj1}){a:1,b:2}${vtag}`);
+
+    });
+
+    it('returns a string for a trivial object with `toString` property', () => {
+
+        const obj = {a: 1, b: 2, toString: () => 'hi'};
+        expect(X$obj2str(obj)).toBe(`${vtag}(hi){a:1,b:2,toString:() => 'hi'}${vtag}`);
+
+    });
+
+    it('returns a string for a trivial object with `Symbol.toStringTag` property', () => {
+
+        const obj = {a: 1, b: 2, [Symbol.toStringTag]: 'Test'};
+        expect(X$obj2str(obj)).toBe(`${vtag}([object Test]){a:1,b:2}${vtag}`);
+
+    });
 
     it('returns a string for an object', () => {
 
@@ -51,11 +79,15 @@ describe('stringers.obj2str', () => {
     });
 
     it('returns nil string representation for null', () => {
+
         expect(X$obj2str(null)).toBe(`${ntag}(null)${ntag}`);
+
     });
 
     it('returns nil string representation for undefined', () => {
+
         expect(X$obj2str()).toBe(`${ntag}(undefined)${ntag}`);
+
     });
 
 });

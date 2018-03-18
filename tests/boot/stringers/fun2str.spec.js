@@ -4,7 +4,13 @@ const {X$fun2str} = require('../../../src/boot/stringers');
 describe('stringers.fun2str', () => {
 
     const vtag = '𝜆';
-    const ntag = '∅';
+    const ntag = '⦰';
+
+    it('returns a string for a simple function', () => {
+
+        expect(X$fun2str($ => $)).toBe('𝜆($ => $)𝜆');
+
+    });
 
     it('returns a string for a function', () => {
 
@@ -80,11 +86,15 @@ describe('stringers.fun2str', () => {
     });
 
     it('returns nil string representation for null', () => {
+
         expect(X$fun2str(null)).toBe(`${ntag}(null)${ntag}`);
+
     });
 
     it('returns nil string representation for undefined', () => {
+
         expect(X$fun2str()).toBe(`${ntag}(undefined)${ntag}`);
+
     });
 
 });
