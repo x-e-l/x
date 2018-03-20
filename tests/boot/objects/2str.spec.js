@@ -3,6 +3,8 @@ const {X$2str} = require('../../../src/boot/objects');
 
 describe('objects.2str', () => {
 
+    const symbol = '⦰';
+
     it('returns the result of the _2str_ function of the object called on that object', () => {
 
         const a = {a: 1};
@@ -17,12 +19,16 @@ describe('objects.2str', () => {
 
     });
 
-    it('returns empty string for null object', () => {
-        expect(X$2str(null)).toBe('');
+    it('returns appropriate non-empty string for null object', () => {
+
+        expect(X$2str(null)).toBe(symbol + '(null)' + symbol);
+
     });
 
-    it('returns empty string for undefined object', () => {
-        expect(X$2str()).toBe('');
+    it('returns appropriate non-empty string for undefined object', () => {
+
+        expect(X$2str()).toBe(symbol + '(undefined)' + symbol);
+
     });
 
 });

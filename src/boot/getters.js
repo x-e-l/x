@@ -1,4 +1,4 @@
-const {isf, nil, owns, otos, frz$} = require('../u');
+const {isf, nil, js2s, owns, frz$} = require('../u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_, _2bul_} = require('../symbols');
 
@@ -13,7 +13,7 @@ const X$metas = (
 
 
 const X$mget = (
-    ($, k) => $ && k && X$metas($)[k] // || Err()
+    ($, k) => $ && k && X$metas($)[k] // TODO: @azder: return an error if missing
 );
 
 const X$mown = (
@@ -76,11 +76,7 @@ const X$callf = (
 );
 
 
-const X$2str = (
-    ($) => $ && $.toString
-        ? $.toString()
-        : (nil($) ? '' : '' + otos($))
-);
+const X$2str = js2s; // an alias for display purposes
 
 const X$2strf = (
     ($) => X$mget($, _2str_) || X$2str

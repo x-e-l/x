@@ -3,6 +3,8 @@ const {X$2strf} = require('../../../src/boot/getters');
 
 describe('getters.2strf', () => {
 
+    const symbol = '⦰';
+
     const a = {a: 1};
     const b = {b: 2};
     const c = {c: 3};
@@ -88,15 +90,15 @@ describe('getters.2strf', () => {
 
         const str = X$2strf(null);
 
-        it('in turn when called with undefined object returns empty string', () => {
+        it('in turn when called with undefined object returns appropriate non-empty string', () => {
 
-            expect(str(void 0)).toBe('');
+            expect(str(void 0)).toBe(symbol + '(undefined)' + symbol);
 
         });
 
-        it('in turn when called with null object returns empty string', () => {
+        it('in turn when called with null object returns appropriate non-empty string', () => {
 
-            expect(str(null)).toBe('');
+            expect(str(null)).toBe(symbol + '(null)' + symbol);
 
         });
 
@@ -107,15 +109,15 @@ describe('getters.2strf', () => {
 
         const str = X$2strf();
 
-        it('in turn when called with undefined object returns empty string', () => {
+        it('in turn when called with undefined object returns appropriate non-empty string', () => {
 
-            expect(str(void 0)).toBe('');
+            expect(str(void 0)).toBe(symbol + '(undefined)' + symbol);
 
         });
 
-        it('in turn when called with null object returns empty string', () => {
+        it('in turn when called with null object returns appropriate non-empty string', () => {
 
-            expect(str(null)).toBe('');
+            expect(str(null)).toBe(symbol + '(null)' + symbol);
 
         });
 

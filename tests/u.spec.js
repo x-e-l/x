@@ -1,5 +1,10 @@
 const u = require('../src/u');
-const {isf, tok, iife, nil, prim, ftos, nan, owns, ownk, frz$} = u;
+const {
+    isf, tok, iife,
+    nil, prim, ftos,
+    nan, owns, ownk, frz$,
+    js2s, f2s, otos, push$,
+} = u;
 
 describe('u', () => {
 
@@ -199,7 +204,28 @@ describe('u', () => {
 
     });
 
+    it('has `f2s`', () => {
 
-    // TODO: @azder: add tests for f2s, otos , push$,
+        expect(f2s).toBeDefined(); // TODO: @azder: add proper test
+
+    });
+
+    it('has `js2s`', () => {
+
+        expect(js2s).toBeDefined(); // TODO: @azder: add proper test
+
+    });
+
+    it('has `otos`', () => {
+
+        expect(otos).toBeDefined(); // TODO: @azder: add proper test
+
+    });
+
+    it('has `push$`', () => {
+
+        expect(push$).toBeDefined(); // TODO: @azder: add proper test
+
+    });
 
 });

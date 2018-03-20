@@ -2,6 +2,18 @@
 // anything more complex and/or verbose
 // should probaby be elsewhere
 
+
+// aliases beging
+const ftos = Function.prototype.toString;
+const otos = Function.prototype.call.bind(Object.prototype.toString);
+
+const owns = Object.getOwnPropertySymbols;
+const ownk = Object.getOwnPropertyNames;
+
+const nan = Number.isNaN;
+const frz$ = Object.freeze;
+// aliases end
+
 const isf = ($ => typeof $ === 'function');
 
 
@@ -31,14 +43,16 @@ const f2s = (
 );
 
 
-const ftos = Function.prototype.toString;
-const otos = Function.prototype.call.bind(Object.prototype.toString);
+const t = (
+    ($) => '⦰(' + $ + ')⦰'
+);
 
-const owns = Object.getOwnPropertySymbols;
-const ownk = Object.getOwnPropertyNames;
+const js2s = (
+    ($) => nil($)
+        ? t($)
+        : t($ && $.toString ? $.toString() : '' + otos($))
+);
 
-const nan = Number.isNaN;
-const frz$ = Object.freeze;
 
 const push$ = (
     ($, item) => {
@@ -58,6 +72,7 @@ module.exports = frz$({
     prim,
 
     f2s,
+    js2s,
 
     ftos,
     otos,

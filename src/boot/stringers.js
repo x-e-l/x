@@ -1,11 +1,10 @@
-const {nil, f2s, frz$} = require('../u');
+const {nil, f2s, js2s, frz$} = require('../u');
 
-const {X$isx, X$isnil, X$isarr, X$isfun} = require('./predicates');
+const {X$isx, X$isnil, X$isarr, X$isfun, X$isobj} = require('./predicates');
 const {X$second, X$last, X$map} = require('./arrays');
 const {X$toses, X$props, X$callf, X$2lenf} = require('./getters');
+const {X$2str} = require('./objects');
 
-
-const TRV = '⦰';
 
 const OBJ = '𝜔';
 const ARR = '𝛼';
@@ -14,17 +13,24 @@ const NIL = '∅';
 const CST = 'φ';
 
 
-const X$keys2s = (
+const X$props2s = (
     ($, $keys) => '' + X$map(
         $keys,
-        k => '' + k + ':' + $[k]
-    )
-);
+        k => {
 
-const X$props2s = (
-    ($) => '' + X$map(
-        X$props($),
-        k => '' + k + ':' + $[k]
+            const o = $[k];
+
+            if (nil(o)) {
+                return '' + k + ':' + js2s(o);
+            }
+
+            if (!X$isx(o)) {
+                return '' + k + ':' + o + '';
+            }
+
+            return '' + k + ':' + X$2str(o) + '';
+
+        }
     )
 );
 
@@ -33,10 +39,16 @@ const X$toses2s = (
     ($) => {
 
         const ts = X$toses($);
+
+        if (2 > ts.length && X$isobj($)) {
+            return '';
+        }
+
         const t = X$last(ts);
+        const s = X$second(ts);
 
         return (
-            X$second(ts) === t && (X$isarr($) || X$isfun($) || X$isnil($))
+            s === t && (X$isarr($) || X$isfun($) || X$isnil($))
                 ? ''
                 : '' + (t && t.name ? t.name + ':' : '')
         )
@@ -49,7 +61,7 @@ const X$obj2str = (
     ($) => {
 
         if (nil($)) {
-            return TRV + '(' + $ + ')' + TRV;
+            return js2s($);
         }
 
         const isx = X$isx($);
@@ -58,11 +70,11 @@ const X$obj2str = (
         if (!isx) {
             return !keys.length
                 ? `${OBJ}{}${OBJ}`
-                : `${OBJ}(${'' + $}){${X$keys2s($, keys)}}${OBJ}`;
+                : `${OBJ}(${'' + $}){${X$props2s($, keys)}}${OBJ}`;
         }
 
         const toses = X$toses2s($);
-        const props = X$props2s($);
+        const props = X$props2s($, X$props($));
 
         if ('' === toses && '' === props) {
             return `${OBJ}{}${OBJ}`;
@@ -78,11 +90,11 @@ const X$nil2str = (
     ($) => {
 
         if (nil($)) {
-            return TRV + '(' + $ + ')' + TRV;
+            return js2s($);
         }
 
         const toses = X$toses2s($);
-        const props = X$props2s($);
+        const props = X$props2s($, X$props($));
 
         if ('' === toses && '' === props) {
             return NIL;
@@ -97,11 +109,11 @@ const X$arr2str = (
     ($) => {
 
         if (nil($)) {
-            return TRV + '(' + $ + ')' + TRV;
+            return js2s($);
         }
 
         const toses = X$toses2s($);
-        const props = X$props2s($);
+        const props = X$props2s($, X$props($));
         const len = X$2lenf($)($);
 
         if ('' === toses && '' === props) {
@@ -117,11 +129,11 @@ const X$fun2str = (
     ($) => {
 
         if (nil($)) {
-            return TRV + '(' + $ + ')' + TRV;
+            return js2s($);
         }
 
         const toses = X$toses2s($);
-        const props = X$props2s($);
+        const props = X$props2s($, X$props($));
         const funct = f2s(X$callf($));
 
         if ('' === toses && '' === props) {
@@ -137,11 +149,11 @@ const X$cst2str = (
     ($) => {
 
         if (nil($)) {
-            return TRV + '(' + $ + ')' + TRV;
+            return js2s($);
         }
 
         const toses = X$toses2s($);
-        const props = X$props2s($);
+        const props = X$props2s($, X$props($));
         const funct = f2s(X$callf($));
 
         if ('' === toses && '' === props) {
