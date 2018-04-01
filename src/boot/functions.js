@@ -1,7 +1,7 @@
 const {isf, frz$} = require('../u');
 
 
-const X$call = (
+const X$fcall = (
     ($f, $o, ...$$) => (
         isf($f) && isf($f.call)
             ? $f.call(null, $o, ...$$)
@@ -9,7 +9,7 @@ const X$call = (
     )
 );
 
-const X$bind = (
+const X$fbind = (
     ($f, $o, ...$$) => (
         isf($f) && isf($f.bind)
             ? $f.bind(null, $o, ...$$)
@@ -22,6 +22,6 @@ const X$bind = (
 
 
 module.exports = frz$({
-    X$call,
-    X$bind,
+    X$fcall,
+    X$fbind,
 });

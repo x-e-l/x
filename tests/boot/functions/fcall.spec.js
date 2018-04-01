@@ -1,4 +1,4 @@
-const {X$call} = require('../../../src/boot/functions');
+const {X$fcall} = require('../../../src/boot/functions');
 
 describe('functions.call', () => {
 
@@ -11,7 +11,7 @@ describe('functions.call', () => {
     it('calls function once', () => {
 
         const fn = jest.fn();
-        X$call(fn, obj, a, b, c);
+        X$fcall(fn, obj, a, b, c);
         expect(fn).toHaveBeenCalledTimes(1);
 
     });
@@ -19,7 +19,7 @@ describe('functions.call', () => {
     it('calls function with proper arguments', () => {
 
         const fn = jest.fn();
-        X$call(fn, obj, a, b, c);
+        X$fcall(fn, obj, a, b, c);
         expect(fn).toHaveBeenCalledWith(obj, a, b, c);
 
     });
@@ -27,26 +27,26 @@ describe('functions.call', () => {
     it('uses null for the this reference', () => {
 
         const fn = jest.fn();
-        X$call(fn, obj, a, b, c);
+        X$fcall(fn, obj, a, b, c);
         expect(fn.mock.instances[0]).toBe(null);
 
     });
 
     it('returns the result of the function', () => {
 
-        expect(X$call(a => a, obj)).toBe(obj);
+        expect(X$fcall(a => a, obj)).toBe(obj);
 
     });
 
     it('is giving back undefined for undefined function', () => {
 
-        expect(X$call(void 0, obj, a, b, c)).toEqual(void 0);
+        expect(X$fcall(void 0, obj, a, b, c)).toEqual(void 0);
 
     });
 
     it('is giving back null for null function', () => {
 
-        expect(X$call(null, obj, a, b, c)).toEqual(null);
+        expect(X$fcall(null, obj, a, b, c)).toEqual(null);
 
     });
 
@@ -54,7 +54,7 @@ describe('functions.call', () => {
 
         const f = ($ => $);
         f.call = void 0;
-        expect(X$call(f, obj, a, b, c)).toEqual(void 0);
+        expect(X$fcall(f, obj, a, b, c)).toEqual(void 0);
 
     });
 
@@ -62,7 +62,7 @@ describe('functions.call', () => {
 
         const f = ($ => $);
         f.call = null;
-        expect(X$call(f, obj, a, b, c)).toEqual(null);
+        expect(X$fcall(f, obj, a, b, c)).toEqual(null);
 
     });
 

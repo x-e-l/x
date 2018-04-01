@@ -1,4 +1,4 @@
-const {X$call} = require('../../src/boot/functions');
+const {X$fcall} = require('../../src/boot/functions');
 const {X$kv2ref} = require('../../src/boot/transformers');
 const {X$2strf, X$toses, X$props, X$callf} = require('../../src/boot/getters');
 
@@ -20,9 +20,9 @@ const {X$Obj, X$Nil, X$Arr, X$Fun} = require('../../src/boot/archetypes');
         [lbl + '.*toses']:       X$toses($),
         [lbl + '.*props']:       X$props($),
         [lbl + '.*2str']:        X$2strf($),
-        [lbl + '.*2str()']:      X$call(X$2strf($), $),
+        [lbl + '.*2str()']:      X$fcall(X$2strf($), $),
         [lbl + '.*call()']:      X$callf($),
-        [lbl + '(' + lbl + ')']: X$call(X$callf($), $),
-        [lbl + '({a:1,b:2})']:   X$call(X$callf($), {a: 1, b: 2}),
+        [lbl + '(' + lbl + ')']: X$fcall(X$callf($), $),
+        [lbl + '({a:1,b:2})']:   X$fcall(X$callf($), {a: 1, b: 2}),
     })
 );

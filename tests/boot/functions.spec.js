@@ -6,8 +6,8 @@ describe('functions module', () => {
 
     const keys = sorted([
 
-        'X$call',
-        'X$bind',
+        'X$fcall',
+        'X$fbind',
 
     ]);
 

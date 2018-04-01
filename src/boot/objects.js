@@ -1,16 +1,16 @@
 const {frz$} = require('../u');
 
-const {X$call} = require('./functions');
+const {X$fcall} = require('./functions');
 const {X$2strf, X$2bulf} = require('./getters');
 
 
 const X$2str = (
-    ($) => X$call(X$2strf($), $)
+    ($) => X$fcall(X$2strf($), $)
 );
 
 
 const X$2bul = (
-    ($) => X$call(X$2bulf($), $)
+    ($) => X$fcall(X$2bulf($), $)
 );
 
 
