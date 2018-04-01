@@ -2,7 +2,7 @@
     "name": "@x-e-l/x",
     "version": "0.0.1",
     "description": "x.js",
-    "main": "x.js",
+    "main": "src/x.js",
     "scripts": {
         "test": "jest",
         "jest": "jest --watch"
