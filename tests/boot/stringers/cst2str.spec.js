@@ -59,7 +59,7 @@ describe('stringers.cst2str', () => {
 
         const obj = {a, b, [_metas_]: {[_props_]: ['a', 'b']}};
 
-        expect(X$cst2str(obj)).toBe(`${vtag}(() => $){a:1,b:2}${vtag}`);
+        expect(X$cst2str(obj)).toBe(`${vtag}(K){a:1,b:2}${vtag}`);
 
     });
 

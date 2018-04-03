@@ -1,4 +1,4 @@
-const {isf, nil, js2s, owns, frz$} = require('../u');
+const {isf, nil, js2s, owns, tok, frz$} = require('../u');
 
 const {_toses_, _props_, _metas_, _2str_, _call_, _2len_, _2bul_} = require('../symbols');
 
@@ -62,15 +62,22 @@ const X$pown = (
 const X$callf = (
     ($) => {
 
+        if (nil($)) {
+            // TODO: @azder: return Err(`${NOTOBJ}: X$callf(${$})`);
+        }
+
         const callf = X$mget($, _call_);
 
         if (isf(callf)) {
             return callf;
         }
 
-        // noinspection UnnecessaryLocalVariableJS
-        const X$const = isf($) ? $ : () => $;
-        return X$const; // this is the name for the "anonymous" function
+        if (isf($)) {
+            return $;
+        }
+
+        // the name for the "anonymous" function will be K
+        return tok($);
 
     }
 );

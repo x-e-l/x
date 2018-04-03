@@ -9,6 +9,7 @@ describe('objects module', () => {
 
         'X$2str',
         'X$2bul',
+        'X$call',
 
     ]);
 

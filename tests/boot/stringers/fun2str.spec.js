@@ -47,7 +47,7 @@ describe('stringers.fun2str', () => {
 
         const obj = {a, b, [_metas_]: {[_props_]: ['a', 'b']}};
 
-        expect(X$fun2str(obj)).toBe(`${vtag}(() => $){a:1,b:2}${vtag}`);
+        expect(X$fun2str(obj)).toBe(`${vtag}(K){a:1,b:2}${vtag}`);
 
     });
 
@@ -59,7 +59,7 @@ describe('stringers.fun2str', () => {
 
         const fn = {a, b, c, [_metas_]: {[_props_]: ['a', 'b']}};
 
-        expect(X$fun2str(fn)).toBe(`${vtag}(() => $){a:1,b:2}${vtag}`);
+        expect(X$fun2str(fn)).toBe(`${vtag}(K){a:1,b:2}${vtag}`);
 
     });
 
