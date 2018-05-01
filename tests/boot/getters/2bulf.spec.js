@@ -13,14 +13,14 @@ describe('getters.2bulf', () => {
         a, b,
         [_metas_]: {
             [_2bul_]: tobul,
-        }
+        },
     };
 
     const obj2 = {
         a, b, c,
         [_metas_]: {
             [_2bul_]: tobul,
-        }
+        },
     };
 
     it('returns the registered function to be used for converting an object to string', () => {

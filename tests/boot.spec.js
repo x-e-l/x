@@ -51,8 +51,8 @@ describe('boot', () => {
 
         const keys = sorted(Object.keys(boot));
 
-        expect(keys).toEqual(concatenated)
+        expect(keys).toEqual(concatenated);
 
-    })
+    });
 
 });

@@ -39,7 +39,7 @@ describe('symbols', () => {
     it('are all of type Symbol', () => {
 
         keys.map(k => (
-            expect('' + k + ' is ' + typeof symbols[k]).toEqual('' + k + ' is symbol')
+            expect(`${ k } is ${ typeof symbols[k]}`).toEqual(`${ k } is symbol`)
         ));
 
     });
@@ -54,7 +54,7 @@ describe('symbols', () => {
 
     it('are the only ones exported', () => {
 
-        expect(Object.keys(symbols).length).toEqual(keys.length)
+        expect(Object.keys(symbols).length).toEqual(keys.length);
 
     });
 

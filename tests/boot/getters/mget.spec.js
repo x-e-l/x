@@ -27,7 +27,7 @@ describe('getters.mget', () => {
 
     it('is giving back undefined meta properties for undefined object', () => {
 
-        expect(X$mget(void 0, _toses_)).toEqual(void  0);
+        expect(X$mget(void 0, _toses_)).toEqual(void 0);
         expect(X$mget(void 0, _call_)).toEqual(void 0);
 
     });

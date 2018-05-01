@@ -27,7 +27,7 @@ describe('functions.bind', () => {
 
     it('reduces the resulting function arity to lower number', () => {
 
-        const fn = (($, a, b) => $[a] + $[b]);
+        const fn = (($, x, y) => $[x] + $[y]);
         const bound = X$fbind(fn, obj, a);
         expect(bound.length).toBe(1);
 
@@ -46,7 +46,7 @@ describe('functions.bind', () => {
 
     it('returns the result when the bound function is called', () => {
 
-        expect(X$fbind((a, b, c) => a + b + c, 3)(1, 2)).toBe(6);
+        expect(X$fbind((x, y, z) => x + y + z, 3)(1, 2)).toBe(6);
 
     });
 

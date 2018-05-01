@@ -39,7 +39,7 @@ describe('transformers module', () => {
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(transformers).length).toEqual(keys.length)
+        expect(Object.keys(transformers).length).toEqual(keys.length);
 
     });
 

@@ -6,7 +6,7 @@ describe('arrays.reduce', () => {
     const b = {len: 2};
     const c = {len: 3};
 
-    const f = (($, a) => [...$, a.len]);
+    const f = (($, item) => [...$, item.len]);
 
     it('applies f to each element of one array returning updated memo', () => {
         expect(X$reduce([a, b, c], [], f)).toEqual([1, 2, 3]);

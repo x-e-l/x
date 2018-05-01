@@ -28,12 +28,12 @@ describe('constructors.Bul', () => {
         const metas = X$Bul[_metas_];
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ metas[_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('' + X$Bul);
+        expect(`${ metas[_call_]}`).toBe(`${ X$Bul}`);
 
     });
 
@@ -52,14 +52,14 @@ describe('constructors.Bul', () => {
         expect(metas[_atype_]).toBe(_obj_);
 
         // different functions, identical code
-        expect('' + metas[_2str_]).toBe('' + tostrf);
-        expect('' + metas[_2bul_]).toBe('' + tobulf);
+        expect(`${ metas[_2str_]}`).toBe(`${ tostrf}`);
+        expect(`${ metas[_2bul_]}`).toBe(`${ tobulf}`);
         // identical code, identical result
         expect(metas[_2str_](obj)).toBe(tostrf(obj));
         expect(metas[_2bul_](obj)).toBe(void 0);
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toBe('' + [X$Obj, X$Bul]);
+        expect(`${ metas[_toses_]}`).toBe(`${ [X$Obj, X$Bul]}`);
 
 
     });
@@ -86,14 +86,14 @@ describe('constructors.Bul', () => {
         expect(metas[_atype_]).toEqual(_obj_);
 
         // different functions, identical code
-        expect('' + metas[_2str_]).toBe('' + tostrt);
-        expect('' + metas[_2bul_]).toBe('' + tobult);
+        expect(`${ metas[_2str_]}`).toBe(`${ tostrt}`);
+        expect(`${ metas[_2bul_]}`).toBe(`${ tobult}`);
         // identical code, identical result
         expect(metas[_2str_](obj)).toBe(tostrt(obj));
         expect(metas[_2bul_](obj)).toBe(tobult(obj));
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toBe('' + [X$Obj, X$Bul]);
+        expect(`${ metas[_toses_]}`).toBe(`${ [X$Obj, X$Bul]}`);
 
     });
 
@@ -101,7 +101,7 @@ describe('constructors.Bul', () => {
 
         const refs = [
             {[_key_]: 'a', [_val_]: 1},
-            {[_key_]: 'b', [_val_]: 2}
+            {[_key_]: 'b', [_val_]: 2},
         ];
 
         it('string', () => {
@@ -192,14 +192,14 @@ describe('constructors.Bul', () => {
         expect(metas[_atype_]).toBe(_obj_);
 
         // different functions, identical code
-        expect('' + metas[_2str_]).toBe('' + tostrf);
-        expect('' + metas[_2bul_]).toBe('' + tobulf);
+        expect(`${ metas[_2str_]}`).toBe(`${ tostrf}`);
+        expect(`${ metas[_2bul_]}`).toBe(`${ tobulf}`);
         // identical code, identical result
         expect(metas[_2str_](obj)).toBe(tostrf(obj));
         expect(metas[_2bul_](obj)).toBe(null);
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toBe('' + [X$Obj, X$Bul]);
+        expect(`${ metas[_toses_]}`).toBe(`${ [X$Obj, X$Bul]}`);
 
     });
 
@@ -212,14 +212,14 @@ describe('constructors.Bul', () => {
         expect(metas[_atype_]).toBe(_obj_);
 
         // different functions, identical code
-        expect('' + metas[_2str_]).toBe('' + tostrf);
-        expect('' + metas[_2bul_]).toBe('' + tobulf);
+        expect(`${ metas[_2str_]}`).toBe(`${ tostrf}`);
+        expect(`${ metas[_2bul_]}`).toBe(`${ tobulf}`);
         // identical code, identical result
         expect(metas[_2str_](obj)).toBe(tostrf(obj));
         expect(metas[_2bul_](obj)).toBe(void 0);
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toBe('' + [X$Obj, X$Bul]);
+        expect(`${ metas[_toses_]}`).toBe(`${ [X$Obj, X$Bul]}`);
 
     });
 

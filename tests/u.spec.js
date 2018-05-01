@@ -28,18 +28,20 @@ describe('u', () => {
 
             const a = $ => $;
 
+            // eslint-disable-next-line no-new-func
             const f = new Function('$', 'return $');
 
             const g = function* generator() {
-
+                /*  empty */
             };
 
+            // eslint-disable-next-line func-style, no-restricted-syntax
             function h() {
-
+                /*  empty */
             }
 
             const x = function x() {
-
+                /*  empty */
             };
 
             expect(isf(a)).toBe(true);
@@ -164,11 +166,11 @@ describe('u', () => {
             expect(prim([])).toBe(false);
 
             // noinspection JSPrimitiveTypeWrapperUsage
-            expect(prim(new Boolean())).toBe(false);
+            expect(prim(new Boolean())).toBe(false); // eslint-disable-line no-new-wrappers
             // noinspection JSPrimitiveTypeWrapperUsage
-            expect(prim(new String())).toBe(false);
+            expect(prim(new String())).toBe(false); // eslint-disable-line no-new-wrappers
             // noinspection JSPrimitiveTypeWrapperUsage
-            expect(prim(new Number())).toBe(false);
+            expect(prim(new Number())).toBe(false); // eslint-disable-line no-new-wrappers
 
         });
 

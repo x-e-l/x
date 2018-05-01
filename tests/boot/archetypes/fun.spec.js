@@ -17,11 +17,11 @@ describe('archetypes.Fun', () => {
         const metas = X$Fun[_metas_];
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ metas[_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('' + X$Fun);
+        expect(`${ metas[_call_]}`).toBe(`${ X$Fun}`);
 
     });
 
@@ -91,7 +91,7 @@ describe('archetypes.Fun', () => {
         };
 
         expect(fun.length).toEqual(1);
-        expect('' + fun).toBe('$ => $');
+        expect(`${ fun}`).toBe('$ => $');
 
         expect(Object.keys(fun)).toEqual([]);
         expect(fun[_metas_]).toEqual(metas);
@@ -113,7 +113,7 @@ describe('archetypes.Fun', () => {
         };
 
         expect(fun.length).toEqual(1);
-        expect('' + fun).toBe('$ => $');
+        expect(`${ fun}`).toBe('$ => $');
 
         expect(Object.keys(fun)).toEqual([]);
         expect(fun[_metas_]).toEqual(metas);

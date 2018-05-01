@@ -34,8 +34,10 @@ describe('stringers.nil2str', () => {
         const a = 1;
         const b = '2';
         const c = (function C() {
+            /* empty*/
         });
         const d = (function D() {
+            /* empty*/
         });
 
         const toses = [c, d];

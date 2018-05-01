@@ -34,7 +34,7 @@ describe('functions.call', () => {
 
     it('returns the result of the function', () => {
 
-        expect(X$fcall(a => a, obj)).toBe(obj);
+        expect(X$fcall(x => x, obj)).toBe(obj);
 
     });
 

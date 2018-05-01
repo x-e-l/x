@@ -32,7 +32,7 @@ describe('archetypes module', () => {
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(constructors).length).toEqual(keys.length)
+        expect(Object.keys(constructors).length).toEqual(keys.length);
 
     });
 

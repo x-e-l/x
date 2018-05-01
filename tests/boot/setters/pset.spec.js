@@ -78,13 +78,13 @@ describe('setters.pset', () => {
 
     it('does not modify Nil object', () => {
 
-        const str = () => `actual Nil object`;
+        const str = () => 'actual Nil object';
 
         const actual = X$pset({
             [_metas_]: {
                 [_atype_]: _nil_,
-                [_2str_]:  str
-            }
+                [_2str_]:  str,
+            },
         });
 
 
@@ -97,7 +97,7 @@ describe('setters.pset', () => {
         expect(Object.getOwnPropertySymbols(actual[_metas_])).toEqual([_atype_, _2str_]);
 
         expect(actual[_metas_][_atype_]).toEqual(_nil_);
-        expect('' + actual[_metas_][_2str_]).toEqual('' + str);
+        expect(`${ actual[_metas_][_2str_]}`).toEqual(`${ str}`);
 
 
     });

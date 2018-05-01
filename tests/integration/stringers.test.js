@@ -49,6 +49,7 @@ describe('stringers together return appropriate string representation', () => {
 
     it('for a constructed _obj_ object with complex properties', () => {
 
+        // eslint-disable-next-line prefer-arrow-callback
         const Construct = X$Cst(function Test(...$$) {
             return X$Obj(X$Obj({p: 1, q: 2}), ...$$);
         });
@@ -65,15 +66,16 @@ describe('stringers together return appropriate string representation', () => {
 
     it.skip('for a constructed _arr_ object with complex properties', () => {
 
+        // eslint-disable-next-line prefer-arrow-callback
         const Construct = X$Cst(function Test($, ...$$) {
             $.push(...$$.map($ => [X$ref2k($), X$ref2v($)]));
             return $;
         });
 
-        const array = Construct(X$Arr(), X$kv2ref('complex', complex));
+        const a = Construct(X$Arr(), X$kv2ref('complex', complex));
 
         expect(
-            X$2str(array)
+            X$2str(a)
         ).toBe(
         );
 

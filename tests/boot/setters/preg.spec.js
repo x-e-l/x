@@ -63,8 +63,8 @@ describe('setters.preg', () => {
         const obj = {
             [_metas_]: {
                 [_atype_]: _nil_,
-                [_2str_]:  () => 'actual Nil object'
-            }
+                [_2str_]:  () => 'actual Nil object',
+            },
         };
 
         expect(

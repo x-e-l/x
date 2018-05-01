@@ -41,6 +41,7 @@ describe('stringers.cst2str', () => {
         const metas = {[_props_]: ['a', 'b']};
 
         const fn = Object.assign(
+            // eslint-disable-next-line prefer-arrow-callback
             function Fn($) {
                 return $;
             },
@@ -70,6 +71,7 @@ describe('stringers.cst2str', () => {
         const c = null;
 
         const fn = Object.assign(
+            // eslint-disable-next-line prefer-arrow-callback
             function Fn($) {
                 return $;
             },
@@ -85,8 +87,10 @@ describe('stringers.cst2str', () => {
         const a = 1;
         const b = '2';
         const c = (function C() {
+            /* empty*/
         });
         const d = (function D() {
+            /* empty*/
         });
 
         const call = function Fn($) {

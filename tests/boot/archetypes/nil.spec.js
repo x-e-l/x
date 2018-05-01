@@ -17,12 +17,12 @@ describe('archetypes.Nil', () => {
         const metas = X$Nil[_metas_];
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ metas[_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('' + X$Nil);
+        expect(`${ metas[_call_]}`).toBe(`${ X$Nil}`);
 
     });
 

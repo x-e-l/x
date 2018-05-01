@@ -25,7 +25,7 @@ describe('objects.call', () => {
 
     it.skip('returns appropriate non-empty object for undefined', () => {
 
-        expect(X$call()).toBe(undefined);
+        expect(X$call()).toBe(void 0);
 
     });
 

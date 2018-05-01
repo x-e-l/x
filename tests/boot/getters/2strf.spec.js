@@ -14,7 +14,7 @@ describe('getters.2strf', () => {
     const toses = [a, b];
     const props = ['c', 'e'];
     const call = $ => $;
-    const tostr = $ => '*** ' + ($ && Object.keys($)) + ' ***';
+    const tostr = $ => `*** ${ $ && Object.keys($) } ***`;
 
     const metas = {
         [_toses_]: toses,
@@ -92,13 +92,13 @@ describe('getters.2strf', () => {
 
         it('in turn when called with undefined object returns appropriate non-empty string', () => {
 
-            expect(str(void 0)).toBe(symbol + '(undefined)' + symbol);
+            expect(str(void 0)).toBe(`${symbol }(undefined)${ symbol}`);
 
         });
 
         it('in turn when called with null object returns appropriate non-empty string', () => {
 
-            expect(str(null)).toBe(symbol + '(null)' + symbol);
+            expect(str(null)).toBe(`${symbol}(null)${symbol}`);
 
         });
 
@@ -111,13 +111,13 @@ describe('getters.2strf', () => {
 
         it('in turn when called with undefined object returns appropriate non-empty string', () => {
 
-            expect(str(void 0)).toBe(symbol + '(undefined)' + symbol);
+            expect(str(void 0)).toBe(`${symbol}(undefined)${symbol}`);
 
         });
 
         it('in turn when called with null object returns appropriate non-empty string', () => {
 
-            expect(str(null)).toBe(symbol + '(null)' + symbol);
+            expect(str(null)).toBe(`${symbol}(null)${symbol}`);
 
         });
 

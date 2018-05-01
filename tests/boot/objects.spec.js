@@ -29,7 +29,7 @@ describe('objects module', () => {
     it('does not export extra keys', () => {
 
         expect(Object.keys(objects).sort()).toEqual(keys);
-        expect(Object.keys(objects).length).toEqual(keys.length)
+        expect(Object.keys(objects).length).toEqual(keys.length);
 
     });
 

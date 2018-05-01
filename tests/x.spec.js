@@ -34,8 +34,8 @@ describe('X$', () => {
 
         const keys = sorted(Object.keys(X$));
 
-        expect(keys).toEqual(concatenated)
+        expect(keys).toEqual(concatenated);
 
-    })
+    });
 
 });

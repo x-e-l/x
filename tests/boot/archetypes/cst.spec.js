@@ -17,12 +17,12 @@ describe('archetypes.Cst', () => {
         const metas = X$Cst[_metas_];
 
         // proxied functions, have the same string representation
-        expect('' + metas[_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ metas[_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(metas[_atype_]).toBe(_cst_);
         expect(metas[_2str_]).toBe(X$cst2str);
 
-        expect('' + metas[_call_]).toBe('' + X$Cst);
+        expect(`${ metas[_call_]}`).toBe(`${ X$Cst}`);
 
     });
 
@@ -40,7 +40,7 @@ describe('archetypes.Cst', () => {
         expect(Object.keys(cst)).toEqual([]);
 
         // proxied functions, have the same string representation
-        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ cst[_metas_][_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(cst[_metas_][_atype_]).toEqual(_cst_);
         expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
@@ -70,7 +70,7 @@ describe('archetypes.Cst', () => {
 
 
         // proxied functions, have the same string representation
-        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ cst[_metas_][_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(cst[_metas_][_atype_]).toEqual(_cst_);
         expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
@@ -84,14 +84,14 @@ describe('archetypes.Cst', () => {
         const cst = X$Cst(null);
 
         expect(cst.length).toEqual(1);
-        expect('' + cst).toBe('$$ => $');
+        expect(`${ cst}`).toBe('$$ => $');
 
         expect(Object.keys(cst)).toEqual([]);
         expect(typeof cst).toBe('function');
 
 
         // proxied functions, have the same string representation
-        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ cst[_metas_][_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(cst[_metas_][_atype_]).toEqual(_cst_);
         expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
@@ -106,13 +106,13 @@ describe('archetypes.Cst', () => {
         const cst = X$Cst();
 
         expect(cst.length).toEqual(1);
-        expect('' + cst).toBe('$$ => $');
+        expect(`${ cst}`).toBe('$$ => $');
 
         expect(Object.keys(cst)).toEqual([]);
         expect(typeof cst).toBe('function');
 
         // proxied functions, have the same string representation
-        expect('' + cst[_metas_][_toses_]).toEqual('' + [X$Obj, X$Fun, X$Cst]);
+        expect(`${ cst[_metas_][_toses_]}`).toEqual(`${ [X$Obj, X$Fun, X$Cst]}`);
 
         expect(cst[_metas_][_atype_]).toEqual(_cst_);
         expect(cst[_metas_][_2str_]).toEqual(X$cst2str);
@@ -141,7 +141,7 @@ describe('archetypes.Cst', () => {
         expect(obj[_metas_][_2str_]).toBe(X$obj2str);
 
         // proxied functions, have the same string representation
-        expect('' + obj[_metas_][_toses_]).toBe('' + [X$Obj, TestObject]);
+        expect(`${ obj[_metas_][_toses_]}`).toBe(`${ [X$Obj, TestObject]}`);
 
         expect(internal).toBeCalled();
         expect(internal.mock.calls.length).toBe(1);

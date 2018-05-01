@@ -1,3 +1,3 @@
 module.exports = ({
-    sorted: ($) => $.sort()
+    sorted: $ => $.sort(),
 });

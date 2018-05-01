@@ -30,7 +30,7 @@ describe('predicates module', () => {
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(predicates).length).toEqual(keys.length)
+        expect(Object.keys(predicates).length).toEqual(keys.length);
 
     });
 

@@ -40,7 +40,7 @@ describe('getters module', () => {
     it('does not export extra keys', () => {
 
         expect(Object.keys(getters).sort()).toEqual(keys);
-        expect(Object.keys(getters).length).toEqual(keys.length)
+        expect(Object.keys(getters).length).toEqual(keys.length);
 
     });
 

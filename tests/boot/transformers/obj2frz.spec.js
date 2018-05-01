@@ -2,7 +2,7 @@ const {X$obj2frz} = require('../../../src/boot/transformers');
 
 describe('transformers.obj2frz', () => {
 
-    const obj = {a: 1, b: 2, c: 3, [Symbol['d']]: 4};
+    const obj = {a: 1, b: 2, c: 3, [Symbol('d')]: 4};
 
     it('returns a frozen object', () => {
         const frozen = X$obj2frz(obj);

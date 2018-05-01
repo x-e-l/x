@@ -34,7 +34,7 @@ describe('operators.misc', () => {
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(reflect).length).toEqual(keys.length)
+        expect(Object.keys(reflect).length).toEqual(keys.length);
 
     });
 

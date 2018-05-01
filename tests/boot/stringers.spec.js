@@ -28,7 +28,7 @@ describe('stringers module', () => {
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(stringers).length).toEqual(keys.length)
+        expect(Object.keys(stringers).length).toEqual(keys.length);
 
     });
 

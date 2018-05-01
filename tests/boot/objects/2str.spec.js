@@ -10,7 +10,7 @@ describe('objects.2str', () => {
         const a = {a: 1};
         const b = {b: 2};
 
-        const str = ($ => '*** ' + Object.keys($) + ' ***');
+        const str = ($ => `*** ${ Object.keys($) } ***`);
         const metas = {[_2str_]: str};
 
         const obj = {a, b, [_metas_]: metas};
@@ -21,13 +21,13 @@ describe('objects.2str', () => {
 
     it('returns appropriate non-empty string for null object', () => {
 
-        expect(X$2str(null)).toBe(symbol + '(null)' + symbol);
+        expect(X$2str(null)).toBe(`${symbol}(null)${symbol}`);
 
     });
 
     it('returns appropriate non-empty string for undefined object', () => {
 
-        expect(X$2str()).toBe(symbol + '(undefined)' + symbol);
+        expect(X$2str()).toBe(`${symbol}(undefined)${symbol}`);
 
     });
 

@@ -3,16 +3,16 @@ const {X$tcat} = require('../../../src/boot/getters');
 
 describe('getters.tcat', () => {
 
-    const a = $ => 1;
-    const b = $ => 2;
-    const c = $ => 3;
+    const a = $ => 1; // eslint-disable-line no-unused-vars
+    const b = $ => 2; // eslint-disable-line no-unused-vars
+    const c = $ => 3; // eslint-disable-line no-unused-vars
 
     const toses = [a, b];
 
     const obj = {
         [_metas_]: {
-            [_toses_]: toses
-        }
+            [_toses_]: toses,
+        },
     };
 
     it('adds proto at the end of the toses', () => {

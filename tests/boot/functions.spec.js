@@ -25,7 +25,7 @@ describe('functions module', () => {
 
     it('does not export extra keys', () => {
 
-        expect(Object.keys(functions).length).toEqual(keys.length)
+        expect(Object.keys(functions).length).toEqual(keys.length);
 
     });
 

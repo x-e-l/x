@@ -7,12 +7,12 @@ describe('operators.reflect.has', () => {
 
         const a = {a: 1};
         const b = {b: 2};
-        const _c_ = Symbol('_c_');
+        const c = Symbol('_c_');
 
-        const obj = {a, b, _c_, [_metas_]: {[_props_]: ['a', 'b', _c_]}};
+        const obj = {a, b, _c_: c, [_metas_]: {[_props_]: ['a', 'b', c]}};
 
         expect(X$has(obj, 'a')).toBe(true);
-        expect(X$has(obj, _c_)).toBe(true);
+        expect(X$has(obj, c)).toBe(true);
 
     });
 
@@ -20,12 +20,12 @@ describe('operators.reflect.has', () => {
 
         const a = {a: 1};
         const b = {b: 2};
-        const _c_ = Symbol('_c_');
+        const c = Symbol('_c_');
 
-        const obj = {a, b, _c_};
+        const obj = {a, b, _c_: c};
 
         expect(X$has(obj, 'a')).toBe(false);
-        expect(X$has(obj, _c_)).toBe(false);
+        expect(X$has(obj, c)).toBe(false);
 
     });
 
