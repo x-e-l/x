@@ -17,9 +17,9 @@ const X$has = (
         }
 
         return (
-            /**@type{function(*=): Set<*>}*/
+            /** @type{function(*=): Set<*>}*/
             X$itr2set(X$props($))
-        ).has($key)
+        ).has($key);
     }
 
 );

@@ -5,7 +5,7 @@ const {X$Bul} = require('../csts/bul');
 
 /** NOT */
 const X$bn = (
-    ($) => X$Bul(!X$2bul($))
+    $ => X$Bul(!X$2bul($))
 );
 
 
@@ -39,6 +39,6 @@ module.exports = frz$({
     X$bo,
 
     X$bq,
-    X$bx
+    X$bx,
 
 });

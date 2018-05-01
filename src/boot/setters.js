@@ -24,7 +24,7 @@ const X$preg = (
             throw Error(`${NILKEY}: X$preg(_,${$key})`);
         }
 
-        /**@type Array*/
+        /** @type Array*/
         const props = X$props($);
         const metas = X$metas($);
 
@@ -99,7 +99,7 @@ const X$rset = (
             throw Error(`${NILMOD}: X$rset(${X$2str($)},_)`);
         }
 
-        return nil($) ? $ : X$pset($, $ref[_key_], $ref[_val_]) // mutates values
+        return nil($) ? $ : X$pset($, $ref[_key_], $ref[_val_]); // mutates values
 
     }
 

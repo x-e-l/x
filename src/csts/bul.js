@@ -11,6 +11,7 @@ const mset$ = (
 );
 
 
+// eslint-disable-next-line prefer-arrow-callback
 const X$Bul = X$Cst(function Bul($, ...$$) {
 
     // check for $ being primitive, since it will not allow adding properties

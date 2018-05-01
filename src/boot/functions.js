@@ -4,7 +4,8 @@ const {isf, frz$} = require('../u');
 const X$fcall = (
     ($f, $o, ...$$) => (
         isf($f) && isf($f.call)
-            ? $f.call(null, $o, ...$$)
+            // eslint-disable-next-line no-useless-call
+            ? $f.call(null, $o, ...$$) // `this` should be `null`, not `undeifined`
             : ($f && $f.call)
     )
 );

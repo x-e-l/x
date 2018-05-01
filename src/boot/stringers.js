@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+
 const {nil, f2s, js2s, frz$} = require('../u');
 
 const {X$isx, X$isnil, X$isarr, X$isfun, X$isobj} = require('./predicates');
@@ -35,12 +37,14 @@ const X$props2s = (
 );
 
 
+const MIN_TOSES = 2;
+
 const X$toses2s = (
-    ($) => {
+    $ => {
 
         const ts = X$toses($);
 
-        if (2 > ts.length && X$isobj($)) {
+        if (MIN_TOSES > ts.length && X$isobj($)) {
             return '';
         }
 
@@ -51,14 +55,14 @@ const X$toses2s = (
             s === t && (X$isarr($) || X$isfun($) || X$isnil($))
                 ? ''
                 : '' + (t && t.name ? t.name + ':' : '')
-        )
+        );
 
     }
 );
 
 
 const X$obj2str = (
-    ($) => {
+    $ => {
 
         if (nil($)) {
             return js2s($);
@@ -68,9 +72,9 @@ const X$obj2str = (
         const keys = Object.keys($);
 
         if (!isx) {
-            return !keys.length
-                ? `${OBJ}{}${OBJ}`
-                : `${OBJ}(${'' + $}){${X$props2s($, keys)}}${OBJ}`;
+            return keys.length
+                ? `${OBJ}(${'' + $}){${X$props2s($, keys)}}${OBJ}`
+                : `${OBJ}{}${OBJ}`;
         }
 
         const toses = X$toses2s($);
@@ -87,7 +91,7 @@ const X$obj2str = (
 
 
 const X$nil2str = (
-    ($) => {
+    $ => {
 
         if (nil($)) {
             return js2s($);
@@ -106,7 +110,7 @@ const X$nil2str = (
 
 
 const X$arr2str = (
-    ($) => {
+    $ => {
 
         if (nil($)) {
             return js2s($);
@@ -126,7 +130,7 @@ const X$arr2str = (
 
 
 const X$fun2str = (
-    ($) => {
+    $ => {
 
         if (nil($)) {
             return js2s($);
@@ -146,7 +150,7 @@ const X$fun2str = (
 );
 
 const X$cst2str = (
-    ($) => {
+    $ => {
 
         if (nil($)) {
             return js2s($);

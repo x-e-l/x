@@ -1,19 +1,19 @@
 const {nil, frz$} = require('../u');
 
 const X$len = (
-    ($) => ($ && $.length - 0) || 0
+    $ => ($ && $.length - 0) || 0
 );
 
 const X$first = (
-    ($) => $ && $[0]
+    $ => $ && $[0]
 );
 
 const X$second = (
-    ($) => $ && $[1]
+    $ => $ && $[1]
 );
 
 const X$last = (
-    ($) => {
+    $ => {
         const l = X$len($);
         return l ? $[l - 1] : $ && void 0;
     }
@@ -36,14 +36,14 @@ const X$includes = (
 const X$map = (
     ($, f) => {
         $ = ($ || []);
-        return $.map && $.map(f)
+        return $.map && $.map(f);
     }
 );
 
 const X$reduce = (
     ($, i, f) => {
         $ = ($ || []);
-        return $.reduce && $.reduce(f, i)
+        return $.reduce && $.reduce(f, i);
     }
 );
 

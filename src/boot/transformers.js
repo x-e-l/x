@@ -2,20 +2,18 @@ const {_key_, _val_} = require('../symbols');
 const {isf, tok, nil, frz$} = require('../u');
 
 const X$ident = (
-    ($) => ($)
+    $ => ($)
 );
 
 const X$2const = (
-    ($) => () => $
+    $ => () => $
 );
 
 
 const X$obj2frz = (
-    ($) => (
-        nil($) ||       // nil
-        '' + $ === $ ||                     // string
-        $ - 0 === $ || Number.isNaN($) ||   // number
-        true === $ || false === $           // boolean
+    $ => (
+        // is it null or undefined or string or number or boolean? no need to freeze
+        nil($) || `${ $}` === $ || $ - 0 === $ || Number.isNaN($) || true === $ || false === $
             ? $
             : frz$({...$})
     )
@@ -38,16 +36,16 @@ const X$vk2ref = (
 
 
 const X$ref2k = (
-    ($) => nil($) ? $ : $[_key_]
+    $ => nil($) ? $ : $[_key_]
 );
 
 const X$ref2v = (
-    ($) => nil($) ? $ : $[_val_]
+    $ => nil($) ? $ : $[_val_]
 );
 
 
 const X$new2fun = (
-    ($) => isf($)
+    $ => isf($)
         ? (...$$) => new $(...$$)
         : tok($)
 );
@@ -56,6 +54,7 @@ const X$new2fun = (
 const X$itr2set = X$new2fun(Set);
 const X$str2err = X$new2fun(Error);
 const X$any2prx = X$new2fun(Proxy);
+
 
 module.exports = frz$({
 

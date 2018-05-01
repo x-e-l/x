@@ -14,13 +14,12 @@ const nan = Number.isNaN;
 const frz$ = Object.freeze;
 // aliases end
 
-const isf = ($ => typeof $ === 'function');
+const isf = ($ => 'function' === typeof $);
 
 
 const tok = ($ => {
-    // noinspection JSUnusedLocalSymbols
     // noinspection UnnecessaryLocalVariableJS
-    const K = ($$) => $;
+    const K = $$ => $;// eslint-disable-line no-unused-vars
     return K;
 });
 
@@ -29,28 +28,28 @@ const iife = ($ => isf($) ? $() : $);
 
 
 const nil = (
-    ($) => (null === $) || (void 0 === $)
+    $ => (null === $) || (void 0 === $)
 );
 
 
 const primitives = ['boolean', 'number', 'string'];
 const prim = (
-    ($) => nil($) || primitives.includes(typeof $)
+    $ => nil($) || primitives.includes(typeof $)
 );
 
 const f2s = (
-    ($) => $ && isf($) && $.name ? $.name : $
+    $ => $ && isf($) && $.name ? $.name : $
 );
 
 
 const t = (
-    ($) => '⦰(' + $ + ')⦰'
+    $ => `⦰(${ $ })⦰`
 );
 
 const js2s = (
-    ($) => nil($)
+    $ => nil($)
         ? t($)
-        : t($ && $.toString ? $.toString() : '' + otos($))
+        : t($ && $.toString ? $.toString() : `${ otos($)}`)
 );
 
 

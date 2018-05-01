@@ -1,0 +1,55 @@
+{
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2017,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "browser": false,
+        "node": true
+    },
+    "extends": "@azhder/azder",
+    "globals": {
+        "Promise": false,
+        "Symbol": false,
+        "Set": false,
+        "Proxy": false
+    },
+    "rules": {
+        "new-cap": "off",
+        "no-shadow": [
+            "error",
+            {
+                "allow": [
+                    "$",
+                    "$$"
+                ]
+            }
+        ],
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": [
+                    "_metas_",
+                    "_props_",
+                    "_toses_",
+                    "_call_",
+                    "_2str_",
+                    "_2len_",
+                    "_2bul_",
+                    "_atype_",
+                    "_key_",
+                    "_val_",
+                    "_idx_",
+                    "_nil_",
+                    "_arr_",
+                    "_fun_",
+                    "_cst_",
+                    "_obj_"
+                ]
+            }
+        ]
+    }
+}

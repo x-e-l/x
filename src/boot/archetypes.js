@@ -1,6 +1,6 @@
 const {
     _atype_, _obj_, _nil_, _arr_, _fun_, _cst_,
-    _2str_, _call_, _toses_, _metas_
+    _2str_, _call_, _toses_, _metas_,
 } = require('../symbols');
 
 const {iife, isf, tok, nil, ftos, ownk, frz$} = require('../u');
@@ -13,6 +13,7 @@ const {X$tadd, X$rset, X$mset, X$preg} = require('./setters');
 const {X$obj2str, X$nil2str, X$arr2str, X$fun2str, X$cst2str} = require('./stringers');
 
 
+// eslint-disable-next-line func-style, no-restricted-syntax
 function Obj($, ...$$) {
 
     $ = nil($) ? Object.create(null) : $;
@@ -28,8 +29,11 @@ function Obj($, ...$$) {
 
 }
 
+
+// eslint-disable-next-line func-style, no-restricted-syntax
 function Nil($, ...$$) {
 
+    // eslint-disable-next-line no-use-before-define
     $ = X$isx($) ? $ : X$Obj($, ...$$);
 
     X$mset($, _2str_, X$nil2str);
@@ -41,6 +45,8 @@ function Nil($, ...$$) {
 
 }
 
+
+// eslint-disable-next-line func-style, no-restricted-syntax
 function Err($, ...$$) {
 
     const $error = X$isx($)
@@ -50,12 +56,16 @@ function Err($, ...$$) {
     const $erefs = ownk($error).map(key => X$kv2ref(key, $error[key]));
     const $orefs = nil($) ? [] : ownk($).map(key => X$kv2ref(key, $[key]));
 
+    // eslint-disable-next-line no-use-before-define
     return X$Nil($error, ...$erefs, ...$orefs, ...$$);
 
 }
 
+
+// eslint-disable-next-line func-style, no-restricted-syntax
 function Arr($, ...$$) {
 
+    // eslint-disable-next-line no-use-before-define
     $ = X$Obj(nil($) ? [] : $, ...$$);
 
     X$mset($, _atype_, _arr_);
@@ -65,8 +75,11 @@ function Arr($, ...$$) {
 
 }
 
+
+// eslint-disable-next-line func-style, no-restricted-syntax
 function Fun($, ...$$) {
 
+    // eslint-disable-next-line no-use-before-define
     $ = X$Obj(nil($) ? ($ => $) : $, ...$$);
 
     X$mset($, _atype_, _fun_);
@@ -78,9 +91,9 @@ function Fun($, ...$$) {
 
 }
 
+
 const proxy$ = (
-    ($) => {
-        // noinspection JSUnusedGlobalSymbols
+    $ => {
         const $new = X$any2prx(
             $,
             {
@@ -92,17 +105,19 @@ const proxy$ = (
                     }
 
                     try {
-                        return X$tadd($old.apply(null, [$, ...$$]), $new);
+                        // eslint-disable-next-line no-useless-call
+                        return X$tadd($old.apply(null, [$, ...$$]), $new); // `this` should be `null`, not `undeifined`
                     } catch (e) {
                         // noinspection JSUnresolvedFunction
                         Error.captureStackTrace(e, apply); // captureStackTrace is v8/nodejs specific
+                        // eslint-disable-next-line no-use-before-define
                         return X$Err(e);
                     }
                 },
                 // workaround for proxied functions not using Function.prototype.toString
                 get:   ($, k) => (
                     'toString' === k
-                        ? (/**@type function*/ftos).bind($)
+                        ? (/** @type function */ ftos).bind($)
                         : $[k]
                 ),
             }
@@ -111,6 +126,7 @@ const proxy$ = (
     }
 );
 
+// eslint-disable-next-line func-style, no-restricted-syntax
 function Cst($, ...$$) {
 
     // constructor must be function, even if constant one

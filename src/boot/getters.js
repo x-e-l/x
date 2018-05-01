@@ -8,7 +8,7 @@ const {X$push, X$len, X$map, X$last} = require('./arrays');
 
 
 const X$metas = (
-    ($) => nil($) ? {} : $[_metas_] || {}
+    $ => nil($) ? {} : $[_metas_] || {}
 );
 
 
@@ -17,7 +17,7 @@ const X$mget = (
 );
 
 const X$mown = (
-    ($) => X$map(
+    $ => X$map(
         owns(X$metas($)),
         k => X$kv2ref(k, X$mget($, k))
     )
@@ -25,11 +25,11 @@ const X$mown = (
 
 
 const X$toses = (
-    ($) => X$mget($, _toses_) || []
+    $ => X$mget($, _toses_) || []
 );
 
 const X$props = (
-    ($) => X$mget($, _props_) || []
+    $ => X$mget($, _props_) || []
 );
 
 
@@ -39,7 +39,7 @@ const X$tcat = (
         const toses = X$toses($);
 
         if (isf(proto) && X$last(toses) !== proto) {
-            return X$push(toses, proto)
+            return X$push(toses, proto);
         }
 
         return toses;
@@ -48,11 +48,11 @@ const X$tcat = (
 );
 
 const X$pget = (
-    ($, k) => $ && $[k] //|| Err('X$pget: missing prop: ' + X$2str(k))
+    ($, k) => $ && $[k] // || Err('X$pget: missing prop: ' + X$2str(k))
 );
 
 const X$pown = (
-    ($) => X$map(
+    $ => X$map(
         X$props($),
         k => X$kv2ref(k, X$pget($, k))
     )
@@ -60,7 +60,7 @@ const X$pown = (
 
 
 const X$callf = (
-    ($) => {
+    $ => {
 
         if (nil($)) {
             // TODO: @azder: return Err(`${NOTOBJ}: X$callf(${$})`);
@@ -86,28 +86,27 @@ const X$callf = (
 const X$2str = js2s; // an alias for display purposes
 
 const X$2strf = (
-    ($) => X$mget($, _2str_) || X$2str
+    $ => X$mget($, _2str_) || X$2str
 );
 
 
 const X$2len = (
-    ($) => X$len(X$props($))
+    $ => X$len(X$props($))
 );
 
 const X$2lenf = (
-    ($) => X$mget($, _2len_) || X$2len
+    $ => X$mget($, _2len_) || X$2len
 );
 
 
 const X$2bul = (
-    ($) =>
-        X$isx($)
-            ? ($) => !X$isnil($)
-            : ($) => !!$
+    $ => X$isx($)
+        ? $ => !X$isnil($)
+        : $ => !!$
 );
 
 const X$2bulf = (
-    ($) => X$mget($, _2bul_) || X$2bul($)
+    $ => X$mget($, _2bul_) || X$2bul($)
 );
 
 

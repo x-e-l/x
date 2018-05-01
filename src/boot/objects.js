@@ -5,17 +5,17 @@ const {X$2strf, X$2bulf, X$callf} = require('./getters');
 
 
 const X$2str = (
-    ($) => X$fcall(X$2strf($), $)
+    $ => X$fcall(X$2strf($), $)
 );
 
 
 const X$2bul = (
-    ($) => X$fcall(X$2bulf($), $)
+    $ => X$fcall(X$2bulf($), $)
 );
 
 
 const X$call = (
-    ($) => X$fcall(X$callf($), $)
+    $ => X$fcall(X$callf($), $)
 );
 
 
